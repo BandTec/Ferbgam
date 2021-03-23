@@ -18,19 +18,17 @@
 }
 .img_home_text{
     width: fit-content;
-    margin: auto;
     color: white;
     position: absolute;
     top: 160px;
-    right: 0;
-    left: 0;
+    left: 50%;
+    transform: translate(-50%);
     text-align: center;
 }
 .div_buttons{
     position: absolute;
-    margin: auto;
-    right: 0;
-    left: 0;
+    left: 50%;
+    transform: translate(-50%);
     top: 320px;
     text-align: center;
 }
@@ -50,13 +48,14 @@
     color: white;
     border: none;
     border-radius: 3px;
-    cursor: pointer;
 }
 .btn_right:hover{
+    cursor: pointer;
     background-color: #b8008a;
 
 }
 .btn_left:hover{
+    cursor: pointer;
     background-color: #0095c7;
 
 }
@@ -64,9 +63,8 @@
 .boxes{
     width: fit-content;
     position: absolute;
-    margin: auto;
-    right: 0;
-    left: 0;
+    left: 50%;
+    transform: translate(-50%);
     top: 400px;
     text-align: center;
 }
