@@ -1,11 +1,12 @@
-body{
-    background-color: rgb(210, 241, 241);
+body {
+    background-color: rgb(0, 0, 0);
     text-align: center;
-
 }
+
 img {
     width: 350px;
 }
+
 button {
     background-color: #12205f;
     border: none;
@@ -16,46 +17,54 @@ button {
     font-size: 16px;
     margin: 4px 2px;
     cursor: pointer;
-  }
-  input {
-border-radius: 20px 20%;
-height: 20px;
-outline: 0;
+    border-radius: 10px;
+}
 
-  }
-  .span_id1 {
+input {
+    border-radius: 20px 20%;
+    height: 20px;
+    outline: 0;
+}
+
+.span_id1 {
     color: rgb(0, 119, 255);
     font-size: 30px;
-  }
-  .span_id2 {
+}
+
+.span_id2 {
     color: rgb(9, 145, 236);
     font-size: 30px;
 }
+
 .span_id3 {
     color: rgb(7, 176, 255);
     font-size: 30px;
-    
 }
-.ferbgam{
+
+.ferbgam {
     color: rgb(0, 183, 255);
 }
+
 #orcamento_display {
     display: none;
     font-size: 35px;
 }
+
 #orcamento {
     font-size: 25px;
 }
+
 .inputs_class {
     font-size: 25px;
     margin-bottom: 20px;
     padding-top: 50px;
 }
+
 .head {
     font-size: 40px;
     margin-bottom: 40px;
-
 }
+
 .under_head {
     font-size: 35px;
     margin-bottom: 40px;
