@@ -1,6 +1,6 @@
 body {
     background-color: rgb(226, 226, 226);
-    font-family: Arial, Helvetica, sans-serif;
+    font-family: 'Ubuntu', sans-serif;
 }
 
 .Caixa {
@@ -39,6 +39,11 @@ body {
     color: rgb(104, 104, 104);
 }
 
+.Contato input:focus {
+    width: 450px;
+    transition: 0.5s;
+}
+
 ::placeholder {
     color: rgb(104, 104, 104);
 }
@@ -73,4 +78,11 @@ textarea {
     padding: 5px;
     font-family: 'Ubuntu', sans-serif;
     font-size: 20px;
+    width: 420px;
+}
+
+
+textarea:focus {
+    width: 480px;
+    transition: 0.5s;
 }
