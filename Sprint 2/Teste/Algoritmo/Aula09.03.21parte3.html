@@ -1,0 +1,31 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+    <meta charset="UTF-8">
+    <meta http-equiv="X-UA-Compatible" content="IE=edge">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>Aula 22</title>
+<style>
+body{
+    text-align: center;
+}
+</style>
+</head>
+<body>
+    <h2>Arredondamento de Numeros</h2>
+    Numero:<input id="in_numero" type="text">
+    <br><br>
+    <button onclick="arredondar()">Arredondar</button>
+    <br>
+    <div id="div_resultado"></div>
+</body>
+</html>
+<script>
+function arredondar() {
+    var numero = Number(in_numero.value);
+    var divisao = numero / 3;
+    div_resultado.innerHTML = `Divisão por 3: ${divisao.toFixed(1)}`;
+   
+
+}
+</script>

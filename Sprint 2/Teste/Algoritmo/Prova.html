@@ -1,0 +1,37 @@
+<!DOCTYPE html>
+<html lang="en">
+
+<head>
+    <meta charset="UTF-8">
+    <meta http-equiv="X-UA-Compatible" content="IE=edge">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>Document</title>
+</head>
+
+<body>
+    <img src="https://blog.longa.com.br/wp-content/uploads/2019/08/303836-gestao-de-estoque-como-a-longa-industrial-pode-tornar-mais-eficiente-780x450.jpg" alt="Estoque">
+    <br><b>Gestoque, Guarde bem o que está contigo</b><br> Nome do produto <input id="produto" type="text" placeholder="Nome do produto"><br> Unidade <input id="unidade" type="text" placeholder="Unidade, quilos , litros e Etc"><br> Quantidade em estoque
+    <input
+        id="quantidade" type="text" placeholder="Quantidade"><br> Valor de compra por unidade<input id="valorc" type="text" placeholder="Valor por unidade"><br> Valor de venda por unidade<input id="valorv" type="text" placeholder="Valor de venda"><br>
+        <button onclick="analisar()">Analisar Estoque</button><br>
+        <span id="saida"></span>
+
+
+</body>
+
+</html>
+<script>
+    function analisar() {
+        var n1 = produto.value;
+        var n2 = unidade.value;
+        var n3 = quantidade.value; //cyan
+        var n4 = valorc.value; //red
+        var n5 = valorv.value; //grenn
+        saida.innerHTML += `<img src="https://www.doc9.com.br/wp-content/uploads/2019/01/entenda-os-beneficios-de-contratar-uma-empresa-de-logistica-forense-para-realizar-seus-calculos-judiciais-correspondente-juridico-doc9-01.jpg" alt="Calculos"><br>`
+        saida.innerHTML += `Você possui um total de <span style="color:cyan ;">${n3}</span> ${n2} de ${n1} em estoque.
+Você tem um total de R$ ${n5 * n3} em estoque de <span style="color:cyan ;">${n3}</span>.
+Vai lucar R$ ${ n5 - n4} em cada ${n1} vendido.<br><br>`
+        saida.innerHTML += `Como comprou cada unidade por <span style='color:red ;'>${n4}</span> e vai vender por <span style='color:green ;'>${n5}</span>, sua margem de lucro será de <span style='color:blue ;'> ${((valorc.value / valorv.value ) *1 )* 100 }</span>%.<br><br>`
+        saida.innerHTML += `<span style="background-color: red;">${n4}</span><span style="background-color: green;">${n5}</span>`
+    }
+</script>

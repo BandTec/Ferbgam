@@ -1,0 +1,32 @@
+<!DOCTYPE html>
+<html lang="en">
+
+<head>
+    <meta charset="UTF-8">
+    <meta http-equiv="X-UA-Compatible" content="IE=edge">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>Aula 27</title>
+    <style>
+        body {
+            text-align: center;
+        }
+    </style>
+</head>
+
+<body>
+    <input id="in_idade" placeholder="Qual sua idade?" autofocus>
+    <button onclick="votar()">Votar</button>
+</body>
+
+</html>
+<script>
+    function votar() {
+        var idade = Number(in_idade.value);
+        //quando temos um ifelse um dos 2 é exucutado
+        if (idade <= 16) {
+            alert(`vc n pode votar`);
+        } else { // "Senão", ou seja, caso o teste logico 'if' seja falso
+            alert(`vc pode votar`);
+        }
+    }
+</script>
