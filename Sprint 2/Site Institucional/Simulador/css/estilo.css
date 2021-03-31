@@ -102,8 +102,24 @@ body {
     font-size: 16px;
     font-weight: 800;
     font-family: 'Trebuchet MS', 'Lucida Sans Unicode', 'Lucida Grande', 'Lucida Sans', Arial, sans-serif;
+    margin-top: 1%;
 }
 
 .btn-simulador:hover {
     box-shadow: 4px 4px 3px #B8008A;
+}
+
+#div_javascript {
+    color: white;
+    font-family: 'Trebuchet MS', 'Lucida Sans Unicode', 'Lucida Grande', 'Lucida Sans', Arial, sans-serif;
+    text-align: center;
+    font-size: 20px;
+    padding-bottom: 40px;
+    display: none;
+}
+
+.subtitulo-checkbox {
+    text-align: center;
+    color: white;
+    font-family: 'Trebuchet MS', 'Lucida Sans Unicode', 'Lucida Grande', 'Lucida Sans', Arial, sans-serif;
 }

@@ -1,0 +1,61 @@
+<!DOCTYPE html>
+<html>
+
+<head>
+    <meta charset='utf-8'>
+    <meta http-equiv='X-UA-Compatible' content='IE=edge'>
+    <title>Simulador Financeiro</title>
+    <meta name='viewport' content='width=device-width, initial-scale=1'>
+    <link rel='stylesheet' media='screen' href='css/estilo.css'>
+    <script src='JS/main.js'></script>
+
+    <link rel="preconnect" href="https://fonts.gstatic.com">
+    <link href="https://fonts.googleapis.com/css2?family=Montserrat:wght@500&display=swap" rel="stylesheet">
+</head>
+
+<body>
+    <section class="section-simulador">
+        <div class="container-section-simulador">
+            <div class="div-logo-section-simulador">
+                <img class="logo-section-simulador" src="img/logo-relax.png" alt="">
+                <br>
+                <h3 class="subtitulo-simulador">Simule seu investimento com a <b>FERBGAM</b></h3>
+            </div>
+            <form action="" class="form-section-simulador">
+                <label> Qual o nome da sua empresa?</label>
+                <br>
+                <input id="in_name" placeholder="Nome da empresa" autofocus>
+                <br>
+                <label>Quantos funcionarios tem sua empresa?</label>
+                <br>
+                <input id="in_employ" placeholder="Quantidade de funcionarios">
+                <br>
+                <label>Qual a média salarial?</label>
+                <br>
+                <input id="in_payment" placeholder="Média salarial">
+                <br>
+                <label>Quantos metros quadrados tem o ambiente?</label>
+                <br>
+                <input id="in_meters" placeholder="Quantidade de m²">
+                <br>
+                <h3 class="subtitulo-checkbox">Selecione qual pacote deseja simular </h3><br>
+                <select name="Selecione uma pack" id="se_pack">
+                    <option value="selecione">Selecione uma opção</option>
+                    <option value="11">Basic</option>
+                    <option value="22">Medium</option>
+                    <option value="33">Premium</option>
+                </select><br>
+                <button onclick="calculate()" class="btn-simulador">Análisar</button>
+
+            </form>
+            <div id="div_javascript">
+                Com a RelaxMachine você irá economizar uma média de <span id="result_eco"></span>, aumentando a produtividade da sua empresa em 33% por um preço de <span id="result_price">
+
+</span>
+            </div>
+        </div>
+
+    </section>
+</body>
+
+</html>
