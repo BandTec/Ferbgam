@@ -44,14 +44,14 @@ body {
 
 .logo-section-simulador {
     margin-top: 1%;
-    width: 40%;
+    width: 39%;
     float: left;
     margin-left: 30%;
 }
 
 .subtitulo-simulador {
-    margin-top: 11%;
     text-align: center;
+    margin-top: 11%;
     color: white;
     font-family: 'Trebuchet MS', 'Lucida Sans Unicode', 'Lucida Grande', 'Lucida Sans', Arial, sans-serif;
 }
