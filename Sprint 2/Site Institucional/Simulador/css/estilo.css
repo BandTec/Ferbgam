@@ -76,7 +76,9 @@ body {
     break-after: auto;
 }
 
-.form-section-simulador input {
+.form-section-simulador .input-form,
+select,
+option {
     height: 40px;
     width: 30%;
     font-size: 100%;
@@ -102,7 +104,6 @@ body {
     font-size: 16px;
     font-weight: 800;
     font-family: 'Trebuchet MS', 'Lucida Sans Unicode', 'Lucida Grande', 'Lucida Sans', Arial, sans-serif;
-    margin-top: 1%;
 }
 
 .btn-simulador:hover {
@@ -113,13 +114,77 @@ body {
     color: white;
     font-family: 'Trebuchet MS', 'Lucida Sans Unicode', 'Lucida Grande', 'Lucida Sans', Arial, sans-serif;
     text-align: center;
-    font-size: 20px;
+    font-size: 18px;
     padding-bottom: 40px;
     display: none;
 }
 
-.subtitulo-checkbox {
+.div_visualizar {
+    width: 75%;
+    margin: auto;
+    border-radius: 29px;
+    padding-top: 3%;
+    background-color: #272323;
+    box-shadow: 5px 5px #B8008A;
+    text-align: justify;
+}
+
+.boxes {
+    width: fit-content;
+    height: auto;
+    display: flex;
+    flex-direction: row;
+    flex-wrap: wrap;
+    margin: auto;
+    justify-content: center;
+    color: aliceblue;
+}
+
+.boxes h3 {
+    margin: 0;
+}
+
+.boxes-item {
+    margin: 20px 20px;
+    width: 250px;
+    height: 250px;
+    display: flex;
+    align-items: center;
+    justify-content: space-around;
+    flex-direction: column;
+    background-color: rgba(73, 72, 72, 0.75);
+    border-radius: 10px;
+    border-radius: 2px;
+}
+
+.content {
+    width: 100%;
+    display: flex;
+    justify-content: center;
+    height: auto;
+    min-height: 50vh;
+    position: relative;
+    overflow: unset;
+}
+
+.box-container {
+    margin-bottom: 50px;
+}
+
+.box-icon {
+    background-color: #B8008A;
+    width: 150px;
+    height: 150px;
+    display: flex;
+    justify-content: center;
+    align-items: center;
+    cursor: pointer;
+    border-radius: 50%;
+    text-transform: uppercase;
+    color: #fff;
+}
+
+.box-text {
+    width: 90%;
     text-align: center;
-    color: white;
-    font-family: 'Trebuchet MS', 'Lucida Sans Unicode', 'Lucida Grande', 'Lucida Sans', Arial, sans-serif;
 }
