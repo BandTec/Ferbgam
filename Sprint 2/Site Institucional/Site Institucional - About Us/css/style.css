@@ -56,7 +56,7 @@ body {
     border: none;
 }
 
-.section-sobreNos .container .texto {
+.section-sobreNos .container .text {
     width: 90%;
     margin: auto;
     padding-top: 200px;
@@ -66,4 +66,10 @@ body {
     text-align: center;
     font-size: 23px;
     font-weight: 400;
+}
+
+.section-sobreNos .container .itens {
+    display: flex;
+    flex-direction: row;
+    justify-content: space-between;
 }
