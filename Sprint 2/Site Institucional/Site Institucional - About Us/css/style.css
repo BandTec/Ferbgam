@@ -1,0 +1,69 @@
+* {
+    margin: 0;
+}
+
+body {
+    background-color: white;
+    font-family: 'Trebuchet MS', 'Lucida Sans Unicode', 'Lucida Grande', 'Lucida Sans', Arial, sans-serif
+}
+
+
+/*Formatação do Scroll*/
+
+ ::-webkit-scrollbar-track {
+    background-color: white;
+}
+
+ ::-webkit-scrollbar {
+    width: 8px;
+    height: 8px;
+    background: #00A1D7;
+}
+
+ ::-webkit-scrollbar-thumb {
+    background: #00A1D7;
+}
+
+.section-sobreNos {
+    width: 100%;
+    height: 100vh;
+    background-image: url(../img/banner_sobre.png);
+    background-size: cover;
+}
+
+.section-sobreNos .container {
+    width: 80%;
+    height: 98%;
+    margin: auto;
+    padding-top: 30px;
+}
+
+.section-sobreNos .container h1 {
+    color: #00A1D7;
+    font-size: 35px;
+    margin: auto;
+    text-align: center;
+    text-transform: uppercase;
+}
+
+.section-sobreNos .container hr {
+    width: 30%;
+    margin: auto;
+    background-color: #B8008A;
+    width: 20%;
+    text-align: center;
+    padding-bottom: 0.3%;
+    border: none;
+}
+
+.section-sobreNos .container .texto {
+    width: 90%;
+    margin: auto;
+    padding-top: 200px;
+}
+
+.section-sobreNos .container p {
+    text-align: center;
+    font-size: 23px;
+    font-weight: 400;
+}
