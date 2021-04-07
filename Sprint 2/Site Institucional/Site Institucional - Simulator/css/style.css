@@ -1,0 +1,192 @@
+                            * {
+                                margin: 0;
+                            }
+                            
+                            body {
+                                background-color: white;
+                            }
+                            /*Formatação do Scroll*/
+                            
+                             ::-webkit-scrollbar-track {
+                                background-color: white;
+                            }
+                            
+                             ::-webkit-scrollbar {
+                                width: 8px;
+                                height: 8px;
+                                background: #00A1D7;
+                            }
+                            
+                             ::-webkit-scrollbar-thumb {
+                                background: #00A1D7;
+                            }
+                            
+                            .section-simulador {
+                                width: 100%;
+                                height: auto;
+                                background-image: url(../img/fundo-simulador.png);
+                                background-size: cover;
+                            }
+                            
+                            .container-section-simulador {
+                                width: 80%;
+                                height: 98%;
+                                margin: auto;
+                                background-color: #262626;
+                            }
+                            
+                            .div-logo-section-simulador {
+                                width: 100%;
+                                padding: auto;
+                            }
+                            
+                            .logo-section-simulador {
+                                margin-top: 1%;
+                                width: 39%;
+                                float: left;
+                                margin-left: 30%;
+                            }
+                            
+                            .subtitulo-simulador {
+                                text-align: center;
+                                margin-top: 11%;
+                                color: white;
+                                font-family: 'Trebuchet MS', 'Lucida Sans Unicode', 'Lucida Grande', 'Lucida Sans', Arial, sans-serif;
+                            }
+                            
+                            .subtitulo-simulador b {
+                                color: #61D6FF;
+                                font-weight: 1000;
+                            }
+                            
+                            .form-section-simulador {
+                                width: 100%;
+                                height: auto;
+                                margin: auto;
+                                text-align: center;
+                                margin-top: 2%;
+                                font-family: 'Trebuchet MS', 'Lucida Sans Unicode', 'Lucida Grande', 'Lucida Sans', Arial, sans-serif;
+                            }
+                            
+                            .form-section-simulador label {
+                                color: white;
+                                font-size: 16px;
+                                break-after: auto;
+                            }
+                            
+                            .form-section-simulador .input-form,
+                            select,
+                            option {
+                                height: 40px;
+                                width: 30%;
+                                font-size: 100%;
+                                margin: auto;
+                                background-color: rgb(12, 12, 12);
+                                border: 3px solid white;
+                                margin-top: 2%;
+                                margin-bottom: 2%;
+                                text-align: center;
+                                border-radius: 7px;
+                                color: white;
+                            }
+                            
+                            .btn-simulador {
+                                width: 15vmax;
+                                height: 50px;
+                                border: none;
+                                text-align: center;
+                                margin-bottom: 3%;
+                                border-radius: 3%;
+                                background-color: #00A1D7;
+                                color: aliceblue;
+                                font-size: 16px;
+                                font-weight: 800;
+                                font-family: 'Trebuchet MS', 'Lucida Sans Unicode', 'Lucida Grande', 'Lucida Sans', Arial, sans-serif;
+                            }
+                            
+                            .btn-simulador:hover {
+                                box-shadow: 4px 4px 3px #B8008A;
+                            }
+                            
+                            #div_javascript {
+                                color: white;
+                                font-family: 'Trebuchet MS', 'Lucida Sans Unicode', 'Lucida Grande', 'Lucida Sans', Arial, sans-serif;
+                                text-align: center;
+                                font-size: 18px;
+                                padding-bottom: 40px;
+                                display: none;
+                            }
+                            
+                            .div_visualizar {
+                                width: 75%;
+                                margin: auto;
+                                border-radius: 29px;
+                                padding-top: 3%;
+                                background-color: #272323;
+                                box-shadow: 5px 5px #B8008A;
+                                text-align: justify;
+                            }
+                            
+                            .boxes {
+                                width: fit-content;
+                                height: auto;
+                                display: flex;
+                                flex-direction: row;
+                                flex-wrap: wrap;
+                                margin: auto;
+                                justify-content: center;
+                                color: aliceblue;
+                            }
+                            
+                            .boxes h3 {
+                                margin: 0;
+                            }
+                            
+                            .boxes-item {
+                                margin: 20px 20px;
+                                width: 250px;
+                                height: 250px;
+                                display: flex;
+                                align-items: center;
+                                justify-content: space-around;
+                                flex-direction: column;
+                                background-color: rgba(73, 72, 72, 0.75);
+                                border-radius: 10px;
+                                border-radius: 2px;
+                            }
+                            
+                            .content {
+                                width: 100%;
+                                display: flex;
+                                justify-content: center;
+                                height: auto;
+                                min-height: 50vh;
+                                position: relative;
+                                overflow: unset;
+                            }
+                            
+                            .box-container {
+                                margin-bottom: 50px;
+                            }
+                            
+                            .box-icon {
+                                background-color: #B8008A;
+                                width: 150px;
+                                height: 150px;
+                                display: flex;
+                                justify-content: center;
+                                align-items: center;
+                                cursor: pointer;
+                                border-radius: 50%;
+                                text-transform: uppercase;
+                                color: #fff;
+                            }
+                            
+                            .box-text {
+                                width: 90%;
+                                text-align: center;
+                            }
+                            
+                            .box-icon img {
+                                width: 75%
+                            }

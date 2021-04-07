@@ -1,0 +1,97 @@
+<!DOCTYPE html>
+<html>
+
+<head>
+    <meta charset='utf-8'>
+    <meta http-equiv='X-UA-Compatible' content='IE=edge'>
+    <title>Simulador Financeiro</title>
+    <meta name='viewport' content='width=device-width, initial-scale=1'>
+    <link rel='stylesheet' media='screen' href='css/style.css'>
+    <script src='js/main.js'></script>
+
+    <link rel="preconnect" href="https://fonts.gstatic.com">
+    <link href="https://fonts.googleapis.com/css2?family=Montserrat:wght@500&display=swap" rel="stylesheet">
+</head>
+
+<body>
+    <section class="section-simulador">
+        <div class="container-section-simulador">
+            <div class="div-logo-section-simulador">
+                <img class="logo-section-simulador" src="img/logo-relax.png" alt="">
+                <br>
+                <h3 class="subtitulo-simulador">Simule seu investimento com a <b>FERBGAM</b></h3>
+            </div>
+            <form action="javascript:void(0)" onsubmit="calculate()" class="form-section-simulador">
+                <label> Qual o nome da sua empresa?</label>
+                <br>
+                <input id="in_name" placeholder="Nome da empresa" class="input-form" autofocus>
+                <br>
+                <label>Quantos funcionarios tem sua empresa?</label>
+                <br>
+                <input id="in_employ" class="input-form" placeholder="Quantidade de funcionarios">
+                <br>
+                <label>Qual a média de absenteísmo em sua empresa?</label>
+                <br>
+                <input id="in_absenteeism" class="input-form" placeholder="Média de absenteísmo">
+                <br>
+                <label>Qual a média salarial?</label>
+                <br>
+                <input id="in_payment" class="input-form" placeholder="Média salarial">
+                <br>
+                <label>Quantos metros quadrados tem o ambiente?</label>
+                <br>
+                <input id="in_meters" class="input-form" placeholder="Quantidade de m²">
+                <br>
+                <label>Selecione qual pacote deseja simular </label>
+                <br>
+                <select name="Selecione um pack" id="se_pack">
+                    <option class="input-form" value="selecione">Selecione uma opção</option>
+                    <option class="input-form" value="11">Basic</option>
+                    <option class="input-form" value="22">Medium</option>
+                    <option class="input-form" value="33">Premium</option>
+                </select><br>
+                <section class="box-container">
+                    <div class="boxes">
+                        <div class="boxes-item">
+                            <div class="box-icon">
+                                <img src="img/Basic.png">
+                            </div>
+                            <h3>Basic</h3>
+                            <div class="box-text">
+                                <p>Inclui o monitoramento de Temperatura.</p>
+                            </div>
+                        </div>
+                        <div class="boxes-item">
+                            <div class="box-icon">
+                                <img src="img/Medium.png">
+                            </div>
+                            <h3>Medium</h3>
+                            <div class="box-text">
+                                <p>Inclui o monitoramento de Temperatura e Umidade.</p>
+                            </div>
+                        </div>
+                        <div class="boxes-item">
+                            <div class="box-icon">
+                                <img src="img/Premium.png">
+                            </div>
+                            <h3>Premium</h3>
+                            <div class="box-text">
+                                <p>Inclui o monitoramento de Temperatura, Umidade e Luminosidade</p>
+                            </div>
+                        </div>
+                    </div>
+                </section>
+                <input type="submit" name="Analisar" class="btn-simulador" />
+
+            </form>
+            <div id="div_javascript" class="div_visualizar">
+                Sem a RelaxMachine a sua empresa <span id="result_name"></span> tem uma média <span id="result_absent"></span>% e com ela a sua empresa irá economizar uma média de R$<span id="result_eco"></span>, aumentando a produtividade da sua empresa
+                em <span id="result_porcent"></span>% por um preço de R$<span id="result_price">
+
+                </span>
+            </div>
+            <br>
+        </div>
+
+    </section>
+    <script src='js/main.js'></script>
