@@ -75,6 +75,10 @@
             font-size: 23px;
         }
         
+        .box-item {
+            margin: 25px;
+        }
+        
         .box-item img {
             width: 35%;
         }
