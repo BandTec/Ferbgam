@@ -153,7 +153,8 @@ body {
     background-color: #CC0099;
 }
 
-.btn-left, .btn-right {
+.btn-left,
+.btn-right {
     padding: 13px;
     margin: 10px;
     font-size: medium;
@@ -246,6 +247,7 @@ body {
     }
 }
 
+
 /*Sobre nós - FERNANDO E GIOVANNA*/
 
 .section-sobreNos {
@@ -278,7 +280,7 @@ body {
     text-align: center;
     display: flex;
     flex-wrap: wrap;
-    justify-content: center;
+    justify-content: space-evenly;
     font-size: 23px;
 }
 
@@ -288,12 +290,13 @@ body {
 }
 
 .section-sobreNos .box-item img {
-    width: 20%;
+    width: 30%;
 }
 
 .section-sobreNos .box-item h3 {
     margin: 13px;
 }
+
 
 /*Equipe - ABNER E MANOCCHIO*/
 
@@ -404,6 +407,7 @@ body {
     }
 }
 
+
 /*Serviços - JHONATAN E LEONARDO*/
 
 .section-servicos {
@@ -412,6 +416,7 @@ body {
     color: blanchedalmond;
     text-align: center;
 }
+
 
 /*Simulador - FERNANDO E GIOVANNA*/
 
@@ -466,7 +471,9 @@ body {
     break-after: auto;
 }
 
-.section-simulador .form-section-simulador .input-form, select, option {
+.section-simulador .form-section-simulador .input-form,
+select,
+option {
     height: 40px;
     width: 30%;
     font-size: 100%;
@@ -571,6 +578,7 @@ body {
     width: 75%
 }
 
+
 /*Contato - JHONATAN E LEONARDO*/
 
 .section-contato .Caixa {
@@ -583,8 +591,6 @@ body {
     text-align: center;
     margin-top: 5%;
 }
-
-.Contato {}
 
 .Contato h1 {
     color: #403866;
