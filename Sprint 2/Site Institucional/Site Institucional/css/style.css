@@ -215,6 +215,12 @@ body {
     }
 }
 
+@media(max-width: 840px) {
+    .section-contato .Caixa {
+        width: 90% !important;
+    }
+}
+
 /*Sobre nós - FERNANDO E GIOVANNA*/
 
 .section-sobreNos {
@@ -586,6 +592,7 @@ body {
     border-radius: 10px;
     width: 60%;
     height: 60%;
+    transition: all 0.25s;
     text-align: center;
     margin-top: 5%;
 }
