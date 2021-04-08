@@ -153,8 +153,7 @@ body {
     background-color: #CC0099;
 }
 
-.btn-left,
-.btn-right {
+.btn-left, .btn-right {
     padding: 13px;
     margin: 10px;
     font-size: medium;
@@ -247,7 +246,6 @@ body {
     }
 }
 
-
 /*Sobre nós - FERNANDO E GIOVANNA*/
 
 .section-sobreNos {
@@ -296,7 +294,6 @@ body {
 .section-sobreNos .box-item h3 {
     margin: 13px;
 }
-
 
 /*Equipe - ABNER E MANOCCHIO*/
 
@@ -382,7 +379,7 @@ body {
 
 .member:hover {
     background-color: rgba(34, 130, 255, 0.801);
-    animation: neon3 1.5s ease-in-out infinite alternate;
+    animation: neon 1.5s ease-in-out infinite alternate;
 }
 
 .member:hover .member-info {
@@ -398,7 +395,7 @@ body {
     transform: scaleY(1);
 }
 
-@keyframes neon3 {
+@keyframes neon {
     from {
         box-shadow: 0 0 10px #fff, 0 0 20px #fff, 0 0 30px #fff, 0 0 30px rgba(34, 130, 255, 0.801), 0 0 60px rgba(34, 130, 255, 0.801), 0 0 70px rgba(34, 130, 255, 0.801), 0 0 90px rgba(34, 130, 255, 0.801), 0 0 130px rgba(34, 130, 255, 0.801);
     }
@@ -406,7 +403,6 @@ body {
         box-shadow: 0 0 5px #fff, 0 0 10px #fff, 0 0 15px #fff, 0 0 20px rgba(34, 130, 255, 0.801), 0 0 35px rgba(34, 130, 255, 0.801), 0 0 40px rgba(34, 130, 255, 0.801), 0 0 50px rgba(34, 130, 255, 0.801), 0 0 75px rgba(34, 130, 255, 0.801);
     }
 }
-
 
 /*Serviços - JHONATAN E LEONARDO*/
 
@@ -416,7 +412,6 @@ body {
     color: blanchedalmond;
     text-align: center;
 }
-
 
 /*Simulador - FERNANDO E GIOVANNA*/
 
@@ -471,9 +466,7 @@ body {
     break-after: auto;
 }
 
-.section-simulador .form-section-simulador .input-form,
-select,
-option {
+.section-simulador .form-section-simulador .input-form, select, option {
     height: 40px;
     width: 30%;
     font-size: 100%;
@@ -577,7 +570,6 @@ option {
 .section-simulador .box-icon img {
     width: 75%
 }
-
 
 /*Contato - JHONATAN E LEONARDO*/
 
