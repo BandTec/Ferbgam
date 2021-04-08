@@ -607,6 +607,10 @@ option {
     color: rgb(104, 104, 104);
 }
 
+.Contato textarea {
+    resize: none;
+}
+
 .Contato input:focus {
     width: 450px;
     transition: 0.5s;
@@ -622,18 +626,22 @@ option {
     color: white;
     width: 200px;
     height: 50px;
+    margin: 20px 0;
     outline: none;
     border-radius: 31px;
     font-family: 'Ubuntu', sans-serif;
     font-weight: bold;
     font-size: 20px;
+    transition: all ease-in-out 0.25s;
+    cursor: pointer;
+    border: 0;
 }
 
 .Contato button:hover {
     width: 230px;
     border: 2px solid white;
     background: #B8008A;
-    color: #00A1D7;
+    color: #fff;
 }
 
 textarea {
