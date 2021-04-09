@@ -306,6 +306,7 @@ body {
     height: auto;
     padding-top: 30px;
     background-color: #272323;
+    margin-bottom: 50px;
 }
 
 .section-equipe .container {
@@ -430,6 +431,7 @@ body {
     height: 98%;
     margin: auto;
     background-color: #262626;
+    margin-bottom: 50px;
 }
 
 .section-simulador .div-logo-section-simulador {
@@ -675,7 +677,7 @@ textarea:focus {
     background-color: #1D2123;
     text-align: center;
     margin-top: 4%;
-    height: 100px;
+    height: 120px;
     border-top: 3px solid #b8008a;
 }
 
@@ -687,18 +689,21 @@ textarea:focus {
 }
 
 .footer h4 a {
+    font-weight: 500;
     text-decoration: none;
     color: white;
-    font-weight: 500;
 }
 
 .footer .icones {
-    margin-left: 46%;
-    margin-top: 0.5%;
+    
+    display: flex;
+justify-content: center
+   
 }
 
 .footer .icones img {
-    margin-right: 2%;
+    
+    padding: 15px 10px 0 10px;
     float: left;
     height: 30px;
     text-align: center;
