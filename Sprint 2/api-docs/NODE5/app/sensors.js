@@ -60,4 +60,6 @@ function dht11(options) {
 }
 
 
+
+
 module.exports = { lm35, trc5000, ldr, dht11 };

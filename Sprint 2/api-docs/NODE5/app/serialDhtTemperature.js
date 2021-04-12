@@ -1,6 +1,6 @@
 const sensors = require('./sensors')
 
-class NewArduinoHumidity {
+class NewArduinoDhtTemperature {
 
     constructor() {
         this.listData = [];
@@ -19,7 +19,7 @@ class NewArduinoHumidity {
 
     SetConnection() {
         setInterval(() => {
-            let data_float = sensors.dht11({ minHum: 30, maxHum: 80 });
+            let data_float = sensors.dht11({ minHum: 40, maxHum: 60, minTemp: 10, maxTemp: 30 });
 
             if (this.__listDataTemp.length === 59) {
                 let sum = this.__listDataTemp.reduce((a, b) => a + b, 0);
@@ -29,14 +29,14 @@ class NewArduinoHumidity {
                 }
             }
 
-            this.__listDataTemp.push(data_float[0]);
-            this.listData.push(data_float[0]);
+            this.__listDataTemp.push(data_float[1]);
+            this.listData.push(data_float[1]);
 
         }, 100);
     }
 }
 
-const serial = new NewArduinoHumidity();
+const serial = new NewArduinoDhtTemperature();
 serial.SetConnection();
 
-module.exports.ArduinoDataHumidity = { List: serial.List, ListHour: serial.ListHour }
+module.exports.ArduinoDataDhtTemperature = { List: serial.List, ListHour: serial.ListHour }
