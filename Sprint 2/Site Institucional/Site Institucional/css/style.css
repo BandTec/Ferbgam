@@ -290,13 +290,16 @@ body {
 }
 
 .section-sobreNos .box-item img {
-    width: 30%;
+    width: 35%;
 }
 
 .section-sobreNos .box-item h3 {
     margin: 13px;
 }
-
+.section-sobreNos .box-item p{
+   
+    font-size: 16px;
+}
 
 /*Equipe - ABNER E MANOCCHIO*/
 
@@ -601,46 +604,51 @@ option {
     align-items: center;
 }
 
-.Contato h1 {
-    color: #403866;
-    margin-bottom: 15px;
+
+.Contato label {
+    color: white;
+    font-size: 16px;
+    break-after: auto;
 }
 
-.Contato input {
-    margin-bottom: 40px;
-    border: none;
-    border-radius: 31px;
-    outline: none;
-    width: 400px;
-    height: 40px;
-    padding: 10px;
+.Contato .input-form,
+select,
+option {
+    height: 30px;
+    width: 30%;
+    font-size: 100%;
+    margin: auto;
+    background-color: rgb(12, 12, 12);
+    border: 3px solid white;
     text-align: center;
-    font-size: 20px;
-    color: rgb(104, 104, 104);
+    border-radius: 7px;
+    color: white;
 }
-
+.Contato .mensagem{
+    height: 100px;
+    width: 40%;
+    font-size: 100%;
+    margin: auto;
+    margin-top: 2%;
+    background-color: rgb(12, 12, 12);
+    border: 3px solid white;
+    text-align: center;
+    border-radius: 7px;
+    color: white;
+}
 .Contato textarea {
     resize: none;
 }
 
-.Contato input:focus {
-    width: 450px;
-    transition: 0.5s;
-}
-
-::placeholder {
-    color: rgb(104, 104, 104);
-}
-
 .Contato button {
-    margin-top: 40px;
+    margin-top: 10px;
     background: #00A1D7;
     color: white;
     width: 200px;
     height: 50px;
     margin: 20px 0;
     outline: none;
-    border-radius: 31px;
+    border-radius: 10px;
     font-family: 'Ubuntu', sans-serif;
     font-weight: bold;
     font-size: 20px;

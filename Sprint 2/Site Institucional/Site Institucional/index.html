@@ -5,8 +5,8 @@
     <meta charset="UTF-8">
     <meta http-equiv="X-UA-Compatible" content="IE=edge">
     <meta name="viewport" content="width=device-width, initial-scale=1.0">
-    <title>Relax Machine</title>
-
+    <title>Ferbgam</title>
+    <link rel="icon" href="img/fer1branco.png">
     <link rel="preconnect" href="https://fonts.gstatic.com">
     <link href="https://fonts.googleapis.com/css2?family=Montserrat:wght@500&display=swap" rel="stylesheet">
     <link rel="stylesheet" href="css/style.css">
@@ -66,17 +66,17 @@
                             <div class="box-item">
                                 <img src="img/goal.png">
                                 <h3>Missão</h3>
-                                <p>Lorem ipsum dolor sit amet consectetur adipisicing elit. </p>
+                                <p>Atender às necessidades de nossos clientes e superar as expectativas, oferecendo muito mais que produtos e serviços.</p>
                             </div>
                             <div class="box-item">
                                 <img src="img/goal (1).png">
                                 <h3>Visão</h3>
-                                <p>Lorem ipsum dolor sit amet consectetur adipisicing elit. </p>
+                                <p> Ser referência em inovação e qualidade, agregando bem-estar e conforto aos ambientes empresariais. </p>
                             </div>
                             <div class="box-item">
                                 <img src="img/learning.png">
                                 <h3>Valores</h3>
-                                <p>Lorem ipsum dolor sit amet consectetur adipisicing elit. </p>
+                                <p>Inovação, liderança, responsabilidade, integridade, qualidade e execelência</p>
                             </div>
 
                         </div>
@@ -126,7 +126,7 @@
                                             <p>Desenvolvedora Front-end</p>
                                         </div>
                                         <img
-                                            src="https://cutewallpaper.org/21/chris-hemsworth-wallpapers/Chris-Hemsworth-Wallpapers-HD-for-Android-APK-Download.jpg">
+                                            src="img/giovanna.jpeg">
                                     </div>
                                 </div>
                             </div>
@@ -269,15 +269,28 @@
                     <hr class="pink-stroke" />
                 </div>
                 <div class="Caixa">
-                    <div class="Contato">
-                        
-                        <input placeholder="Seu Nome" type="text">
-                        <input placeholder="Email" type="text">
-                        <textarea placeholder="Sua mensagem" cols="50" rows="10"></textarea>
+                    <form class="Contato">
+                        <label>Nome</label>
+                        <br>
+                        <input class="input-form" placeholder="Nome" type="text" id="in_name">
+                        <br>
+                        <label>Email</label>
+                        <br>
+                        <input class="input-form" placeholder="Email" type="email" id="in_email">
+                        <br>
+                        <label>O que deseja nos enviar?</label>
+                        <br>
+                        <select name="Selecione uma opção" id="se_option">
+                            <option class="input-form" value="selecione">Selecione uma opção</option>
+                            <option class="input-form" value="11">Dúvida</option>
+                            <option class="input-form" value="22">Elogio</option>
+                            <option class="input-form" value="33">Sugestão</option>
+                        </select>
+                        <textarea placeholder="Sua mensagem" cols="50" rows="10" class="input-form mensagem"></textarea>
                         <br>
                         <button>Enviar</button>
                         <br>
-                    </div>
+                    </form>
                 </div>
             </section>
             <div class="footer">
