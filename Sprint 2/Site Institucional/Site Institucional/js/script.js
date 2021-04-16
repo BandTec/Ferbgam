@@ -15,10 +15,10 @@ function calculate() {
     var meters = Number(in_meters.value);
     var pack = Number(se_pack.value);
     var absenteeism = Number(in_absenteeism.value);
-    var absenteeism_percent = (absenteeism / 100) / (employ / 100) * 100;
+    var absenteeism_percent =  (absenteeism / 100)/((employ*175) / 100)  * 100;
     var pack_percent = pack / 100;
     var eco = (employ * payment) * (pack_percent / absenteeism_percent);
-    var price_meters = (meters * 500) * (pack_percent / absenteeism_percent);
+    var price_meters = (meters * 400) * (pack_percent / absenteeism_percent);
 
     div_javascript.style.display = 'block';
     result_name.innerHTML = `${name}`;
