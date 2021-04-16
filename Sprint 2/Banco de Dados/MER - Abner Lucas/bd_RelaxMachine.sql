@@ -42,6 +42,7 @@ create table sensor (
     tipoSensor varchar(45),
     statusSensor varchar(30),
     check (statusSensor='ativo' or statusSensor='inativo' or statusSensor='manutenção'),
+    unidadeMedida varchar(30),
     fkSala int,
     foreign key(fkSala) references sala(idSala)
 );
@@ -74,9 +75,13 @@ insert into responsavel values
     (null,'Lucca Guerdes','77864531','af112356789456','lucsguerd@hotmail.com','978462345','70705370',2),
     (null,'Pedro Gonçalves','44638951','B@outisl8976$','pedrogonca@outlook.com','123456789','56789453',5);
     
-select * from responsavel;
+select * from sensor;
+delete from sensor where idSensor = 1;
 
-select e.idEmpresa,e.nome,e.uf,r.nome as NomeResponsavel from empresa as e left join responsavel as r on idEmpresa = fkEmpresa;
+select * from empresa;
+select * from responsavel;
+select e.idEmpresa,e.nome,e.uf,r.nome as 'Responsável' from empresa as e left join responsavel as r on idEmpresa = fkEmpresa;
+
 desc sensor;
 desc sala;
 
@@ -102,7 +107,7 @@ insert into sensor values
 	(null,'umidade','ativo',2),
 	(null,'temperatura','ativo',4);
 
-select * from sensor;
+select * from valorLido;
 
 desc valoresColetados;
 insert into valorLido values
@@ -133,5 +138,6 @@ select s.idSensor,s.tipoSensor,s.statusSensor,
 		sa.descricao, sa.idSala
 		from sensor as s join valorLido as vl on idSensor = fkSensor join sala as sa
         on s.fkSala = sa.idSala where s.idSensor = 2 order by vl.dadoLeitura desc;
-    
+
+
 
