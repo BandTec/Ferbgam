@@ -1,9 +1,28 @@
+:root {
+    --primary-blue: #5995fd;
+}
+
 * {
     margin: 0;
     padding: 0;
     box-sizing: border-box;
     font-family: 'Montserrat', sans-serif;
 }
+
+/* utilizando a unidade medida relativa "rem", para que a fonte 
+aumente ou diminua de acordo com a resoulção da tela, similar a vh que aprendemos 
+na aula de algoritmo
+ */
+
+/* font-weight é o peso da fonte, exemplos: 
+900 - extra-bold (poucas fontes tem)
+800 - bold
+600 - semi-bold
+400 - regular (padrão) 
+300 - light 
+200 - lighter 
+100 - etra-light
+*/
 
 .container {
     position: relative;
@@ -57,4 +76,27 @@ form {
     background: none;
     outline: none;
     border: none;
+    line-height: 1;
+    font-weight: 600;
+    color: #333;
+    font-size: 1.1rem;
+}
+
+.input-field input::placeholder {
+    color: #aaa;
+    font-weight: 500;
+}
+
+.btn {
+    width: 150px;
+    height: 49px;
+    border: none;
+    outline: none;
+    border-radius: 49px;
+    cursor: pointer;
+    color: #fff;
+    text-transform: uppercase;
+    font-weight: 600;
+    margin: 10px 0;
+    background-color: var(--primary-blue);
 }
