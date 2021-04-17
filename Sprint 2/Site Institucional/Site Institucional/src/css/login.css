@@ -1,5 +1,6 @@
 :root {
     --primary-blue: #5995fd;
+    --p-darker-blue: #4d84e2;
 }
 
 * {
@@ -99,4 +100,41 @@ form {
     font-weight: 600;
     margin: 10px 0;
     background-color: var(--primary-blue);
+    transition: .5s;
+}
+
+.btn:hover {
+    background-color: var(--p-darker-blue);
+}
+
+.social-text {
+    color: #333;
+    padding: .7rem 0;
+    font-size: 1rem;
+    font-weight: 600;
+}
+
+.social-media {
+    display: flex;
+    justify-content: center;
+}
+
+.social-icon {
+    display: flex;
+    justify-content: center;
+    align-items: center;
+    height: 46px;
+    width: 46px;
+    border: 1px solid #333;
+    margin: 0 0.45rem;
+    text-decoration: none;
+    color: #333;
+    font-size: 1.1rem;
+    border-radius: 50%;
+    transition: 0.3s;
+}
+
+.social-icon:hover {
+    color: var(--p-darker-blue);
+    border-color: var(--p-darker-blue);
 }
