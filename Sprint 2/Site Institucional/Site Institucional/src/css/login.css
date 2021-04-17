@@ -1,6 +1,7 @@
 :root {
     --primary-blue: #5995fd;
     --p-darker-blue: #4d84e2;
+    --p-light-blue: #04befe;
 }
 
 * {
@@ -33,6 +34,18 @@ na aula de algoritmo
     overflow: hidden;
 }
 
+.container:before {
+    content: '';
+    position: absolute;
+    width: 2000px;
+    height: 2000px;
+    border-radius: 50%;
+    background: linear-gradient(-45deg, var(--p-darker-blue), var(--p-light-blue));
+    top: -10%;
+    right: 48%;
+    transform: translateY(-50%);
+}
+
 .forms-container {
     position: absolute;
     width: 100%;
@@ -57,6 +70,8 @@ form {
     align-items: center;
     justify-content: center;
     flex-direction: column;
+    padding: 0 5rem;
+    overflow: hidden;
     grid-column: 1 / 2;
     grid-row: 1 / 2;
     /*divide essa única coluna entre duas linahs vertical e horizontalmente para que os formulários fiquem
