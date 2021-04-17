@@ -1,53 +1,58 @@
 create database db_rlx_machine;
 use db_rlx_machine;
-drop database db_rlx_machine;
 
-create table empresa (
+
+create table tb_empresa (
 	idEmpresa int primary key auto_increment,
-    cnpj char(14),
-    nome varchar(60),
-    telefone varchar(20),
-    email varchar(80),
-    logradouro varchar(80),
-    uf char(2),
-    cidade varchar(60),
-    numero varchar(45),
-    complemento varchar(45),
-    bairro varchar(60),
-    cep char(8)
+    cnpj char(14) not null,
+    nomeFantasia varchar(80) not null,
+    razaoSocial varchar(80) not null,
+    telefone varchar(20) not null,
+    email varchar(80) not null,
+    logradouro varchar(80) not null,
+    uf char(2) not null,
+    cidade varchar(60) not null,
+    numero varchar(45) not null,
+    complemento varchar(45) not null,
+    bairro varchar(60) not null,
+    cep char(8) not null
 );
 
-create table responsavel (
-	idResponsavel int primary key auto_increment,
-    nome varchar(60),
-    login char(8) unique,
-    senha varchar(45),
-    email varchar(80),
-    telCelular varchar(20),
-    telFixo varchar(20),
-    fkEmpresa int,
-    foreign key(fkEmpresa) references empresa(idEmpresa)
+create table tb_responsavel (
+	fkEmpresa int,
+    foreign key(fkEmpresa) references Empresa(idEmpresa),
+    idResponsavel int,
+    primary key(fkEmpresa, idResponsavel),
+    nome varchar(80) not null,
+    login char(8) unique not null,
+    senha varchar(45) not null,
+    email varchar(80) not null,
+    telCelular varchar(20) not null,
+    telFixo varchar(20)
 );
 
-create table sala (
+create table tb_sala (
 	idSala int primary key auto_increment,
-    area double,
-    descricao varchar(45),
+    area double not null,
+    descricao varchar(45) not null,
+    andar varchar(20),
     fkEmpresa int,
     foreign key(fkEmpresa) references empresa(idEmpresa)
 );
 
-create table sensor (
+create table tb_sensor (
 	idSensor int primary key auto_increment,
-    tipoSensor varchar(45),
-    statusSensor varchar(30),
-    check (statusSensor='ativo' or statusSensor='inativo' or statusSensor='manutenção'),
-    unidadeMedida varchar(30),
+    tipoSensor varchar(15) not null,
+    check (tipoSensor = 'temperatura' or tipoSensor = 'umidade' or tipoSensor = 'luminosidade'),
+    statusSensor varchar(15) not null,
+    check (statusSensor = 'ativo' or statusSensor = 'inativo' or statusSensor = 'manutenção'),
+    unidadeMedida varchar(10) not null,
+    check (unidadeMedida = '°C' or unidadeMedida = 'UR %' or unidadeMedida = 'Lux'),
     fkSala int,
     foreign key(fkSala) references sala(idSala)
 );
 
-create table valorLido (
+create table tb_leitura (
 	fkSensor int,
     foreign key(fkSensor) references sensor(idSensor),
     idValorLido int,
@@ -94,20 +99,24 @@ insert into sala values
 	(null,40,"Sala de Suporte Técnico",3);
 
 insert into sensor values
-	(null,'temperatura','ativo',1),
-	(null,'temperatura','ativo',2),
-	(null,'temperatura','inativo',4),
-	(null,'umidade','ativo',2),
-	(null,'temperatura','ativo',3),
-	(null,'umidade','ativo',3),
-	(null,'luminosidade','ativo',3),
-	(null,'temperatura','ativo',1),
-	(null,'temperatura','ativo',2),
-	(null,'umidade','ativo',1),
-	(null,'umidade','ativo',2),
-	(null,'temperatura','ativo',4);
+	(null,'temperatura','ativo','°C',1),
+	(null,'temperatura','ativo','°C',2),
+	(null,'temperatura','inativo','°C',4),
+	(null,'umidade','ativo','UR %',2),
+	(null,'temperatura','ativo','°C',3),
+	(null,'umidade','ativo','UR %',3),
+	(null,'luminosidade','ativo','Lux',3),
+	(null,'temperatura','ativo','°C',1),
+	(null,'temperatura','ativo','°C',2),
+	(null,'umidade','ativo','UR %',1),
+	(null,'umidade','ativo','UR %',2),
+	(null,'temperatura','ativo','°C',4);
 
 select * from valorLido;
+insert into sensor values
+	(null,'temperatura','manutenção','°C',1),
+	(null,'umidade','manutenção','UR %',2),
+	(null,'luminosidade','manutenção','Lux',5);
 
 desc valoresColetados;
 insert into valorLido values
@@ -131,13 +140,25 @@ insert into valorLido values
 	(7,4,default,'775'),
 	(7,5,default,'800');
     
+select * from sala;
 select * from valorLido;
+select * from Sensor;
+select * from Empresa;
+select * from Empresa;
 
-select s.idSensor,s.tipoSensor,s.statusSensor,
-		vl.dataHoraRegister, vl.dadoLeitura,
-		sa.descricao, sa.idSala
+select s.idSensor,s.tipoSensor,s.statusSensor, 
+		vl.dadoLeitura, s.unidadeMedida, vl.dataHoraRegister, 
+		e.nome, sa.descricao, sa.idSala
 		from sensor as s join valorLido as vl on idSensor = fkSensor join sala as sa
-        on s.fkSala = sa.idSala where s.idSensor = 2 order by vl.dadoLeitura desc;
+        on s.fkSala = sa.idSala join empresa as e on e.idEmpresa = sa.fkEmpresa;       
 
+select s.idSensor,s.tipoSensor,s.statusSensor, 
+		vl.dadoLeitura, s.unidadeMedida, vl.dataHoraRegister, 
+		e.nome, sa.descricao, sa.idSala
+		from sensor as s join valorLido as vl on idSensor = fkSensor join sala as sa
+        on s.fkSala = sa.idSala join empresa as e on e.idEmpresa = sa.fkEmpresa where e.idEmpresa = 3 group by vl.dadoLeitura;
 
+select e.idEmpresa,e.nome,e.uf,r.nome as 'Responsável' from empresa as e left join responsavel as r on idEmpresa = fkEmpresa;
+
+select * from sensor left join valorLido on idSensor = fkSensor; 
 
