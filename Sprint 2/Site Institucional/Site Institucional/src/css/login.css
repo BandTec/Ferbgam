@@ -41,11 +41,38 @@ na aula de algoritmo
     left: 0;
 }
 
+.signin-signup {
+    position: absolute;
+    top: 50%;
+    left: 75%;
+    transform: translate(-50%, -50%);
+    width: 50%;
+    display: grid;
+    grid-template-columns: 1fr;
+    /*De modo que só apareça um formulário por vez, o container é uma grid com uma coluna*/
+}
+
 form {
     display: flex;
     align-items: center;
     justify-content: center;
     flex-direction: column;
+    grid-column: 1 / 2;
+    grid-row: 1 / 2;
+    /*divide essa única coluna entre duas linahs vertical e horizontalmente para que os formulários fiquem
+    um em cima do outro */
+}
+
+form.sign-in-form {
+    z-index: 2;
+    /* usando um z-index superior ao do formulário de cadstro 
+    forçamos o formulário de login a sobrepor tudo que está em baixo*/
+}
+
+form.sign-up-form {
+    z-index: 1;
+    opacity: 0;
+    /*Opacity é definida como 0 para esconder o formulário, que agora está em baixo do de login*/
 }
 
 .title {
