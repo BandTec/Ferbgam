@@ -63,7 +63,7 @@ body {
 }
 
 .logo-img {
-    background: url(../img/fer1branco.png) no-repeat;
+    background: url(../img/Logotipos/fer1branco.png) no-repeat;
     background-size: contain;
     height: 80%;
     width: 100px;
@@ -103,7 +103,7 @@ body {
 }
 
 .bg-container {
-    background: url(../img/banner-home.jpg) no-repeat center;
+    background: url(../img/Banners/banner-home.jpg) no-repeat center;
     background-size: cover;
     width: 100%;
     height: 100vh;
