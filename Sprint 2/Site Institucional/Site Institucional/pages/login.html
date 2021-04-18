@@ -15,15 +15,15 @@
         <div class="forms-container">
             <div class="signin-signup">
                 <!--Formulário de Login-->
-                <form class="sign-in-form" action="javascript:void(0)">
+                <form class="sign-in-form" onsubmit="login()" action="javascript:void(0)">
                     <h2 class="title">Bem-vindo</h2>
                     <div class="input-field">
                         <i class="fas fa-user"></i>
-                        <input type="text" placeholder="Usuário">
+                        <input id="userLogin" type="text" placeholder="Usuário" required>
                     </div>
                     <div class="input-field">
                         <i class="fas fa-lock"></i>
-                        <input type="password" placeholder="Senha">
+                        <input id="userPassword" type="password" placeholder="Senha" required>
                     </div>
                     <input type="submit" value="Login" class="btn solid">
 

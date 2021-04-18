@@ -26,6 +26,12 @@ let hasUpper = false;
 let hasNumber = false;
 let validEmail = false;
 
+
+let users = [{
+    user: 'admin',
+    password: 'Urubu100',
+}]
+
 //Validação da senha no cadastro
 function checkPassword() {
     let password = document.querySelector('#cadastroPassword');
@@ -165,9 +171,32 @@ function clearCadastro() {
 function cadastrar() {
     checkEmail();
     if ((hasMin && hasNumber && hasUpper) && validEmail) {
-        alert('Usuário Cadastrado com Sucesso');
-        clearCadastro();
-    }
+        users.push({
+            user: document.querySelector('#userCadastro').value,
+            password: document.querySelector('#cadastroPassword').value
+        });
 
+        alert('cadastro realizado com sucesso');
+        clearCadastro();
+
+    }
 }
 
+
+function login() {
+    let hasLogged = false;
+    let userLogin = document.querySelector('#userLogin').value;
+    let userPassword = document.querySelector('#userPassword').value;
+
+    for (let i = 0; i < users.length; i++) {
+        if (users[i].user == userLogin && users[i].password == userPassword) {
+            hasLogged = true;
+        }
+    }
+
+    if (hasLogged) {
+        window.location.replace('../index.html'); //a nossa página aqui
+    } else {
+        alert('Usuário ou senha incorretos');
+    }
+}
