@@ -15,7 +15,7 @@
         <div class="forms-container">
             <div class="signin-signup">
                 <!--Formulário de Login-->
-                <form class="sign-in-form" action="">
+                <form class="sign-in-form" action="javascript:void(0)">
                     <h2 class="title">Bem-vindo</h2>
                     <div class="input-field">
                         <i class="fas fa-user"></i>
@@ -50,22 +50,48 @@
                     <h2 class="title">Cadastre-se</h2>
                     <div class="input-field">
                         <i class="fas fa-user"></i>
-                        <input type="text" placeholder="Usuário">
+                        <input type="text" placeholder="Usuário" required>
                     </div>
 
                     <div class="input-field">
                         <i class="fas fa-envelope"></i>
-                        <input type="text" placeholder="E-mail">
+                        <input type="text" placeholder="E-mail" required>
                     </div>
 
                     <div class="input-field">
                         <i class="fas fa-lock"></i>
-                        <input type="password" placeholder="Senha">
+                        <input id="cadastroPassword" onkeyup="checkPassword()" type="password" placeholder="Senha"
+                            required>
+                    </div>
+                    <div class="input-field">
+                        <i class="fas fa-lock"></i>
+                        <input id="confirmacaoPassword" onkeyup="checkPassword()" type="password"
+                            placeholder="Confirme sua senha" required>
+                    </div>
+                    <div class="check-container">
+                        <div class="check-option">
+                            <p>As senhas devem ser iguais</p>
+                            <i id="equal-pass" class="far fa-check-circle"></i>
+                        </div>
+                        <p class="social-text"> A senha deve conter:</p>
+                        <div class="check-option">
+                            <p>Mais de 3 caracteres</p>
+                            <i id="minChar" class="far fa-check-circle"></i>
+                        </div>
+                        <div class="check-option">
+                            <p>Pelo menos uma letra maiúscula</p>
+                            <i id="upperCase" class="far fa-check-circle"></i>
+                        </div>
+                        <div class="check-option">
+                            <p>Pelo menos um número</p>
+                            <i id="numericChar" class="far fa-check-circle"></i>
+                        </div>
                     </div>
 
                     <input type="submit" value="Cadastrar" class="btn solid">
 
-                    <p class="social-text">Ou Cadastre-se com as redes sociais</p>
+
+                    <!-- <p class="social-text">Ou Cadastre-se com as redes sociais</p>
 
                     <div class="social-media">
                         <a href="#" class="social-icon">
@@ -80,7 +106,7 @@
                         <a href="#" class="social-icon">
                             <i class="fab fa-linkedin-in"></i>
                         </a>
-                    </div>
+                    </div> -->
                 </form>
             </div>
         </div>
