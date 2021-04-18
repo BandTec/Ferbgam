@@ -27,7 +27,7 @@ let hasNumber = false;
 
 
 //Validação da senha no cadastro
-checkPassword = () => {
+function checkPassword() {
     let password = document.querySelector('#cadastroPassword');
     let passToValidate = document.querySelector('#confirmacaoPassword');
     password = password.value;
