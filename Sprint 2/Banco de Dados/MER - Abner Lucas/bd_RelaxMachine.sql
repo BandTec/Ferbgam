@@ -1,7 +1,6 @@
 create database db_rlx_machine;
 use db_rlx_machine;
 
-
 create table tb_empresa (
 	idEmpresa int primary key auto_increment,
     cnpj char(14) not null,
@@ -13,14 +12,14 @@ create table tb_empresa (
     uf char(2) not null,
     cidade varchar(60) not null,
     numero varchar(45) not null,
-    complemento varchar(45) not null,
+    complemento varchar(45),
     bairro varchar(60) not null,
     cep char(8) not null
 );
 
 create table tb_responsavel (
 	fkEmpresa int,
-    foreign key(fkEmpresa) references Empresa(idEmpresa),
+    foreign key(fkEmpresa) references tb_empresa(idEmpresa),
     idResponsavel int,
     primary key(fkEmpresa, idResponsavel),
     nome varchar(80) not null,
@@ -37,7 +36,7 @@ create table tb_sala (
     descricao varchar(45) not null,
     andar varchar(20),
     fkEmpresa int,
-    foreign key(fkEmpresa) references empresa(idEmpresa)
+    foreign key(fkEmpresa) references tb_empresa(idEmpresa)
 );
 
 create table tb_sensor (
@@ -49,56 +48,41 @@ create table tb_sensor (
     unidadeMedida varchar(10) not null,
     check (unidadeMedida = '°C' or unidadeMedida = 'UR %' or unidadeMedida = 'Lux'),
     fkSala int,
-    foreign key(fkSala) references sala(idSala)
+    foreign key(fkSala) references tb_sala(idSala)
 );
 
 create table tb_leitura (
 	fkSensor int,
-    foreign key(fkSensor) references sensor(idSensor),
-    idValorLido int,
-    primary key(fkSensor,idValorLido),
-    dataHoraRegister datetime default current_timestamp,
-    dadoLeitura varchar(45)
+    foreign key(fkSensor) references tb_sensor(idSensor),
+    idLeitura int,
+    primary key(fkSensor,idLeitura),
+    dataHoraRegister datetime default current_timestamp not null,
+    valorLeitura float not null
 );
-desc empresa;
 
-insert into empresa values
-	(null,'13264578964513','Log Logistica','462315978','logsuporte@outlook.com','Avenida Santanna Mendes','RJ','Rio de janeiro','338',default,'Lapa','12123456'),
-	(null,'12345678965432','Century','123456789','centurysuporte@gmail.com','Rua Avelino Silva','SP','São Caetano','124','Predio 2','Vila Pinhais','12346587'),
-	(null,'46234578964521','Fleury','12345678','fleurycontato@gmail.com','Avenida Mackenzie Freitas','SC','Santa Catarina','224',default,'Vila Lemos','46567895'),
-	(null,'33633533412358','Money Contabilidade','33456721','moncontabil@outlook.com','Rua Afonso Sardinha','SP','Osasco','12','apt 64','Jardim Melo','37195842'),
-	(null,'13264578965412','Hemolines Solution','11122233','hmssolutions@hotmail.com','Avenida Faria Lima','SP','São Paulo','355',default,'Pinheiros','55789965'),
-	(null,'34365698987885','World Telecom','12545672','wlrdtelecom@gmail.com','Rua Augusta','SP','São Paulo','224',default,'Lapa','37558469');
+insert into tb_empresa values
+	(null,'13264578964513','Log Logistica','Centro de Logisticas LTDA LOG','462315978','logsuporte@outlook.com','Avenida Santanna Mendes','RJ','Rio de janeiro','338',default,'Lapa','12123456'),
+	(null,'12345678965432','Law Advocacia','Escritórios de Advocacia Santanna','123456789','lawadvsuporte@gmail.com','Rua Avelino Silva','SP','São Caetano','124','Predio 2','Vila Pinhais','12346587'),
+	(null,'33633533412358','Money Contabilidade','Contabilidade Figueira Souza LTDA','33456721','moncontabil@outlook.com','Rua Afonso Sardinha','SP','Osasco','12','apt 64','Jardim Melo','37195842'),
+	(null,'13264578965412','Hemolines Solution','Soluções Hemolines LTDA','11122233','hmssolutions@hotmail.com','Avenida Faria Lima','SP','São Paulo','355',default,'Pinheiros','55789965'),
+	(null,'34365698987885','World Telecom','Telecomunicações Centrais','12545672','wlrdtelecom@gmail.com','Rua Augusta','SP','São Paulo','224',default,'Lapa','37558469');
 
-select * from responsavel;
-
-
-insert into responsavel values
-	(null,'André Maurício','12345678','123','andre@gmail.com','923456789','36364578',1),
-    (null,'John Lennon','11234568','MyP@sswrd','johnlenn@outlook.com','958556421','37412689',1),
-    (null,'João Santos','33545687','meucachorro','joaosantos7775@gmail.com','998756134','12346789',3),
-    (null,'Lucca Guerdes','77864531','af112356789456','lucsguerd@hotmail.com','978462345','70705370',2),
-    (null,'Pedro Gonçalves','44638951','B@outisl8976$','pedrogonca@outlook.com','123456789','56789453',5);
+insert into tb_responsavel values
+	(1,1,'André Maurício','12345678','123','andre@gmail.com','923456789','36364578'),
+    (2,1,'John Lennon','11234568','MyP@sswrd','johnlenn@outlook.com','958556421',default),
+    (3,1,'João Santos','33545687','meucachorro','joaosantos7775@gmail.com','998756134','12346789'),
+    (4,1,'Lucca Guerdes','77864531','af112356789456','lucsguerd@hotmail.com','978462345',default),
+    (4,2,'Pedro Gonçalves','44638951','B@outisl8976$','pedrogonca@outlook.com','123456789','56789453');
     
-select * from sensor;
-delete from sensor where idSensor = 1;
+insert into tb_sala values 
+	(null,34.5,'Esse é o laboratório 3 da equipe X',default,1),
+	(null,44.3,'Sala de reunião','15',4),
+	(null,30,'Esse é o laboratório 1, equipe 3','4',2),
+	(null,25.4,'Esse é o laboratório 2 da equipe de Analistas','5',2),
+	(null,28,'Sala 36',default,3),
+	(null,40,'Sala de Suporte Técnico','1',3);
 
-select * from empresa;
-select * from responsavel;
-select e.idEmpresa,e.nome,e.uf,r.nome as 'Responsável' from empresa as e left join responsavel as r on idEmpresa = fkEmpresa;
-
-desc sensor;
-desc sala;
-
-insert into sala values 
-	(null,34.5,"Esse é o laboratório 3 da equipe X",1),
-	(null,44.3,"Sala de reunião",4),
-	(null,30,"Esse é o laboratório 1, equipe 3",2),
-	(null,25.4,"Esse é o laboratório 2 da equipe de Analistas",2),
-	(null,28,"Sala 36",3),
-	(null,40,"Sala de Suporte Técnico",3);
-
-insert into sensor values
+insert into tb_sensor values
 	(null,'temperatura','ativo','°C',1),
 	(null,'temperatura','ativo','°C',2),
 	(null,'temperatura','inativo','°C',4),
@@ -110,16 +94,12 @@ insert into sensor values
 	(null,'temperatura','ativo','°C',2),
 	(null,'umidade','ativo','UR %',1),
 	(null,'umidade','ativo','UR %',2),
-	(null,'temperatura','ativo','°C',4);
-
-select * from valorLido;
-insert into sensor values
+	(null,'temperatura','ativo','°C',4),
 	(null,'temperatura','manutenção','°C',1),
-	(null,'umidade','manutenção','UR %',2),
+	(null,'umidade','inativo','UR %',2),
 	(null,'luminosidade','manutenção','Lux',5);
 
-desc valoresColetados;
-insert into valorLido values
+insert into tb_leitura values
 	(1,1,default,'23.00'),
 	(1,2,default,'23.5'),
 	(1,3,default,'22.4'),
@@ -140,25 +120,34 @@ insert into valorLido values
 	(7,4,default,'775'),
 	(7,5,default,'800');
     
-select * from sala;
-select * from valorLido;
-select * from Sensor;
-select * from Empresa;
-select * from Empresa;
+select * from tb_empresa;
+select * from tb_responsavel;
+select * from tb_sala;
+select * from tb_leitura;
+select * from tb_sensor;
 
-select s.idSensor,s.tipoSensor,s.statusSensor, 
-		vl.dadoLeitura, s.unidadeMedida, vl.dataHoraRegister, 
-		e.nome, sa.descricao, sa.idSala
-		from sensor as s join valorLido as vl on idSensor = fkSensor join sala as sa
-        on s.fkSala = sa.idSala join empresa as e on e.idEmpresa = sa.fkEmpresa;       
+-- Exibindo as empresas com seus respectivos responsáveis
+select e.idEmpresa, e.nomeFantasia, e.uf, e.cidade,  e.telefone as 'Telefone da Empresa',
+		r.idResponsavel, r.nome, r.telCelular as 'Telefone do responsável'
+        from tb_empresa as e inner join tb_responsavel as r on e.idEmpresa = r.fkEmpresa;
+        
+-- Exibindo as empresas e suas respectivas salas
+select e.idEmpresa, e.nomeFantasia as 'Nome da empresa', e.uf, e.cidade,  e.telefone as 'Telefone da Empresa',
+		s.idSala, s.area as 'Área total do ambiente(m²)', s.descricao as 'Descrição da sala', s.andar
+        from tb_empresa as e join tb_sala as s on e.idEmpresa = s.fkEmpresa; 
 
-select s.idSensor,s.tipoSensor,s.statusSensor, 
-		vl.dadoLeitura, s.unidadeMedida, vl.dataHoraRegister, 
-		e.nome, sa.descricao, sa.idSala
-		from sensor as s join valorLido as vl on idSensor = fkSensor join sala as sa
-        on s.fkSala = sa.idSala join empresa as e on e.idEmpresa = sa.fkEmpresa where e.idEmpresa = 3 group by vl.dadoLeitura;
+-- Exibindo as salas e seus respectivos sensores
+select * from tb_sala inner join tb_sensor on idSala = fkSala;
 
-select e.idEmpresa,e.nome,e.uf,r.nome as 'Responsável' from empresa as e left join responsavel as r on idEmpresa = fkEmpresa;
+-- Exibindo dados do sensor com suas respectivas leituras
+select * from tb_sensor inner join tb_leitura on idSensor = fkSensor;
 
-select * from sensor left join valorLido on idSensor = fkSensor; 
+-- Exibindo dados do sensor com suas respectivas leituras de forma especificada
+select * from tb_sensor inner join tb_leitura on idSensor = fkSensor where idSensor = 2;
+
+-- Contando a quantidade de sensores de determinada sala
+select count(se.idSensor) as 'Quantidade de sensores' from tb_sensor as se where fkSala = 1;
+
+-- Exibindo os valores de temperatura de uma determinada sala, com sua respectiva empresa 
+
 
