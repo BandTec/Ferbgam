@@ -123,9 +123,12 @@ function checkEmail() {
     emailCadastro = emailCadastro.value;
 
     validEmail = validateEmail(emailCadastro);
-
     if (!validEmail) {
-        console.log('email invalido');
+        document.querySelector('#error-message-email').classList.add('visible');
+
+        setTimeout(() => {
+            document.querySelector('#error-message-email').classList.remove('visible')
+        }, 2500);
     }
 
 }
