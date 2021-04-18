@@ -33,7 +33,7 @@ na aula de algoritmo
     width: 100%;
     min-height: 100vh;
     background-color: #fff;
-    overflow: hidden;
+    overflow: hidden !important;
 }
 
 .container:before {
@@ -259,7 +259,7 @@ como none para que ele ignore o right-panel
 }
 
 .right-panel .content, .right-panel .img {
-    transform: translateX(800px);
+    transform: translateX(1100px);
 }
 
 /*animações*/
@@ -270,7 +270,7 @@ como none para que ele ignore o right-panel
 }
 
 .container.sign-up-mode .left-panel .img, .container.sign-up-mode .left-panel .content {
-    transform: translate(-800px);
+    transform: translate(-1100px);
 }
 
 .container.sign-up-mode .right-panel .content, .container.sign-up-mode .right-panel .img {
@@ -323,4 +323,57 @@ como none para que ele ignore o right-panel
     color: #aaa;
     font-size: 20px;
     transition: 0.5s 0.2s ease-in-out;
+}
+
+.error-message {
+    display: flex;
+    border-radius: 5px;
+    align-items: center;
+    max-width: 190px;
+    width: 100%;
+    background-color: #fff;
+    height: 50px;
+    position: absolute;
+    top: 30%;
+    border: 0.5px solid rgba(0, 0, 0, 0.75);
+    z-index: 8;
+    box-shadow: 14px 13px 28px -15px rgba(0, 0, 0, 0.75);
+}
+
+.error-message:before {
+    content: '';
+    display: block;
+    position: absolute;
+    left: 18px;
+    bottom: 100%;
+    width: 0;
+    height: 0;
+    border: 9.9px solid transparent;
+    border-bottom-color: rgba(0, 0, 0, 0.75);
+}
+
+.error-message:after {
+    content: '';
+    display: block;
+    position: absolute;
+    left: 19px;
+    bottom: 99%;
+    width: 0;
+    height: 0;
+    border: 9px solid transparent;
+    border-bottom-color: white;
+}
+
+.error-message i {
+    color: #94041c;
+    font-size: 20px;
+    margin: 0 10px;
+}
+
+@media screen and (min-width: 2000px) {
+    .container::before {
+        width: 2500px;
+        height: 2500px;
+        transition: 0.8s ease-in-out;
+    }
 }

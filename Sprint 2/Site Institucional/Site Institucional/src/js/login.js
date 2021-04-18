@@ -24,7 +24,7 @@ let isEqual = false;
 let hasMin = false;
 let hasUpper = false;
 let hasNumber = false;
-
+let validEmail = false;
 
 //Validação da senha no cadastro
 function checkPassword() {
@@ -53,7 +53,10 @@ function checkPassword() {
         }
     }
 
-    if (isEqual) {
+
+
+
+    if (isEqual || !isEqual) {
         if (password.length > 3) {
             minChar.classList.replace('far', 'fas');
             minChar.classList.add('checked');
@@ -106,6 +109,32 @@ function checkPassword() {
             numericChar.classList.remove('checked');
             hasNumber = false;
         }
+    }
+}
+
+function validateEmail(email) {
+    let re = /^[^\s@]+@[^\s@]+$/
+    return re.test(email)
+}
+
+
+function checkEmail() {
+    let emailCadastro = document.querySelector('#emailCadastro');
+    emailCadastro = emailCadastro.value;
+
+    validEmail = validateEmail(emailCadastro);
+
+    if (!validEmail) {
+        console.log('email invalido');
+    }
+
+}
+
+
+function cadastrar() {
+    checkEmail();
+    if ((hasMin && hasNumber && hasUpper) && validEmail) {
+        alert('Usuário Cadastrado com Sucesso');
     }
 }
 
