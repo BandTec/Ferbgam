@@ -186,13 +186,15 @@
                         <img class="logo-section-simulador" src="./src/img/Logotipos/logo-relax.png" alt="">
                         <br>
                         <h3 class="subtitulo-simulador">Simule seu investimento com a <b>FERBGAM</b></h3>
+                        <div id="result_alert">Por favor insira <span id="alert_box"></span></div>
                     </div>
                     <form action="javascript:void(0)" onsubmit="calculate()" class="form-section-simulador">
                         <div class="container-simulator">
+                            
                             <div class="colum-simulator">
                                 <label> Qual o nome da sua empresa?</label>
                                 <br>
-                                <input id="in_name" placeholder="Nome da empresa" class="input-form">
+                                <input id="in_name" placeholder="Nome da empresa" class="input-form" autofocus>
                                 <br>
                                 <label>Quantos funcionarios tem sua empresa?</label>
                                 <br>
@@ -215,7 +217,7 @@
                                 <label>Selecione qual pacote deseja simular </label>
                                 <br>
                                 <select name="Selecione um pack" id="se_pack" class="input-form">
-                                    <option class="input-form" value="selecione">Selecione uma opção</option>
+                                    <option class="input-form" value="">Selecione uma opção</option>
                                     <option class="input-form" value="11">Basic</option>
                                     <option class="input-form" value="22">Medium</option>
                                     <option class="input-form" value="33">Premium</option>
@@ -312,4 +314,3 @@
 </body>
 
 </html>
-<script src="./srcjs/script.js"></script>

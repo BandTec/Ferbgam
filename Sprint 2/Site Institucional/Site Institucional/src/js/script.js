@@ -20,10 +20,48 @@ function calculate() {
     var eco = (employ * payment) * (pack_percent / absenteeism_percent);
     var price_meters = (meters * 400) * (pack_percent / absenteeism_percent);
 
-    div_javascript.style.display = 'block';
+    
+    if (name.length < 1) {
+        div_javascript.style.display = 'none';
+        result_alert.style.display='block'
+        alert_box.innerHTML = `o nome da sua Empresa`
+    
+    } 
+    else if (in_employ.value.length < 1) {
+        div_javascript.style.display = 'none';
+        result_alert.style.display='block'
+        alert_box.innerHTML = `a quantidade de funcionarios na sua Empresa`
+    }
+    else if (in_absenteeism.value.length < 1) {
+        div_javascript.style.display = 'none';
+        result_alert.style.display='block'
+        alert_box.innerHTML = `a quantidade de absenteísmo da sua Empresa`
+        
+    }
+    else if (in_payment.value.length < 1) {
+        div_javascript.style.display = 'none';
+        result_alert.style.display='block'
+        alert_box.innerHTML = `o salário dos funcionarios da sua Empresa`
+    }
+    else if (in_meters.value.length < 1) {
+        div_javascript.style.display = 'none';
+        result_alert.style.display='block'
+        alert_box.innerHTML = `a quantidade de metros da sua Empresa`
+        
+    }
+    
+    else if (se_pack.value.length < 1) {
+        div_javascript.style.display = 'none';
+        result_alert.style.display='block'
+        alert_box.innerHTML = `qual o pack desejado `
+    }
+     else{
+        div_javascript.style.display = 'block';
+        result_alert.style.display='none'
     result_name.innerHTML = `${name}`;
     result_eco.innerHTML = `${eco}`;
     result_price.innerHTML = `${price_meters}`;
     result_porcent.innerHTML = `${pack}`;
     result_absent.innerHTML = `${absenteeism_percent.toFixed(1)}`;
+    }
 }
