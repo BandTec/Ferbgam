@@ -430,6 +430,12 @@ body {
     height: auto;
 }
 
+#result_alert{
+    text-align: center;
+    color: rgb(255, 115, 0);
+    margin: 25px;
+    display: none;
+}
 .section-simulador .container-section-simulador {
     width: 80%;
     height: 98%;
