@@ -343,6 +343,10 @@ como none para que ele ignore o right-panel
     visibility: hidden;
 }
 
+#error-message-user {
+    top: 18%;
+}
+
 .error-message:before {
     content: '';
     display: block;

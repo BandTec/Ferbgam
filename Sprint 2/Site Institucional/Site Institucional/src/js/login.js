@@ -134,10 +134,40 @@ function checkEmail() {
 }
 
 
+function clearCadastro() {
+    document.querySelector('#emailCadastro').value = '';
+    document.querySelector('#userCadastro').value = '';
+    document.querySelector('#cadastroPassword').value = '';
+    document.querySelector('#confirmacaoPassword').value = '';
+
+
+    equalPass.classList.replace('fas', 'far');
+    equalPass.classList.remove('checked');
+    isEqual = false;
+
+    minChar.classList.replace('fas', 'far');
+    minChar.classList.remove('checked');
+    hasMin = false;
+
+    upperCase.classList.replace('fas', 'far');
+    upperCase.classList.remove('checked');
+    hasUpper = false;
+
+
+    numericChar.classList.replace('fas', 'far');
+    numericChar.classList.remove('checked');
+    hasNumber = false;
+
+
+
+}
+
 function cadastrar() {
     checkEmail();
     if ((hasMin && hasNumber && hasUpper) && validEmail) {
         alert('Usuário Cadastrado com Sucesso');
+        clearCadastro();
     }
+
 }
 
