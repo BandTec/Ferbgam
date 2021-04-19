@@ -16,8 +16,17 @@
         <div id="cadastroAlert" class="alert">
             <span></span>
             <i class="far fa-check-circle"></i>
-            <p>Cadastro realizado com sucesso</p>
-            <div onclick="closeAlert()" class="close-btn">
+            <p>Cadastro realizado com sucesso!</p>
+            <div onclick="closeAlert('#cadastroAlert')" class="close-btn">
+                <i class="fas fa-times"></i>
+            </div>
+        </div>
+
+        <div id="loginAlert" class="alert">
+            <span></span>
+            <i class="fas fa-times-circle"></i>
+            <p>Usuário ou senha inválidos!</p>
+            <div onclick="closeAlert('#loginAlert')" class="close-btn">
                 <i class="fas fa-times"></i>
             </div>
         </div>

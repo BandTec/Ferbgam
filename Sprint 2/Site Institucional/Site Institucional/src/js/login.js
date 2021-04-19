@@ -16,9 +16,9 @@ sign_in_btn.addEventListener('click', function () {
 })
 
 
-function closeAlert() {
-    if (document.querySelector('#cadastroAlert').classList.contains('visible')) {
-        document.querySelector('#cadastroAlert').classList.remove('visible');
+function closeAlert(elementId) {
+    if (document.querySelector(elementId).classList.contains('visible')) {
+        document.querySelector(elementId).classList.remove('visible');
     }
 
 }
@@ -190,8 +190,8 @@ function cadastrar() {
 
         clearCadastro();
         setTimeout(() => {
-            closeAlert();
-        }, 2500);
+            closeAlert('#cadastroAlert');
+        }, 3000);
 
         clearTimeout();
 
@@ -213,6 +213,12 @@ function login() {
     if (hasLogged) {
         window.location.replace('../index.html'); //a nossa página aqui
     } else {
-        alert('Usuário ou senha incorretos');
+        document.querySelector('#loginAlert').classList.toggle('visible');
+        setTimeout(() => {
+            closeAlert('#loginAlert');
+        }, 3000);
+
+        clearTimeout();
+
     }
 }
