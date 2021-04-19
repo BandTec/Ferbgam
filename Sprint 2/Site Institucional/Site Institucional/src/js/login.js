@@ -16,6 +16,14 @@ sign_in_btn.addEventListener('click', function () {
 })
 
 
+function closeAlert() {
+    if (document.querySelector('#cadastroAlert').classList.contains('visible')) {
+        document.querySelector('#cadastroAlert').classList.remove('visible');
+    }
+
+}
+
+
 let equalPass = document.querySelector('#equal-pass')
 let minChar = document.querySelector('#minChar');
 let upperCase = document.querySelector('#upperCase');
@@ -124,6 +132,8 @@ function validateEmail(email) {
 }
 
 
+
+
 function checkEmail() {
     let emailCadastro = document.querySelector('#emailCadastro');
     emailCadastro = emailCadastro.value;
@@ -176,8 +186,14 @@ function cadastrar() {
             password: document.querySelector('#cadastroPassword').value
         });
 
-        alert('cadastro realizado com sucesso');
+        document.querySelector('#cadastroAlert').classList.toggle('visible');
+
         clearCadastro();
+        setTimeout(() => {
+            closeAlert();
+        }, 2500);
+
+        clearTimeout();
 
     }
 }
