@@ -16,6 +16,8 @@ sign_in_btn.addEventListener('click', function () {
 })
 
 
+
+
 function closeAlert(elementId) {
     if (document.querySelector(elementId).classList.contains('visible')) {
         document.querySelector(elementId).classList.remove('visible');
@@ -181,6 +183,7 @@ function clearCadastro() {
 function cadastrar() {
     checkEmail();
     if ((hasMin && hasNumber && hasUpper) && validEmail) {
+
         users.push({
             user: document.querySelector('#userCadastro').value,
             password: document.querySelector('#cadastroPassword').value
@@ -189,14 +192,20 @@ function cadastrar() {
         document.querySelector('#cadastroAlert').classList.toggle('visible');
 
         clearCadastro();
+
+
         setTimeout(() => {
             closeAlert('#cadastroAlert');
         }, 3000);
+
 
         clearTimeout();
 
     }
 }
+
+
+
 
 
 function login() {
