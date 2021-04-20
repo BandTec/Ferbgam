@@ -1,0 +1,246 @@
+/*----------Variaveis CSS--------------*/
+:root{
+    --header-height: 4rem;
+    --nav-width: 68px;
+/*------------CORES------------*/
+
+    --first-color: #3e3e3f88;
+    --first-color-light: #AFA5D9;
+    --gray-color: #51585C;
+    --white-color: #F7F6FB;
+    --blue-color: #00A3FA;
+
+/*------------FONTES E TIPOGRAFIA------------*/
+
+    --body-font: 'Nunito', sans-serif;
+    --normal-font-size: 1rem;
+
+/*------------Z-INDEX------------*/
+
+    --z-fixed:100;
+}
+
+/*------------BASES------------*/
+
+*, ::before, ::after{
+    box-sizing: border-box;
+}
+::-webkit-scrollbar-track {
+    background-color: #51585C;
+}
+
+ ::-webkit-scrollbar {
+    width: 8px;
+    height: 8px;
+    background: #51585C;
+}
+
+ ::-webkit-scrollbar-thumb {
+    background: #00A1D7;
+}
+
+body{
+    position: relative;
+    background-color: #eeeeeef5;
+    margin: var(--header-height)0 0 0;
+    padding: 0 1rem;
+    font-family: var(--body-font);
+    font-size: var(--normal-font-size);
+    transition: .5s;
+    font-family: 'Montserrat', sans-serif;
+}
+
+a{
+    text-decoration: none;
+}
+
+/*------------HEADER------------*/
+
+.header{
+    width: 100%;
+    height: var(--header-height);
+    top: 0;
+    left: 0;
+    display: flex;
+    align-items: center;
+    justify-content: space-between;
+    padding: 0 1rem;
+    z-index: var(--z-fixed);
+    transition: .5s;
+}
+.header p{
+    font-weight: 600;
+    font-size: 16px;
+    text-transform: uppercase;
+    color: var(--blue-color);
+}
+.header_img{
+    width: 40px;
+    height: 40px;
+    display: flex;
+    justify-content: end;
+    border-radius: 50%;
+    overflow: hidden;
+    margin-left: 75%;
+}
+
+.header_img img{
+    width: 40px;
+}
+
+/*------------HEADER------------*/
+
+.l-navbar{
+    position: fixed;
+    top: 0;
+    left: 0;
+    width: var(--nav-width);
+    height: 100vh;
+    background-color: var(--gray-color);
+    padding: .5rem 1rem 0 0;
+    transition: .5s;
+    z-index: var(--z-fixed);
+}
+
+.nav{
+    height: 100%;
+    display: flex;
+    flex-direction: column;
+    justify-content: space-between;
+    overflow: hidden;
+}
+
+.nav_logo img{
+    width: 25px;
+}
+.nav_logo, 
+.nav_link{
+    display: grid; /*Torna o elemento um grid container.*/
+    grid-template-columns: max-content max-content; /*Define os nomes das linhas e funções de dimensionamento (tamanho da trilha) nas colunas da grade .*/
+    align-items: center;
+    column-gap: 1rem; /*Define o tamanho da lacuna entre as colunas de um elemento.*/
+    padding: .5rem  0 .5rem 1.5rem;
+}
+
+.nav_logo{
+    margin-bottom: 2rem;
+}
+
+.nav_logo-icon{
+    font-size: 1.25rem;
+    color: var(--white-color);
+}
+
+.nav_logo-name{
+    color: var(--white-color);
+    font-weight: 700;
+}
+
+.nav_link{
+    position: relative;
+    color: var(--first-color-light);
+    margin-bottom: 1.5rem;
+    transition: .3s;
+}
+
+.nav_link:hover{
+    color: var(--white-color);
+}
+
+.nav_icon{
+    font-size: 1.25rem;
+}
+
+.general-title {
+    color: #51585C;
+    width: fit-content;
+    margin: 20px auto;
+    text-align: center;
+    text-transform: uppercase;
+}
+
+.general-title h1 {
+    font-size: 30px;
+}
+
+.pink-stroke {
+    margin: auto;
+    background-color: var(--blue-color);
+    width: 100%;
+    height: 3px;
+    text-align: center;
+    margin-top: 10px;
+    border: none;
+}
+.page-salas .boxes {
+    width: fit-content;
+    height: auto;
+    display: flex;
+    flex-direction: row;
+    flex-wrap: wrap;
+    margin: auto;
+    justify-content: center;
+    color: aliceblue;
+}
+
+.page-salas .boxes h3 {
+    margin: 0;
+}
+
+.page-salas .boxes-item {
+    margin: 20px 20px;
+    width: 300px;
+    height: 200px;
+    display: flex;
+    align-items: center;
+    justify-content: space-around;
+    flex-direction: column;
+    background-color: #0b98c756;
+    border-radius: 10px;
+    color: #34383a;
+}
+
+.page-salas .boxes-item:hover{
+    box-shadow: 3px 3px 3px #51585C;
+}
+
+.page-salas .box-container {
+    margin-bottom: 50px;
+}
+
+
+.page-salas .box-text {
+    width: 90%;
+    margin-top: -5%;
+    text-align: justify;
+    color: #34383a;
+}
+.page-salas .box-text .alerta{
+   color: rgb(223, 209, 11);
+}
+
+.page-salas .box-text .ideal{
+    color: green;
+ }
+
+ .page-salas .box-text .critico{
+    color: darkred;
+ }
+
+.page-salas .box-text  .temperatura{
+    color: rgb(248, 117, 10);
+    font-size: 22px;
+}
+
+.page-salas .box-text  .umidade{
+    color: rgb(42, 12, 124);
+    font-size: 22px;
+}
+
+.page-salas .box-text  .luminosidade{
+    color: rgb(226, 193, 6);
+    font-size: 22px;
+}
+.page-salas .box-icon img {
+    width: 75%
+}
