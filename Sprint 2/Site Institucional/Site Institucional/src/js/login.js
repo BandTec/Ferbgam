@@ -220,7 +220,7 @@ function login() {
     }
 
     if (hasLogged) {
-        window.location.replace('../index.html'); //a nossa página aqui
+        window.location.replace('./dashboard.html'); //a nossa página aqui
     } else {
         document.querySelector('#loginAlert').classList.toggle('visible');
         setTimeout(() => {
@@ -231,3 +231,8 @@ function login() {
 
     }
 }
+
+
+
+
+

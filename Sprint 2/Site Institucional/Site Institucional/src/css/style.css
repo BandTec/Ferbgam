@@ -13,6 +13,20 @@ body {
     height: 200vh;
 }
 
+::-webkit-scrollbar-track {
+    background-color: #51585C;
+}
+
+::-webkit-scrollbar {
+    width: 8px;
+    height: 8px;
+    background: #51585C;
+}
+
+::-webkit-scrollbar-thumb {
+    background: #00A1D7;
+}
+
 .navbar {
     width: 100%;
     height: 100px;
@@ -153,8 +167,7 @@ body {
     background-color: #CC0099;
 }
 
-.btn-left,
-.btn-right {
+.btn-left, .btn-right {
     padding: 13px;
     margin: 10px;
     font-size: medium;
@@ -247,7 +260,6 @@ body {
     }
 }
 
-
 /*Sobre nós - FERNANDO E GIOVANNA*/
 
 .section-sobreNos {
@@ -296,11 +308,10 @@ body {
 .section-sobreNos .box-item h3 {
     margin: 13px;
 }
-.section-sobreNos .box-item p{
-   
+
+.section-sobreNos .box-item p {
     font-size: 16px;
 }
-
 
 /*Equipe - ABNER E MANOCCHIO*/
 
@@ -412,7 +423,6 @@ body {
     }
 }
 
-
 /*Serviços - JHONATAN E LEONARDO*/
 
 .section-servicos {
@@ -422,7 +432,6 @@ body {
     text-align: center;
 }
 
-
 /*Simulador - FERNANDO E GIOVANNA*/
 
 .section-simulador {
@@ -430,12 +439,13 @@ body {
     height: auto;
 }
 
-#result_alert{
+#result_alert {
     text-align: center;
     color: rgb(255, 115, 0);
     margin: 25px;
     display: none;
 }
+
 .section-simulador .container-section-simulador {
     width: 80%;
     height: 98%;
@@ -483,9 +493,7 @@ body {
     break-after: auto;
 }
 
-.section-simulador .form-section-simulador .input-form,
-select,
-option {
+.section-simulador .form-section-simulador .input-form, select, option {
     height: 35px;
     width: 65%;
     margin: auto;
@@ -603,7 +611,6 @@ option {
     margin: 10px;
 }
 
-
 /*Contato - JHONATAN E LEONARDO*/
 
 .section-contato .Caixa {
@@ -624,16 +631,13 @@ option {
     align-items: center;
 }
 
-
 .Contato label {
     color: white;
     font-size: 16px;
     break-after: auto;
 }
 
-.Contato .input-form,
-select,
-option {
+.Contato .input-form, select, option {
     height: 30px;
     width: 30%;
     font-size: 100%;
@@ -644,7 +648,8 @@ option {
     border-radius: 7px;
     color: white;
 }
-.Contato .mensagem{
+
+.Contato .mensagem {
     height: 100px;
     width: 40%;
     font-size: 100%;
@@ -656,6 +661,7 @@ option {
     border-radius: 7px;
     color: white;
 }
+
 .Contato textarea {
     resize: none;
 }
@@ -723,14 +729,11 @@ textarea:focus {
 }
 
 .footer .icones {
-    
     display: flex;
-justify-content: center
-   
+    justify-content: center
 }
 
 .footer .icones img {
-    
     padding: 15px 10px 0 10px;
     float: left;
     height: 30px;
