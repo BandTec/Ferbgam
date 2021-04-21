@@ -1,19 +1,20 @@
 <!DOCTYPE html>
 <html>
+
 <head>
-    <meta charset='utf-8'>
-    <meta http-equiv='X-UA-Compatible' content='IE=edge'>
-    <title>Dashboard</title>
-    <meta name='viewport' content='width=device-width, initial-scale=1'>
+	<meta charset='utf-8'>
+	<meta http-equiv='X-UA-Compatible' content='IE=edge'>
+	<title>Dashboard</title>
+	<meta name='viewport' content='width=device-width, initial-scale=1'>
 	<script src="https://cdnjs.cloudflare.com/ajax/libs/moment.js/2.18.1/moment.min.js"></script>
 	<script src="http://www.chartjs.org/dist/2.7.1/Chart.js"></script>
 	<script src="http://www.chartjs.org/samples/latest/utils.js"></script>
 	<link rel="preconnect" href="https://fonts.gstatic.com">
-    <link href="https://fonts.googleapis.com/css2?family=Montserrat:wght@500&display=swap" rel="stylesheet">
+	<link href="https://fonts.googleapis.com/css2?family=Montserrat:wght@500&display=swap" rel="stylesheet">
 	<link rel="icon" href="img/relaxmachineLogo.png">
-    <link rel='stylesheet' type='text/css' media='screen' href='css/style.css'>
-    <!--Link biblioteca de icones online-->
-    <link href='https://unpkg.com/boxicons@2.0.7/css/boxicons.min.css' rel='stylesheet'>
+	<link rel='stylesheet' type='text/css' media='screen' href='css/style.css'>
+	<!--Link biblioteca de icones online-->
+	<link href='https://unpkg.com/boxicons@2.0.7/css/boxicons.min.css' rel='stylesheet'>
 	<style>
 		canvas {
 			-moz-user-select: none;
@@ -22,51 +23,52 @@
 		}
 	</style>
 </head>
+
 <body id="body-pg">
-    <div class="l-navbar" id="navbar">
-        <nav class="nav">
-            <div>
-                <a href="#" class="nav_logo">
-                    <img src="img/relaxmachineLogo.png" alt="">
-                </a>
-                <div class="nav_list">
+	<div class="l-navbar" id="navbar">
+		<nav class="nav">
+			<div>
+				<a href="#" class="nav_logo">
+					<img src="img/relaxmachineLogo.png" alt="">
+				</a>
+				<div class="nav_list">
 
-                    <a href="#" class="nav_link nav_icon">
-                        <i class='bx bxs-bell-ring'></i>
-                    </a>
+					<a href="#" class="nav_link nav_icon">
+						<i class='bx bxs-bell-ring'></i>
+					</a>
 
-                    <a href="#" class="nav_link">
-                        <i class='bx bx-user nav_icon'></i>
-                        <span class="nav_name">Users</span>
-                    </a>
+					<a href="#" class="nav_link">
+						<i class='bx bx-user nav_icon'></i>
+						<span class="nav_name">Users</span>
+					</a>
 
-                    <a href="#" class="nav_link">
-                        <i class='bx bx-message-square-detail nav_icon'></i>
-                        <span class="nav_name">Messages</span>
-                    </a>
+					<a href="#" class="nav_link">
+						<i class='bx bx-message-square-detail nav_icon'></i>
+						<span class="nav_name">Messages</span>
+					</a>
 
-                    <a href="#" class="nav_link">
-                        <i class='bx bx-bookmark nav_icon'></i>
-                        <span class="nav_name">Favorites</span>
-                    </a>
+					<a href="#" class="nav_link">
+						<i class='bx bx-bookmark nav_icon'></i>
+						<span class="nav_name">Favorites</span>
+					</a>
 
-                    <a href="#" class="nav_link">
-                        <i class='bx bx-folder nav_icon'></i>
-                        <span class="nav_name">Data</span>
-                    </a>
+					<a href="#" class="nav_link">
+						<i class='bx bx-folder nav_icon'></i>
+						<span class="nav_name">Data</span>
+					</a>
 
-                    <a href="#" class="nav_link">
-                        <i class='bx bx-bar-chart-alt-2 nav_icon'></i>
-                        <span class="nav_name">Analytics</span>
-                    </a>
-                </div>
-            </div>
-            <a href="#" class="nav_link">
-                <i class='bx bx-log-out nav_icon'></i>
-                <span class="nav_name">Log Out</span>
-            </a>
-        </nav>
-    </div>
+					<a href="#" class="nav_link">
+						<i class='bx bx-bar-chart-alt-2 nav_icon'></i>
+						<span class="nav_name">Analytics</span>
+					</a>
+				</div>
+			</div>
+			<a href="#" class="nav_link">
+				<i class='bx bx-log-out nav_icon'></i>
+				<span class="nav_name">Log Out</span>
+			</a>
+		</nav>
+	</div>
 	<div class="dashboard">
 		<div class="invisible">
 			<h1>Sensor LM35 - Temperatura</h1>
