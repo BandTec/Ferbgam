@@ -1,5 +1,5 @@
-create database db_rlx_machine;
-use db_rlx_machine;
+create database relaxmachine;
+use relaxmachine;
 
 create table tb_empresa (
 	idEmpresa int primary key auto_increment,
@@ -167,7 +167,7 @@ select se.idSensor, se.tipoSensor, se.statusSensor,
         e.nomeFantasia, sa.descricao, sa.idSala
         from tb_sensor as se join tb_leitura as l on se.idSensor = l.fkSensor 
         join tb_sala as sa on sa.idSala = se.fkSala
-        join tb_empresa as e on e.idEmpresa = sa.fkEmpresa;
+        join tb_empresa as e on e.idEmpresa = sa.fkEmpresa ;
 
 
 
