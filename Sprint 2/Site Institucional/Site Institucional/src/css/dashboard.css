@@ -11,7 +11,6 @@
     --primary-blue: #5995fd;
     --p-darker-blue: #4d84e2;
     --p-light-blue: #04befe;
-  
     /*------------FONTES E TIPOGRAFIA------------*/
     --body-font: 'Nunito', sans-serif;
     --normal-font-size: 1rem;
@@ -259,4 +258,14 @@ a {
 
 .page-salas .box-icon img {
     width: 75%
+}
+
+.selected {
+    color: #F7F6FB;
+}
+
+.go-back {
+    position: absolute;
+    top: 10px;
+    left: 0;
 }
