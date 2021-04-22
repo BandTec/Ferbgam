@@ -32,7 +32,7 @@ na aula de algoritmo
     position: relative;
     width: 100%;
     min-height: 100vh;
-    background-color: #fff;
+    background-color: rgba(0, 0, 0, 0.8);
     overflow: hidden !important;
 }
 
@@ -128,7 +128,7 @@ form.sign-up-form {
     border: none;
     line-height: 1;
     font-weight: 600;
-    color: #333;
+    color: rgb(27, 27, 27);
     font-size: 1.1rem;
 }
 
@@ -142,7 +142,7 @@ form.sign-up-form {
     height: 49px;
     border: none;
     outline: none;
-    border-radius: 49px;
+    border-radius: 10px;
     cursor: pointer;
     color: #fff;
     text-transform: uppercase;
