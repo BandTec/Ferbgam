@@ -19,7 +19,7 @@ function trc5000() {
         return 0
     }
 }
-
+ 
 function ldr() {
     min = 400;
     max = 1200;

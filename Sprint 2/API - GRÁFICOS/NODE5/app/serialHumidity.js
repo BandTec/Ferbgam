@@ -8,7 +8,7 @@ class NewArduinoHumidity {
         this.listDataHour = [];
     }
 
-
+ 
     get List() {
         return this.listData;
     }

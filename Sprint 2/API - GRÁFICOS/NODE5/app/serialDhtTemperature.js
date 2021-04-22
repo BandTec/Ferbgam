@@ -16,7 +16,7 @@ class NewArduinoDhtTemperature {
     get ListHour() {
         return this.listDataHour;
     }
-
+ 
     SetConnection() {
         setInterval(() => {
             let data_float = sensors.dht11({ minHum: 40, maxHum: 60, minTemp: 10, maxTemp: 30 });
