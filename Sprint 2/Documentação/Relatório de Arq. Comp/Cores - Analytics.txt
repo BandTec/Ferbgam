@@ -1,0 +1,14 @@
+Extremamente Baixa:
+#FFFF25
+
+Baixa:
+#FFBB33
+
+Ideal:
+#548235
+
+Alta:
+#FF8800
+
+Extremamente alta:
+#FF2501
