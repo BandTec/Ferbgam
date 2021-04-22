@@ -160,6 +160,10 @@ form.sign-up-form {
     background-color: var(--p-darker-blue);
 }
 
+.btn.pink {
+    background-color: var(--p-light-pink);
+}
+
 .social-text {
     color: #fff;
     padding: .7rem 0;
