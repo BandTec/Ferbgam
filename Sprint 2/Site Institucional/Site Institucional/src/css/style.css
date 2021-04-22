@@ -14,17 +14,17 @@ body {
 }
 
 ::-webkit-scrollbar-track {
-    background-color: #51585C;
+    background-color: #262626;
 }
 
 ::-webkit-scrollbar {
     width: 8px;
     height: 8px;
-    background: #51585C;
+    background: #1D2123;
 }
 
 ::-webkit-scrollbar-thumb {
-    background: #00A1D7;
+    background: #B8008A;
 }
 
 .navbar {
@@ -100,6 +100,28 @@ body {
     margin-right: 20px;
 }
 
+.nav-menu .btn-login{
+    display: inline-flex;
+    flex-direction: row;
+    flex-wrap: wrap;
+    border: none;
+    background-color: #B8008A;
+    width: 80px;
+    height: 25px;
+    font-size: 14px;
+    justify-content: center;
+    padding-top: 3px;
+    border-radius: 5px;
+}
+
+.nav-menu .btn-login a{
+    text-decoration: none;
+    color: #FFF;
+    box-sizing: border-box;
+    overflow: hidden;
+    display: inline-block;
+    transition: 0.15s all ease-in-out;
+}
 .nav-menu ul li a {
     text-decoration: none;
     color: #FFF;
@@ -666,28 +688,23 @@ body {
     resize: none;
 }
 
-.Contato button {
-    margin-top: 10px;
-    background: #00A1D7;
-    color: white;
-    width: 200px;
+.section-contato .btn-contato {
+    width: 15vmax;
     height: 50px;
-    margin: 20px 0;
-    outline: none;
-    border-radius: 10px;
-    font-family: 'Ubuntu', sans-serif;
-    font-weight: bold;
-    font-size: 20px;
-    transition: all ease-in-out 0.25s;
-    cursor: pointer;
-    border: 0;
+    border: none;
+    text-align: center;
+    margin-bottom: 3%;
+    border-radius: 3%;
+    background-color: #00A1D7;
+    color: aliceblue;
+    font-size: 16px;
+    font-weight: 800;
+    font-family: 'Trebuchet MS', 'Lucida Sans Unicode', 'Lucida Grande', 'Lucida Sans', Arial, sans-serif;
 }
 
-.Contato button:hover {
-    width: 230px;
-    border: 2px solid white;
-    background: #B8008A;
-    color: #fff;
+.section-contato .btn-contato:hover {
+    box-shadow: 4px 4px 3px #B8008A;
+
 }
 
 textarea {
@@ -733,9 +750,10 @@ textarea:focus {
     justify-content: center
 }
 
-.footer .icones img {
+.footer .icones i {
     padding: 15px 10px 0 10px;
     float: left;
-    height: 30px;
+   font-size: 35px;
+   color: #B8008A;
     text-align: center;
 }
