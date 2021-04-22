@@ -83,23 +83,23 @@ insert into tb_sala values
 	(null,25.4,'Esse é o laboratório 2 da equipe de Analistas','5',2),
 	(null,28,'Sala 36',default,3),
 	(null,40,'Sala de Suporte Técnico','1',3);
-
+select * from tb_sensor;
 insert into tb_sensor values
-	(null,'temperatura','ativo','°C',1),
-	(null,'temperatura','ativo','°C',2),
-	(null,'temperatura','inativo','°C',4),
-	(null,'umidade','ativo','UR %',2),
-	(null,'temperatura','ativo','°C',3),
-	(null,'umidade','ativo','UR %',3),
-	(null,'luminosidade','ativo','Lux',3),
-	(null,'temperatura','ativo','°C',1),
-	(null,'temperatura','ativo','°C',2),
-	(null,'umidade','ativo','UR %',1),
-	(null,'umidade','ativo','UR %',2),
-	(null,'temperatura','ativo','°C',4),
-	(null,'temperatura','manutenção','°C',1),
-	(null,'umidade','inativo','UR %',2),
-	(null,'luminosidade','manutenção','Lux',5);
+	(null,'dht11','temperatura','ativo','°C',1),
+	(null,'dht11','temperatura','ativo','°C',2),
+	(null,'dht11','temperatura','inativo','°C',4),
+	(null,'dht11','umidade','ativo','UR %',2),
+	(null,'dht11','temperatura','ativo','°C',3),
+	(null,'dht11','umidade','ativo','UR %',3),
+	(null,'ldr','luminosidade','ativo','Lux',3),
+	(null,'dht11','temperatura','ativo','°C',1),
+	(null,'dht11','temperatura','ativo','°C',2),
+	(null,'dht11','umidade','ativo','UR %',1),
+	(null,'dht11','umidade','ativo','UR %',2),
+	(null,'dht11','temperatura','ativo','°C',4),
+	(null,'dht11','temperatura','manutenção','°C',1),
+	(null,'dht11','umidade','inativo','UR %',2),
+	(null,'ldr','luminosidade','manutenção','Lux',5);
 
 insert into tb_leitura values
 	(1,1,default,'23.00'),
@@ -161,7 +161,7 @@ select * from tb_sensor inner join tb_leitura on idSensor = fkSensor;
 select * from tb_sensor inner join tb_leitura on idSensor = fkSensor where idSensor = 2;
 
 -- Contando a quantidade de sensores de determinada sala
-select count(se.idSensor) as 'Quantidade de sensores' from tb_sensor as se where fkSala = 1;
+select fkSala as "Id da sala",count(se.idSensor) as 'Quantidade de sensores' from tb_sensor as se where fkSala = 2;
 
 -- Selecionando os dados do sensor com suas respectivas leituras, tal como a sala em que o sensor se encontra e a empresa que o mesmo pertence.
 -- Também seria possível adicionar um where para especificar de qual empresa, sala ou sensor se deseja capturar os dados
