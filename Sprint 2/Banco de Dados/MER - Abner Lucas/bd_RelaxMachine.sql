@@ -42,10 +42,12 @@ create table tb_sala (
 create table tb_sensor (
 	idSensor int primary key auto_increment,
     tipoSensor varchar(15) not null,
-    check (tipoSensor = 'temperatura' or tipoSensor = 'umidade' or tipoSensor = 'luminosidade'),
+    check (tipoSensor = 'ldr' or tipoSensor = 'dht11'),
+    tipoLeitura varchar(15) not null,
+    check (tipoLeitura = 'temperatura' or tipoLeitura = 'umidade' or tipoLeitura = 'luminosidade'),
     statusSensor varchar(15) not null,
     check (statusSensor = 'ativo' or statusSensor = 'inativo' or statusSensor = 'manutenção'),
-    unidadeMedida varchar(10) not null,
+    unidadeMedida varchar(5) not null,
     check (unidadeMedida = '°C' or unidadeMedida = 'UR %' or unidadeMedida = 'Lux'),
     fkSala int,
     foreign key(fkSala) references tb_sala(idSala)
@@ -125,6 +127,7 @@ select * from tb_responsavel;
 select * from tb_sala;
 select * from tb_leitura;
 select * from tb_sensor;
+
 desc tb_empresa;
 -- inserindo uma empresa
 insert into tb_empresa values
@@ -167,7 +170,8 @@ select se.idSensor, se.tipoSensor, se.statusSensor,
         e.nomeFantasia, sa.descricao, sa.idSala
         from tb_sensor as se join tb_leitura as l on se.idSensor = l.fkSensor 
         join tb_sala as sa on sa.idSala = se.fkSala
-        join tb_empresa as e on e.idEmpresa = sa.fkEmpresa ;
+        join tb_empresa as e on e.idEmpresa = sa.fkEmpresa;
+        
 
 
 
