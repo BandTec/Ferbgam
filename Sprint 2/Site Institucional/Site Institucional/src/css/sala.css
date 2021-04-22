@@ -11,8 +11,49 @@
 }
 
 .graphics-container {
+    background-color: rgb(51, 51, 51);
+    border-radius: 10px;
+    height: 95vh;
+    width: 90%;
+    margin-left: 55px;
+    display: grid;
+    grid-template-columns: repeat(2, 1fr);
+    position: relative;
+}
+
+.panel {
     background-color: rgba(255, 255, 255, 0.884);
     border-radius: 10px;
-    height: 90vh;
-    width: 80%;
+    max-width: 100%;
+    min-width: 30%;
+    min-height: 40%;
+    display: flex;
+    align-items: center;
+    margin: 2px;
+    flex-direction: column;
+}
+
+.panel .general-title h1 {
+    font-size: 20px;
+    color: rgb(27, 27, 27);
+}
+
+.graphics-container .panel:first-child {
+    border-bottom-left-radius: 0px !important;
+    border-top-right-radius: 0px !important;
+}
+
+.panel:nth-child(2) {
+    border-bottom-right-radius: 0px !important;
+    border-top-left-radius: 0px !important;
+}
+
+.panel:nth-child(3) {
+    border-top-left-radius: 0px !important;
+    border-bottom-right-radius: 0px !important;
+}
+
+.panel:nth-child(4) {
+    border-top-right-radius: 0px !important;
+    border-bottom-left-radius: 0px !important;
 }
