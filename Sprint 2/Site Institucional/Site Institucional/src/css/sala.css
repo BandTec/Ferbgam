@@ -58,3 +58,50 @@
     border-top-right-radius: 0px !important;
     border-bottom-left-radius: 0px !important;
 }
+
+.information {
+    width: 100%;
+    padding-left: 20px;
+}
+
+.info h3 {
+    font-size: 20px;
+}
+
+.info {
+    margin: 5px;
+    width: fit-content;
+    padding: 10px 20px;
+    margin-right: auto;
+    display: flex;
+    flex-direction: row;
+    align-items: center;
+    justify-content: space-around;
+}
+
+.round-color {
+    width: 15px;
+    height: 15px;
+    margin-left: 10px;
+    border-radius: 100%;
+}
+
+.round-color.ideal {
+    background-color: #548235;
+}
+
+.round-color.low {
+    background-color: #FFBB33;
+}
+
+.round-color.ex-low {
+    background-color: #FFFF25;
+}
+
+.round-color.high {
+    background-color: #FF8800;
+}
+
+.round-color.ex-high {
+    background-color: #d50606;
+}
