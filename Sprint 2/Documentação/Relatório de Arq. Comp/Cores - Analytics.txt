@@ -11,4 +11,4 @@ Alta:
 #FF8800
 
 Extremamente alta:
-#FF2501
+#D50606
