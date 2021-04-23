@@ -23,53 +23,102 @@
 		}
 	</style>
 </head>
+<body>
+    <div class="l-navbar" id="navbar">
+        <nav class="nav">
+            <div>
+                <a href="#" class="nav_logo">
+                </a>
+                <div class="nav_list">
+                    <a href="./dashboard.html" class="go-back nav_link selected">
+                        <i class="fas fa-arrow-left"></i>
+                    </a>
 
-<body id="body-pg">
-	<div class="l-navbar" id="navbar">
-		<nav class="nav">
-			<div>
-				<a href="#" class="nav_logo">
-					<img src="img/relaxmachineLogo.png" alt="">
-				</a>
-				<div class="nav_list">
 
-					<a href="#" class="nav_link nav_icon">
-						<i class='bx bxs-bell-ring'></i>
-					</a>
+                    <a href="#" class="nav_link">
+                        <i class='bx bx-user nav_icon'></i>
+                        <span class="nav_name">Users</span>
+                    </a>
 
-					<a href="#" class="nav_link">
-						<i class='bx bx-user nav_icon'></i>
-						<span class="nav_name">Users</span>
-					</a>
+                    <a href="#" class="nav_link">
+                        <i class='bx bx-grid-alt nav_icon'></i>
+                        <span class="nav_name">Dashboard</span>
+                    </a>
 
-					<a href="#" class="nav_link">
-						<i class='bx bx-message-square-detail nav_icon'></i>
-						<span class="nav_name">Messages</span>
-					</a>
+                    <a href="#" class="nav_link">
+                        <i class='far fa-bell nav_icon'></i>
+                        <span class="nav_name">Messages</span>
+                    </a>
 
-					<a href="#" class="nav_link">
-						<i class='bx bx-bookmark nav_icon'></i>
-						<span class="nav_name">Favorites</span>
-					</a>
+                    <a href="#" class="nav_link">
+                        <i class='bx bx-bar-chart-alt-2 nav_icon'></i>
+                        <span class="nav_name">Analytics</span>
+                    </a>
 
-					<a href="#" class="nav_link">
-						<i class='bx bx-folder nav_icon'></i>
-						<span class="nav_name">Data</span>
-					</a>
+                    <a href="#" class="nav_link">
+                        <i class='bx bx-folder nav_icon'></i>
+                        <span class="nav_name">Data</span>
+                    </a>
+                </div>
+            </div>
+            <a href="#" class="nav_link">
+                <i class='bx bx-log-out nav_icon'></i>
+                <span class="nav_name">Log Out</span>
+            </a>
+        </nav>
+    </div>
 
-					<a href="#" class="nav_link">
-						<i class='bx bx-bar-chart-alt-2 nav_icon'></i>
-						<span class="nav_name">Analytics</span>
-					</a>
-				</div>
-			</div>
-			<a href="#" class="nav_link">
-				<i class='bx bx-log-out nav_icon'></i>
-				<span class="nav_name">Log Out</span>
-			</a>
-		</nav>
-	</div>
-	<div class="dashboard">
+    <div class="graphics-orientation">
+        <div class="graphics-container">
+            <div class="panel">
+                <div class="general-title">
+                    <h1>Luminosidade</h1>
+                    <hr class="pink-stroke" />
+                </div>
+                <section>
+					<h4>Média: <label id='averageLumi'>0.00</label></h4>
+					<h4>Média Hora: <label id='averageHourLumi'>0.00</label></h4>
+				</section>
+				<section style="width:80%">
+					<canvas id="chart-lumi"></canvas>
+					<section>
+            </div>
+            <div class="panel">
+                <div class="general-title">
+                    <h1>Umidade</h1>
+                    <hr class="pink-stroke" />
+                </div>
+				<section>
+					<h4>Média: <label id='averageHumidity'>0.00</label></h4>
+					<h4>Média Hora: <label id='averageHourHumidity'>0.00</label></h4>
+				</section>
+				<section style="width:80%">
+					<canvas id="chart-humidity"></canvas>
+				<section>
+                <div>
+                </div>
+            </div>
+            <div class="panel">
+                <div class="general-title">
+                    <h1>Temperatura</h1>
+                    <hr class="pink-stroke" />
+                </div>
+				<section>
+					<h4>Média: <label id='averageDhtTemperature'>0.00</label></h4>
+					<h4>Média Hora: <label id='averageHourDhtTemperature'>0.00</label></h4>
+				</section>
+				<section style="width:80%">
+					<canvas id="chart-dht-temperature"></canvas>
+					<section>
+                <div>
+                </div>
+            </div>
+        </div>
+    </div>
+    <script src="http://www.chartjs.org/dist/2.7.1/Chart.js"></script>
+    <script src="../src/js/static.js"></script>
+</body>
+	<div class="invisible">
 		<div class="invisible">
 			<h1>Sensor LM35 - Temperatura</h1>
 			<section>
@@ -131,7 +180,6 @@
 				datasets: [{
 					label: "Temperature x Time",
 					type: 'line',
-					borderColor: ['#ff3232'],
 					backgroundColor: ['#ff7f7f']
 				}]
 			},
@@ -213,7 +261,6 @@
 				datasets: [{
 					label: "Humidity x Time",
 					type: 'bar',
-					borderColor: ['#3232ff'],
 					backgroundColor: ['#9999ff']
 				}]
 			},
@@ -318,7 +365,6 @@
 				datasets: [{
 					label: "Temperature x Time",
 					type: 'bar',
-					borderColor: ['#3232ff'],
 					backgroundColor: ['#9999ff']
 				}]
 			},
@@ -413,7 +459,6 @@
 				datasets: [{
 					label: "Switch x Time",
 					type: 'line',
-					borderColor: ['#ae3f3f'],
 					backgroundColor: ['#c97f7f']
 				}]
 			},
@@ -502,7 +547,6 @@
 				datasets: [{
 					label: "Luminosity x Time",
 					type: 'bar',
-					borderColor: ['#ffff19'],
 					backgroundColor: []
 				}]
 			},
