@@ -59,8 +59,8 @@ function calculate() {
         div_javascript.style.display = 'block';
         result_alert.style.display = 'none'
         result_name.innerHTML = `${name}`;
-        result_eco.innerHTML = `${eco}`;
-        result_price.innerHTML = `${price_meters}`;
+        result_eco.innerHTML = `${eco.toFixed(2)}`;
+        result_price.innerHTML = `${price_meters.toFixed(2)}`;
         result_porcent.innerHTML = `${pack}`;
         result_absent.innerHTML = `${absenteeism_percent.toFixed(1)}`;
     }
