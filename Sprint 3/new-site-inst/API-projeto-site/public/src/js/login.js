@@ -183,23 +183,33 @@ function clearCadastro() {
 }
 
 function cadastrar() {
+
     checkEmail();
     if ((hasMin && hasNumber && hasUpper) && validEmail) {
 
-        users.push({
-            user: document.querySelector('#userCadastro').value,
-            password: document.querySelector('#cadastroPassword').value
+        var formulario = new URLSearchParams(new FormData(form_cadastro));
+        fetch("/responsaveis/cadastrar", {
+            method: "POST",
+            body: formulario
+        }).then(function (response) {
+
+            if (response.ok) {
+                document.querySelector('#cadastroAlert').classList.toggle('visible');
+                clearCadastro();
+
+                setTimeout(() => {
+                    closeAlert('#cadastroAlert');
+                }, 3000);
+
+
+            } else {
+
+                console.log('Erro de cadastro!');
+                response.text().then(function (resposta) {
+                    console.log('erro: ' + resposta);
+                });
+            }
         });
-
-        document.querySelector('#cadastroAlert').classList.toggle('visible');
-
-        clearCadastro();
-
-
-        setTimeout(() => {
-            closeAlert('#cadastroAlert');
-        }, 3000);
-
 
         clearTimeout();
 
