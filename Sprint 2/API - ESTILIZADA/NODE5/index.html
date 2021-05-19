@@ -710,12 +710,21 @@
 	// }
 
 
+
+
+	function sendTemperature() {
+		var http = new XMLHttpRequest();
+		http.open('POST', 'http://localhost:3000/api/sendData', false);
+		http.send(null);
+	}
+
 	setInterval(() => {
 		get_dhtTemperature();
 		get_dataHumidity();
 		get_data();
 		// get_switch();
 		get_lumi();
+		sendTemperature();
 	}, 1000);
 
 

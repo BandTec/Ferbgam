@@ -3,7 +3,9 @@ const { ArduinoDataTemp } = require('./newserial')
 const { ArduinoDataHumidity } = require('./serialHumidity')
 const { ArduinoDataSwitch } = require('./serialSwitch')
 const { ArduinoDataLuminosity } = require('./serialLuminosidity')
-const { ArduinoDataDhtTemperature } = require('./serialDhtTemperature')
+const { ArduinoDataDhtTemperature } = require('./serialDhtTemperature');
+const db = require('./database');
+
 const router = express.Router();
 
 
@@ -61,6 +63,21 @@ router.get('/dhtTemperature', (request, response, next) => {
         averageHour: isNaN(averageHour) ? 0 : averageHour
     });
 
+    router.post('/sendData', (request, response) => {
+        temperature = ArduinoDataTemp.List[ArduinoDataTemp.List.length - 1];
+        //luminosidade = ArduinoDataLuminosity.List[ArduinoDataLuminosity.List.length -1]
+
+        var sql = "INSERT INTO tb_leitura (fkSensor, dataHoraRegister, valorLeitura) VALUES (1,default,?)";
+
+        db.query(sql, temperature, function (err, result) {
+            if (err) throw err;
+            console.log("Number of records inserted: " + result.affectedRows);
+        });
+
+
+        response.sendStatus(200);
+    });
+
 });
 
 
@@ -97,6 +114,9 @@ router.get('/luminosity', (request, response, next) => {
         totalHour: ArduinoDataLuminosity.ListHour.length,
         averageHour: isNaN(averageHour) ? 0 : averageHour
     });
+
+
+
 
 });
 
