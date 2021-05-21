@@ -7,7 +7,7 @@ var connection = mysql.createConnection({
     database: 'relax'
 });
 
-connection.connect(function (err) {
+connection.connect(function(err) {
     if (err) throw err;
     console.log('Conectado com sucesso!')
 });

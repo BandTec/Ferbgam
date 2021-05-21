@@ -69,7 +69,7 @@ router.get('/dhtTemperature', (request, response, next) => {
 
         var sql = "INSERT INTO tb_leitura (fkSensor, dataHoraRegister, valorLeitura) VALUES (1,default,?)";
 
-        db.query(sql, temperature, function (err, result) {
+        db.query(sql, temperature, function(err, result) {
             if (err) throw err;
             console.log("Number of records inserted: " + result.affectedRows);
         });
