@@ -6,39 +6,36 @@ https://codewithhugo.com/sequelize-data-types-a-practical-guide/
 */
 
 module.exports = (sequelize, DataTypes) => {
-    let Leitura = sequelize.define('Leitura',{	
-		id: {
-			field: 'id',
+	let tb_leitura = sequelize.define('tb_leitura', {
+		idLeitura: {
+			field: 'idLeitura',
 			type: DataTypes.INTEGER,
 			primaryKey: true,
 			autoIncrement: true
-		},	
-		temperatura: {
-			field: 'temperatura',
-			type: DataTypes.REAL,
-			allowNull: false
 		},
-		umidade: {
-			field: 'umidade',
-			type: DataTypes.REAL,
-			allowNull: false
+		fkSensor: {
+			field: 'fkSensor',
+			type: DataTypes.INTEGER,
+			allowNull: false,
+			foreignKey: true,
 		},
-		momento: {
-			field: 'momento',
+		dataHoraRegister: {
+			field: 'dataHoraRegister',
 			type: DataTypes.DATE, // NÃO existe DATETIME. O tipo DATE aqui já tem data e hora
 			allowNull: false
 		},
-		momento_grafico: {
-			type: DataTypes.VIRTUAL, // campo 'falso' (não existe na tabela). Deverá ser preenchido 'manualmente' no select
-			allowNull: true
+		valorLeitura: {
+			field: 'valorLeitura',
+			type: DataTypes.DECIMAL, // campo 'falso' (não existe na tabela). Deverá ser preenchido 'manualmente' no select
+			allowNull: false,
 		}
-	}, 
-	{
-		tableName: 'leitura', 
-		freezeTableName: true, 
-		underscored: true,
-		timestamps: false,
-	});
+	},
+		{
+			tableName: 'tb_leitura',
+			freezeTableName: true,
+			underscored: true,
+			timestamps: false,
+		});
 
-    return Leitura;
+	return tb_leitura;
 };
