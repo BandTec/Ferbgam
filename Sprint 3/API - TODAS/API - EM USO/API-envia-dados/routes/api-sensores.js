@@ -17,29 +17,48 @@ router.get("/sendData", (request, response) => {
 
     var instrucaoSql = ""
 
+
+    setInstrucao = (dbo) => {
+        if (dbo != undefined && dbo != '' && dbo != null) {
+            instrucaoSql = `INSERT into ${dbo}.leitura (temperatura, umidade, momento, fkcaminhao)
+            values (${temperature + 10}, ${Humidity + 20}, '${agora()}', 1),
+            (${temperature - 10}, ${Humidity + 20}, '${agora()}', 2),
+            (${temperature + 5}, ${Humidity - 20}, '${agora()}', 3),
+            (${temperature - 5}, ${Humidity - 20}, '${agora()}', 4);`;
+        } else {
+            instrucaoSql = `INSERT INTO tb_leitura (fkSensor, dataHoraRegister, valorLeitura) VALUES 
+            (1,default,'${Humidity + 20}'),
+            (1,default,'${temperature + 30}'),
+            (1,default,'${temperature + 5}');`;
+        }
+    }
+
     if (env == "dev") {
 
         // Na variável abaixo, coloque o Insert que será executado no Workbench
         // salvo exceções, é igual a SQL Server
 
-        instrucaoSql = `INSERT INTO tb_leitura (fkSensor, dataHoraRegister, valorLeitura) VALUES 
-		(49,default,'${Humidity + 20}'),
-		(48,default,'${temperature + 30}'),
-		(50,default,'${temperature + 5}');`;
+
+
+        // instrucaoSql = `INSERT INTO tb_leitura (fkSensor, dataHoraRegister, valorLeitura) VALUES 
+        // (1,default,'${Humidity + 20}'),
+        // (1,default,'${temperature + 30}'),
+        // (1,default,'${temperature + 5}');`;
         // // (${temperature + 10}, ${Humidity + 20}, '${agora()}', 1),
         // // (${temperature - 10}, ${Humidity + 20}, '${agora()}', 2),
         // // (${temperature + 5}, ${Humidity - 20}, '${agora()}', 3),
         // (${temperature - 5}, ${Humidity - 20}, '${agora()}', 4);`
+        setInstrucao();
     } else {
 
         // Na variável abaixo, coloque o Insert que será executado no SQL Server
         // salvo exceções, é igual a Workbench
-
-        instrucaoSql = `INSERT into dbo.leitura (temperatura, umidade, momento, fkcaminhao)
-		values (${temperature + 10}, ${Humidity + 20}, '${agora()}', 1),
-		(${temperature - 10}, ${Humidity + 20}, '${agora()}', 2),
-		(${temperature + 5}, ${Humidity - 20}, '${agora()}', 3),
-		(${temperature - 5}, ${Humidity - 20}, '${agora()}', 4);`;
+        // instrucaoSql = `INSERT into dbo.leitura (temperatura, umidade, momento, fkcaminhao)
+        // values (${temperature + 10}, ${Humidity + 20}, '${agora()}', 1),
+        // (${temperature - 10}, ${Humidity + 20}, '${agora()}', 2),
+        // (${temperature + 5}, ${Humidity - 20}, '${agora()}', 3),
+        // (${temperature - 5}, ${Humidity - 20}, '${agora()}', 4);`;
+        setInstrucao('dbo');
     }
 
     sequelize.query(instrucaoSql, {
