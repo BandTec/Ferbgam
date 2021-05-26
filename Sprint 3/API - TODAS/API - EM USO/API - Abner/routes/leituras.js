@@ -1,7 +1,7 @@
 var express = require('express');
 var router = express.Router();
 var sequelize = require('../models').sequelize;
-var tb_leitura = require('../models/leitura').tb_leitura;
+var Leitura = require('../models/leitura').Leitura;
 var env = process.env.NODE_ENV || 'development';
 
 /* Recuperar as últimas N leituras */

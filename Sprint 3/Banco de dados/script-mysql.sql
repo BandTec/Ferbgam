@@ -5,9 +5,8 @@ create table tb_empresa (
 	idEmpresa int primary key auto_increment,
     loginEmpresa varchar(50) unique,
     senhaEmpresa varchar(50) not null,
+    nomeEmpresa varchar(80) not null,
     cnpj char(14) not null,
-    nomeFantasia varchar(80) not null,
-    razaoSocial varchar(80) not null,
     telefone varchar(20) not null,
     email varchar(80) not null,
     logradouro varchar(80) not null,
@@ -23,9 +22,9 @@ create table tb_responsavel (
     idResponsavel int primary key auto_increment,
 	fkEmpresa int,
     foreign key(fkEmpresa) references tb_empresa(idEmpresa),
-    nome varchar(80) not null,
+    nomeResponsavel varchar(80) not null,
     loginResponsavel varchar(50) unique not null,
-    senhaResponsavel varchar(45) not null,
+    senhaResponsavel varchar(50) not null,
     email varchar(80) not null,
     telefone varchar(20) not null
 );
@@ -66,14 +65,14 @@ desc tb_sala;
 
 -- INSERINDO DADOS NA TABELA EMPRESA
 insert into tb_empresa values
-	(null,'13264578964513','loglogistica','Urubu100','Log Logistica','Centro de Logisticas LTDA LOG','462315978','logsuporte@outlook.com','Avenida Santanna Mendes','RJ','Rio de janeiro','338',default,'Lapa','12123456'),
-	(null,'12345678965432','lawadv','Urubu100','Law Advocacia','Escritórios de Advocacia Santanna','123456789','lawadvsuporte@gmail.com','Rua Avelino Silva','SP','São Caetano','124','Predio 2','Vila Pinhais','12346587'),
-	(null,'33633533412358','moneycontab','Urubu100','Money Contabilidade','Contabilidade Figueira Souza LTDA','33456721','moncontabil@outlook.com','Rua Afonso Sardinha','SP','Osasco','12','apt 64','Jardim Melo','37195842'),
-	(null,'13264578965412','hemolines','Urubu100','Hemolines Solution','Soluções Hemolines LTDA','11122233','hmssolutions@hotmail.com','Avenida Faria Lima','SP','São Paulo','355',default,'Pinheiros','55789965'),
-	(null,'34365698987885','wrldtele','Urubu100','World Telecom','Telecomunicações Centrais','12545672','wlrdtelecom@gmail.com','Rua Augusta','SP','São Paulo','224',default,'Lapa','37558469');
+	(null,'loglogistica','Urubu100','Log Logistica','13264578964513','462315978','logsuporte@outlook.com','Avenida Santanna Mendes','RJ','Rio de janeiro','338',default,'Lapa','12123456'),
+	(null,'lawadv','Urubu100','Law Advocacia','12345678965432','123456789','lawadvsuporte@gmail.com','Rua Avelino Silva','SP','São Caetano','124','Predio 2','Vila Pinhais','12346587'),
+	(null,'moneycontab','Urubu100','Money Contabilidade','33633533412358','33456721','moncontabil@outlook.com','Rua Afonso Sardinha','SP','Osasco','12','apt 64','Jardim Melo','37195842'),
+	(null,'hemolines','Urubu100','Hemolines Solution','13264578965412','11122233','hmssolutions@hotmail.com','Avenida Faria Lima','SP','São Paulo','355',default,'Pinheiros','55789965'),
+	(null,'wrldtele','Urubu100','World Telecom','34365698987885','12545672','wlrdtelecom@gmail.com','Rua Augusta','SP','São Paulo','224',default,'Lapa','37558469');
     
 -- INSERINDO DADOS NA TABELA RESPONSAVEL
-insert into tb_responsavel (fkEmpresa, nome, loginResponsavel, senhaResponsavel, email, telefone) VALUES
+insert into tb_responsavel (fkEmpresa, nomeResponsavel, loginResponsavel, senhaResponsavel, email, telefone) VALUES
 	(1, 'Henrique', 'henri@ue', 'urubu100','admin@gmail.com', '95577231');
 
 -- INSERINDO DADOS NA TABELA SALA
@@ -103,10 +102,11 @@ insert into tb_sensor values
 	(null,'ldr','luminosidade','manutenção','Lux',5);
 
 select * from tb_empresa;
-select * from tb_responsavel;	
+select * from tb_responsavel;
 select * from tb_sala;
 select * from tb_leitura;
 select * from tb_sensor;
+
 
 
 
