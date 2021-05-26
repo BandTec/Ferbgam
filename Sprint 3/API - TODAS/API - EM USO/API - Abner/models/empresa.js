@@ -28,11 +28,7 @@ module.exports = (sequelize, DataTypes) => {
             type: DataTypes.STRING,
             allowNull: false,
         },
-        cnpj: {
-            field: 'cnpj',
-            type: DataTypes.STRING,
-            allowNull: false,
-        },
+
         nomeFantasia: {
             field: 'nomeFantasia',
             type: DataTypes.STRING,
