@@ -58,11 +58,6 @@ module.exports = (sequelize, DataTypes) => {
             type: DataTypes.STRING,
             allowNull: true,
         },
-        logradouro: {
-            field: 'logradouro',
-            type: DataTypes.STRING,
-            allowNull: true,
-        },
         uf: {
             field: 'uf',
             type: DataTypes.STRING,
@@ -93,13 +88,12 @@ module.exports = (sequelize, DataTypes) => {
             type: DataTypes.STRING,
             allowNull: true,
         },
-    },
-        {
-            tableName: 'tb_empresa',
-            freezeTableName: true,
-            underscored: true,
-            timestamps: false,
-        });
+    }, {
+        tableName: 'tb_empresa',
+        freezeTableName: true,
+        underscored: true,
+        timestamps: false,
+    });
 
     return Empresa;
 };
