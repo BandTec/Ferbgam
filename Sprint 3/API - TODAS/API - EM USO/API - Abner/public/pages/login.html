@@ -35,8 +35,7 @@
         <div class="forms-container">
             <div class="signin-signup">
                 <!--Formulário de Login-->
-                <form id="form_login" autocomplete="off" class="sign-in-form" onsubmit="login_user()"
-                    action="javascript:void(0)">
+                <form id="form_login" autocomplete="off" class="sign-in-form" onsubmit="login_user()" action="javascript:void(0)">
                     <h2 class="title">Bem-vindo</h2>
                     <div class="input-field">
                         <i class="fas fa-user"></i>
@@ -67,9 +66,12 @@
                 </form>
 
                 <!--Formulário de Cadastro-->
-                <form id="form_cadastro" class="sign-up-form" autocomplete="off" onsubmit="cadastrar()"
-                    action="javascript:void(0)">
+                <form id="form_cadastro" class="sign-up-form" autocomplete="off" onsubmit="cadastrar()" action="javascript:void(0)">
                     <h2 class="title">Cadastre-se</h2>
+                    <div class="input-field">
+                        <i class="fas fa-user"></i>
+                        <input id="userCadastro" type="text" name="login" placeholder="Usuário" required>
+                    </div>
                     <div class="input-field">
                         <i class="fas fa-user"></i>
                         <input id="userCadastro" type="text" name="login" placeholder="Usuário" required>
@@ -84,13 +86,11 @@
                     </div>
                     <div class="input-field">
                         <i class="fas fa-lock"></i>
-                        <input id="cadastroPassword" onkeyup="checkPassword()" name="senha" type="password"
-                            placeholder="Senha" required>
+                        <input id="cadastroPassword" onkeyup="checkPassword()" name="senha" type="password" placeholder="Senha" required>
                     </div>
                     <div class="input-field">
                         <i class="fas fa-lock"></i>
-                        <input id="confirmacaoPassword" onkeyup="checkPassword()" type="password"
-                            placeholder="Confirme sua senha" required>
+                        <input id="confirmacaoPassword" onkeyup="checkPassword()" type="password" placeholder="Confirme sua senha" required>
                     </div>
                     <div class="check-container">
                         <div class="check-option">
