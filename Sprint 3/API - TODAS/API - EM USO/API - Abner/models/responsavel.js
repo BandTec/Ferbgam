@@ -24,13 +24,13 @@ module.exports = (sequelize, DataTypes) => {
             type: DataTypes.STRING,
             allowNull: true,
         },
-        login: {
+        loginResponsavel: {
             field: 'loginResponsavel',
             type: DataTypes.STRING,
             allowNull: false
         },
-        senha: {
-            field: 'senha',
+        senhaResponsavel: {
+            field: 'senhaResponsavel',
             type: DataTypes.STRING,
             allowNull: false
         },
@@ -39,15 +39,10 @@ module.exports = (sequelize, DataTypes) => {
             type: DataTypes.STRING,
             allowNull: false,
         },
-        telCelular: {
-            field: 'telCelular',
+        telefone: {
+            field: 'telefone',
             type: DataTypes.STRING,
-            allowNull: true,
-        },
-        telFixo: {
-            field: 'telFixo',
-            type: DataTypes.STRING,
-            allowNull: true,
+            allowNull: false,
         },
     },
         {
