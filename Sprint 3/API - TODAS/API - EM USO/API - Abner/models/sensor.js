@@ -36,7 +36,7 @@ module.exports = (sequelize, DataTypes) => {
         },
         fkSala: {
             field: 'fkSala',
-            type: DataTypes.INT,
+            type: DataTypes.INTEGER,
             allowNull: true,
             foreignKey: true
         },

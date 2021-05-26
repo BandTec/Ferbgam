@@ -29,9 +29,9 @@ module.exports = (sequelize, DataTypes) => {
             type: DataTypes.STRING,
             allowNull: false
         },
-        fkEmpresa: {
+        fkEmpresaa: {
             field: 'fkEmpresa',
-            type: DataTypes.INT,
+            type: DataTypes.INTEGER,
             allowNull: true,
             foreignKey: true
         },
