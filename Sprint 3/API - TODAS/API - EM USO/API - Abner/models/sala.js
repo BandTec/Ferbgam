@@ -29,7 +29,7 @@ module.exports = (sequelize, DataTypes) => {
             type: DataTypes.STRING,
             allowNull: false
         },
-        fkEmpresaa: {
+        fkEmpresa: {
             field: 'fkEmpresa',
             type: DataTypes.INTEGER,
             allowNull: true,

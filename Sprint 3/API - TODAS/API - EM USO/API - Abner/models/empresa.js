@@ -23,22 +23,17 @@ module.exports = (sequelize, DataTypes) => {
             type: DataTypes.STRING,
             allowNull: false
         },
+        nomeEmpresa: {
+            field: 'nomeEmpresa',
+            type: DataTypes.STRING,
+            allowNull: false
+        },
         cnpj: {
             field: 'cnpj',
             type: DataTypes.STRING,
             allowNull: false,
         },
 
-        nomeFantasia: {
-            field: 'nomeFantasia',
-            type: DataTypes.STRING,
-            allowNull: false
-        },
-        razaoSocial: {
-            field: 'razaoSocial',
-            type: DataTypes.STRING,
-            allowNull: false
-        },
         telefone: {
             field: 'telefone',
             type: DataTypes.STRING,

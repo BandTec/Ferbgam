@@ -19,8 +19,8 @@ module.exports = (sequelize, DataTypes) => {
             foreignKey: true,
             allowNull: true,
         },
-        nome: {
-            field: 'nome',
+        nomeResponsavel: {
+            field: 'nomeResponsavel',
             type: DataTypes.STRING,
             allowNull: true,
         },
