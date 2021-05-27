@@ -244,6 +244,15 @@ form.sign-up-form {
     transition: .5s;
 }
 
+.sign-btns {
+    display: flex;
+    flex-flow: row wrap;
+}
+
+.sign-btns input:first-child {
+    margin-right: 5px;
+}
+
 .btn:hover {
     background-color: var(--p-darker-blue);
 }
@@ -397,10 +406,10 @@ como none para que ele ignore o right-panel
 }
 
 .check-container {
-    margin: 10px 0 30px 0;
+    margin: 20px 0 30px 0;
     max-width: 380px;
-    padding-left: 10px;
     width: 100%;
+    padding-left: 5px;
     height: auto;
 }
 
@@ -424,6 +433,7 @@ como none para que ele ignore o right-panel
     color: #aaa;
     font-size: 20px;
     transition: 0.5s 0.2s ease-in-out;
+    text-align: right;
 }
 
 .error-message {

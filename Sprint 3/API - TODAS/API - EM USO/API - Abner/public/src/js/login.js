@@ -270,10 +270,38 @@ function login_user() {
 }
 
 
+cadastrar = () => {
+    console.log('CADASTROU :D');
+}
 
 
 
+let step = 1;
 
+
+next = () => {
+
+    let firstStep = document.querySelector('.first-step');
+    let secondStep = document.querySelector('.second-step');
+
+
+    if (!firstStep.classList.contains('invisible')) {
+        firstStep.classList.add('invisible');
+        firstStep.nextElementSibling.classList.toggle('invisible');
+        step++;
+    } else {
+        switch (step) {
+            case 2:
+                secondStep.classList.add('invisible');
+                secondStep.nextElementSibling.classList.toggle('invisible');
+                step++
+                break;
+            case 3:
+                cadastrar();
+                break;
+        }
+    }
+}
 
 
 
