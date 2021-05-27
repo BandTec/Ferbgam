@@ -6,7 +6,7 @@ let sign_up_btn = document.querySelector('#sign-up-btn');
 let container = document.querySelector('.container');
 
 
-console.log(container)
+// console.log(container)
 sign_up_btn.addEventListener('click', function () {
     container.classList.add('sign-up-mode')
 });
@@ -269,9 +269,27 @@ function login_user() {
     // }
 }
 
-
 cadastrar = () => {
-    console.log('CADASTROU :D');
+    var signData = new URLSearchParams(new FormData(form_cadastro));
+
+    fetch("/empresas/cadastrarEmpresa", {
+        method: "POST",
+        body: signData
+    }).then(function (response) {
+
+        if (response.ok) {
+            console.log(response);
+
+        } else {
+            console.log('Erro de cadastro!');
+            response.text().then(function (error_desc) {
+                console.log(error_desc);
+            });
+
+        }
+    });
+
+    return false;
 }
 
 
