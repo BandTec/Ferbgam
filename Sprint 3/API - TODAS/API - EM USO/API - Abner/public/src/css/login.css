@@ -167,6 +167,10 @@ form.sign-up-form {
     padding: 0 .4rem;
 }
 
+.input-field input[type="number"]::-webkit-inner-spin-button {
+    -webkit-appearance: none;
+}
+
 .input-field i {
     text-align: center;
     line-height: 55px;
@@ -198,13 +202,25 @@ form.sign-up-form {
     color: #acacac;
 }
 
-.input-field::-webkit-scrollbar {}
-
 .input-field select option {
     background-color: rgb( 27, 27, 27);
 }
 
-.input-field .inputs-holder {
+.input-field select::-webkit-scrollbar-track {
+    background-color: #262626;
+}
+
+.input-field select::-webkit-scrollbar {
+    width: 8px;
+    height: 8px;
+    background: #1D2123;
+}
+
+.input-field select::-webkit-scrollbar-thumb {
+    background: #B8008A;
+}
+
+.inputs-holder {
     width: 300px;
 }
 
