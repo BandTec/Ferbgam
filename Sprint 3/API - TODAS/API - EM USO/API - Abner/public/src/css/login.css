@@ -11,6 +11,7 @@
     padding: 0;
     box-sizing: border-box;
     font-family: 'Montserrat', sans-serif;
+    user-select: none;
 }
 
 /* utilizando a unidade medida relativa "rem", para que a fonte 
@@ -29,6 +30,49 @@ na aula de algoritmo
 */
 
 /* quando você passa a transition com apenas dois valores eles são de duração e delay */
+
+.step-row {
+    width: 300px;
+    height: 40px;
+    margin: 5% auto;
+    background-color: rgb(27, 27, 27);
+    display: flex;
+    align-items: center;
+    box-shadow: 0 -1px 5px -1px #000;
+    position: relative;
+    overflow: hidden;
+}
+
+.step-colum {
+    width: 140px;
+    text-align: center;
+    color: #fff;
+    font-weight: 900;
+    position: relative;
+    text-transform: uppercase;
+}
+
+.progress {
+    position: absolute;
+    height: 100%;
+    width: 90px;
+    transition: 1s;
+    background: linear-gradient(90deg, var(--primary-pink), var(--p-light-blue));
+    border-bottom-right-radius: 3px;
+    border-top-right-radius: 1px;
+}
+
+.progress::after {
+    content: '';
+    height: 0;
+    width: 0;
+    border-top: 20px solid transparent;
+    border-bottom: 20px solid transparent;
+    position: absolute;
+    right: -19.2px;
+    top: 0;
+    border-left: 20px solid var(--p-light-blue);
+}
 
 .container {
     position: relative;
