@@ -24,30 +24,21 @@ cadastrar = () => {
 
             if (response.ok) {
                 console.log(response);
+                generateAlert(document.getElementById('container'),
+                    null, 'Cadastrado com sucesso!'
+                );
+
                 container.classList.remove('sign-up-mode');
-                document.querySelector('#cadastroAlert').classList.toggle('visible');
 
-                clearCadastro();
-
-
-                setTimeout(() => {
-                    closeAlert('#cadastroAlert');
-                }, 3000);
-
-
-                clearTimeout();
             } else {
                 console.log('Erro de cadastro!');
                 response.text().then(function (error_desc) {
                     console.log(error_desc);
 
-                    document.querySelector('#loginAlert').classList.toggle('visible');
+                    generateAlert(document.getElementById('container'),
+                        'warning', 'Erro ao cadastrar'
+                    );
 
-                    setTimeout(() => {
-                        closeAlert('#loginAlert');
-                    }, 3000);
-
-                    clearTimeout();
                 });
 
             }
@@ -94,7 +85,6 @@ next = () => {
 }
 
 
-// MAPEANDO AS INPUTS DO FORM DE CADASTRO
 
 
 let previous = () => {
@@ -124,6 +114,7 @@ let previous = () => {
 }
 
 
+// MAPEANDO AS INPUTS DO FORM DE CADASTRO
 
 let nomeEmpresa = document.getElementById('nomeEmpresa');
 let cnpj = document.getElementById('cnpjEmpresa');
@@ -149,7 +140,7 @@ function validationStepOne() {
         nomeEmpresa.parentElement.classList.toggle('wrong-input');
         nomeEmpresa.value = '';
         nomeEmpresa.placeholder = 'Digite um nome válido';
-        nomeEmpresa.style.color = 'var(--cancel-color)';
+
         setTimeout(() => {
             nomeEmpresa.parentElement.classList.remove('wrong-input');
             nomeEmpresa.style.color = '#FFF';
@@ -161,7 +152,7 @@ function validationStepOne() {
         cnpj.parentElement.classList.toggle('wrong-input');
         cnpj.value = '';
         cnpj.placeholder = 'Digite um CNPJ válido';
-        cnpj.style.color = 'var(--cancel-color)';
+
         setTimeout(() => {
             cnpj.parentElement.classList.remove('wrong-input');
             cnpj.style.color = '#FFF';
@@ -173,7 +164,7 @@ function validationStepOne() {
         telefoneEmpresa.parentElement.classList.toggle('wrong-input');
         telefoneEmpresa.value = '';
         telefoneEmpresa.placeholder = 'Digite um telefone válido';
-        telefoneEmpresa.style.color = 'var(--cancel-color)';
+
         setTimeout(() => {
             telefoneEmpresa.parentElement.classList.remove('wrong-input');
             telefoneEmpresa.style.color = '#FFF';
@@ -186,7 +177,7 @@ function validationStepOne() {
         emailEmpresa.parentElement.classList.toggle('wrong-input');
         emailEmpresa.value = '';
         emailEmpresa.placeholder = 'Digite um e-mail válido';
-        emailEmpresa.style.color = 'var(--cancel-color)';
+
         setTimeout(() => {
             emailEmpresa.parentElement.classList.remove('wrong-input');
             emailEmpresa.style.color = '#FFF';
@@ -206,7 +197,7 @@ function validationStepTwo() {
         cep.parentElement.classList.toggle('wrong-input');
         cep.value = '';
         cep.placeholder = 'Digite um cep válido';
-        cep.style.color = 'var(--cancel-color)';
+
         setTimeout(() => {
             cep.parentElement.classList.remove('wrong-input');
             cep.style.color = '#FFF';
@@ -218,7 +209,7 @@ function validationStepTwo() {
         logradouro.parentElement.classList.toggle('wrong-input');
         logradouro.value = '';
         logradouro.placeholder = 'Digite um logradouro válido';
-        logradouro.style.color = 'var(--cancel-color)';
+
         setTimeout(() => {
             logradouro.parentElement.classList.remove('wrong-input');
             logradouro.style.color = '#FFF';
@@ -228,7 +219,7 @@ function validationStepTwo() {
     }
     else if (uf.value == '' || uf == undefined || uf.value.length != 2) {
         uf.parentElement.classList.toggle('wrong-input');
-        uf.style.color = 'var(--cancel-color)';
+
         setTimeout(() => {
             uf.parentElement.classList.remove('wrong-input');
             uf.style.color = '#FFF';
@@ -239,7 +230,7 @@ function validationStepTwo() {
         cidade.parentElement.classList.toggle('wrong-input');
         cidade.value = '';
         cidade.placeholder = 'Digite uma cidade válida';
-        cidade.style.color = 'var(--cancel-color)';
+
         setTimeout(() => {
             cidade.parentElement.classList.remove('wrong-input');
             cidade.style.color = '#FFF';
@@ -252,7 +243,7 @@ function validationStepTwo() {
         bairro.parentElement.classList.toggle('wrong-input');
         bairro.value = '';
         bairro.placeholder = 'Digite um bairro válido';
-        bairro.style.color = 'var(--cancel-color)';
+
         setTimeout(() => {
             bairro.parentElement.classList.remove('wrong-input');
             bairro.style.color = '#FFF';
@@ -265,7 +256,7 @@ function validationStepTwo() {
         numero.parentElement.classList.toggle('wrong-input');
         numero.value = '';
         numero.placeholder = 'Digite um numero válido';
-        numero.style.color = 'var(--cancel-color)';
+
         setTimeout(() => {
             numero.parentElement.classList.remove('wrong-input');
             numero.style.color = '#FFF';
