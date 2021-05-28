@@ -23,7 +23,8 @@ function loginEmpresa(form) {
         if (response.ok) {
 
             response.json().then(json => {
-                console.log(response);
+                // console.log(json[0].loginEmpresa);
+
                 window.location.href = 'dashboard.html';
             });
 
