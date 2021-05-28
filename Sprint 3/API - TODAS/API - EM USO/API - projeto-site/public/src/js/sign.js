@@ -64,28 +64,55 @@ next = () => {
 
     if (!firstStep.classList.contains('invisible')) {
         if (validationStepOne()) {
-            progressBar.style.width = '180px';
             firstStep.classList.add('invisible');
             firstStep.nextElementSibling.classList.toggle('invisible');
-            document.querySelector('#progress').classList.toggle('progressTwo');
+            progressBar.classList.toggle('progressTwo');
             step++;
         }
     } else {
         switch (step) {
             case 2:
                 if (validationStepTwo()) {
-                    progressBar.style.width = '300px';
                     btnCadastro.value = 'Cadastrar';
                     secondStep.classList.add('invisible');
                     secondStep.nextElementSibling.classList.toggle('invisible');
-                    document.querySelector('#progress').classList.toggle('progressTwo');
-                    document.querySelector('#progress').classList.add('progressThree');
+                    progressBar.classList.toggle('progressTwo');
+                    progressBar.classList.add('progressThree');
                     step++
                 }
                 break;
             case 3:
                 btnCadastro.onclick = '';
                 btnCadastro.type = 'submit';
+                break;
+        }
+    }
+}
+
+
+
+
+let previous = () => {
+
+    var progressBar = document.getElementById('progress');
+    let firstStep = document.querySelector('.first-step');
+    let secondStep = document.querySelector('.second-step');
+    let thirdStep = document.querySelector('.third-step');
+
+    if (step != 1) {
+        switch (step) {
+            case 3:
+                thirdStep.classList.toggle('invisible');
+                secondStep.classList.toggle('invisible');
+                progressBar.classList.toggle('progressThree');
+                progressBar.classList.toggle('progressTwo')
+                step--;
+                break;
+            case 2:
+                secondStep.classList.toggle('invisible');
+                firstStep.classList.toggle('invisible');
+                progressBar.classList.toggle('progressTwo');
+                step--;
                 break;
         }
     }
