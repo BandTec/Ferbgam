@@ -20,11 +20,12 @@ router.get("/sendData", (request, response) => {
 
     setInstrucao = (dbo) => {
         if (dbo != undefined && dbo != '' && dbo != null) {
-            instrucaoSql = `INSERT into ${dbo}.leitura (temperatura, umidade, momento, fkcaminhao)
-            values (${temperature + 10}, ${Humidity + 20}, '${agora()}', 1),
-            (${temperature - 10}, ${Humidity + 20}, '${agora()}', 2),
-            (${temperature + 5}, ${Humidity - 20}, '${agora()}', 3),
-            (${temperature - 5}, ${Humidity - 20}, '${agora()}', 4);`;
+            instrucaoSql = `INSERT into tb_leitura (fkSensor, dataHoraRegister, valorLeitura)
+            values 
+            
+            (1,default,'${Humidity + 20}'),
+            (1,default,'${temperature + 30}'),
+            (1,default,'${temperature + 5}');`;
         } else {
             instrucaoSql = `INSERT INTO tb_leitura (fkSensor, dataHoraRegister, valorLeitura) VALUES 
             (1,default,'${Humidity + 20}'),
