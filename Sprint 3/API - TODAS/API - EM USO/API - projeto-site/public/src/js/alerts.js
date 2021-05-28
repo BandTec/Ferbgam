@@ -3,7 +3,8 @@ function generateAlert(context, type, text) {
     var textAlert = document.createElement('p');
     var closeAlert = document.createElement('div');
     var iconCloseAlert = document.createElement('i');
-
+    var iconAlert = document.createElement('i');
+    var span = document.createElement('span');
     alert.className = 'alert';
     alert.id = 'cadastroAlert';
 
@@ -13,27 +14,47 @@ function generateAlert(context, type, text) {
 
     textAlert.innerHTML = text;
 
-    closeAlert.appendChild(iconCloseAlert);
-    alert.appendChild(textAlert);
-    alert.appendChild(closeAlert);
-
     if (type == 'warning') {
-        alert.style.backgroundColor = 'var(--cancel-color)';
-        alert.style.border = ''
-        // border-left: 10px solid #3CB371;
+        iconAlert.classList.add('fas', 'fa-exclamation-triangle');
+        iconAlert.style.color = 'var(--darker-warning-color)';
+        alert.style.backgroundColor = 'var(--warning-color)';
+        alert.style.borderLeft = '10px solid var(--darker-warning-color)';
+        closeAlert.style.backgroundColor = 'var(--darker-warning-color)';
+        closeAlert.style.color = 'var(--warning-color)';
     }
-    else {
+    else if(type == 'danger') {
         alert.style.backgroundColor = 'var(--confirm-color)';
     }
+
+    alert.appendChild(span);
+    alert.appendChild(iconAlert);
+    alert.appendChild(textAlert);
+    alert.appendChild(closeAlert);
+    closeAlert.appendChild(iconCloseAlert);
+
+
+
 
     context.appendChild(alert);
 
     alert.classList.add('visible');
 
 
+
+    
+
+    timeout = (ms) => {
+        return new Promise(res => setTimeout(res,ms))
+    }
+
+    deleteAlert = async (alertElement) => {
+        await timeout(1000);
+        alertElement.parentNode.removeChild(alertElement);
+    }
+
     setTimeout(() => {
         alert.classList.remove('visible');
-
+        deleteAlert(alert);
     }, 3000);
 
 }
