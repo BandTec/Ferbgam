@@ -70,9 +70,9 @@ next = () => {
             step++;
         }
     } else {
-        switch (validationStepTwo) {
+        switch (step) {
             case 2:
-                if (true) {
+                if (validationStepTwo()) {
                     progressBar.style.width = '300px';
                     btnCadastro.value = 'Cadastrar';
                     secondStep.classList.add('invisible');
