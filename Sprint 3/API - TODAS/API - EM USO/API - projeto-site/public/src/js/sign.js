@@ -15,9 +15,8 @@ let container = document.querySelector('.container');
 
 // REQUISIÇÃO DE CADASTRO
 cadastrar = () => {
-    var signData = new URLSearchParams(new FormData(form_cadastro));
-
-    if (hasMin && hasNumber && hasUpper && isEqual) {
+    if (validationStepThree()) {
+        var signData = new URLSearchParams(new FormData(form_cadastro));
         fetch("/empresas/cadastrarEmpresa", {
             method: "POST",
             body: signData
@@ -41,13 +40,18 @@ cadastrar = () => {
                 console.log('Erro de cadastro!');
                 response.text().then(function (error_desc) {
                     console.log(error_desc);
+
+                    document.querySelector('#loginAlert').classList.toggle('visible');
+
+                    setTimeout(() => {
+                        closeAlert('#loginAlert');
+                    }, 3000);
+
+                    clearTimeout();
                 });
 
             }
         });
-    }
-    else {
-        alert('Problemas nos campos de login');
     }
 }
 
@@ -89,6 +93,7 @@ next = () => {
 }
 
 
+// MAPEANDO AS INPUTS DO FORM DE CADASTRO
 
 let nomeEmpresa = document.getElementById('nomeEmpresa');
 let cnpj = document.getElementById('cnpjEmpresa');
@@ -101,7 +106,9 @@ let cidade = document.getElementById('cidadeEmpresa');
 let bairro = document.getElementById('bairroEmpresa');
 let numero = document.getElementById('numeroEmpresa');
 let complemento = document.getElementById('complementoEmpresa');
-
+let loginName = document.getElementById('userCadastro');
+let passwordInput = document.querySelector('#cadastroPassword');
+let passToValidateInput = document.querySelector('#confirmacaoPassword');
 
 
 // ============================================== VALIDAÇÕES =========================================================
@@ -244,11 +251,40 @@ function validationStepTwo() {
 
 
 //STEP 3 VALIDAÇÃO
+function validationStepThree() {
+    if (loginName.value.length < 4 || loginName.value == '' || loginName.value.indexOf(' ') >= 0) {
+        loginName.parentElement.classList.add('wrong-input');
+        loginName.value = '';
+        loginName.placeholder = 'Digite um válido';
+        setTimeout(() => {
+            loginName.parentElement.classList.remove('wrong-input');
+            loginName.placeholder = 'Login';
+
+        }, 1500);
+        return false;
+    }
+    else if (!(hasMin && hasNumber && hasUpper && isEqual)) {
+
+        passwordInput.parentElement.classList.add('wrong-input');
+        passToValidateInput.parentElement.classList.add('wrong-input');
+
+        setTimeout(() => {
+            passwordInput.parentElement.classList.remove('wrong-input');
+            passToValidateInput.parentElement.classList.remove('wrong-input');
+
+        }, 1500);
+        return false
+    }
+    else {
+        return true;
+    }
+}
+
+
+
 function checkPassword() {
-    let password = document.querySelector('#cadastroPassword');
-    let passToValidate = document.querySelector('#confirmacaoPassword');
-    password = password.value;
-    passToValidate = passToValidate.value;
+    let password = passwordInput.value;
+    let passToValidate = passwordInput.value;
 
     if (password != '' && password != '') {
         if (password == passToValidate) {
