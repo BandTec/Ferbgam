@@ -533,7 +533,7 @@ como none para que ele ignore o right-panel
 
 .alert p {
     margin-right: auto;
-    color: #3CB371;
+    color: #000;
 }
 
 .close-btn {
