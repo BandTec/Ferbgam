@@ -17,11 +17,7 @@ function check_authenticate() {
 
 }
 
-function log_out() {
-    finalize_session();
-    sessionStorage.clear();
-    redirect_login();
-}
+
 
 function validate_session() {
     fetch(`/empresas/sessao/${user_login}`, { cache: 'no-store' })
@@ -35,6 +31,12 @@ function validate_session() {
                 log_out();
             }
         });
+}
+
+function log_out() {
+    finalize_session();
+    sessionStorage.clear();
+    redirect_login();
 }
 
 function finalize_session() {
