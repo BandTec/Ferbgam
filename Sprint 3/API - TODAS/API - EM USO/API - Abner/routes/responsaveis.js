@@ -9,8 +9,8 @@ let sessoes = [];
 router.post('/autenticar', function (req, res, next) {
     console.log('Recuperando usuário por login e senha');
 
-    var login = req.body.login; // depois de .body, use o nome (name) do campo em seu formulário de login
-    var senha = req.body.senha; // depois de .body, use o nome (name) do campo em seu formulário de login	
+    var login = req.body.login_user; // depois de .body, use o nome (name) do campo em seu formulário de login
+    var senha = req.body.senha_user; // depois de .body, use o nome (name) do campo em seu formulário de login	
 
     let instrucaoSql = `select * from tb_responsavel where loginResponsavel='${login}' and senha='${senha}'`;
     console.log(instrucaoSql);

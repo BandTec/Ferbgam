@@ -35,15 +35,16 @@
         <div class="forms-container">
             <div class="signin-signup">
                 <!--Formulário de Login-->
-                <form id="form_login" autocomplete="off" class="sign-in-form" onsubmit="login_user()" action="javascript:void(0)">
+                <form id="form_login" autocomplete="off" class="sign-in-form" onsubmit="login_user()"
+                    action="javascript:void(0)">
                     <h2 class="title">Bem-vindo</h2>
                     <div class="input-field">
                         <i class="fas fa-user"></i>
-                        <input id="userLogin" type="text" name="login" placeholder="Usuário" required>
+                        <input id="userLogin" type="text" name="login_user" placeholder="Usuário" required>
                     </div>
                     <div class="input-field">
                         <i class="fas fa-lock"></i>
-                        <input id="userPassword" type="password" name="senha" placeholder="Senha" required>
+                        <input id="userPassword" type="password" name="senha_user" placeholder="Senha" required>
                     </div>
                     <input type="submit" value="Login" class="btn solid">
 
@@ -63,14 +64,11 @@
                             <i class="fab fa-linkedin-in"></i>
                         </a>
                     </div> -->
-
-
-
-
                 </form>
 
                 <!--Formulário de Cadastro-->
-                <form id="form_cadastro" class="sign-up-form" autocomplete="off" onsubmit="cadastrar()" action="javascript:void(0)">
+                <form id="form_cadastro" class="sign-up-form" autocomplete="off" onsubmit="cadastrar()"
+                    action="javascript:void(0)">
 
                     <div class="step-row">
                         <div id="progress" class="progress"></div>
@@ -80,43 +78,46 @@
                     </div>
 
                     <div class="inputs-holder">
-
+                        <!-- PRIMEIRA ETAPA DO CADASTRO -->
                         <div class="first-step">
                             <div class="input-field">
                                 <i class="fas fa-user"></i>
-                                <input id="nomeEmpresa" type="text" name="nomeEmpresa" placeholder="Empresa" required>
+                                <input id="nomeEmpresa" type="text" name="nomeEmpresa" placeholder="Empresa">
                             </div>
                             <div class="input-field">
                                 <i class="fas fa-id-card"></i>
-                                <input id="cnpjEmpresa" type="text" name="cnpjEmpresa" placeholder="CNPJ" required>
+                                <input id="cnpjEmpresa" type="text" name="cnpjEmpresa" placeholder="CNPJ">
+                            </div>
+                            <div class="input-field">
+                                <i class="fas fa-phone-alt"></i>
+                                <input id="telEmpresa" name="telefoneEmpresa" placeholder="Telefone">
+                            </div>
+                            <div class="input-field">
+                                <i class="fas fa-envelope"></i>
+                                <input id="emailEmpresa" type="text" name="emailEmpresa" placeholder="E-mail">
                             </div>
                             <div id="error-message-email" class="error-message">
                                 <i class="fas fa-times-circle"></i>
                                 <p>E-mail inválido</p>
                             </div>
-                            <div class="input-field">
-                                <i class="fas fa-phone-alt"></i>
-                                <input id="telEmpresa" name="telefoneEmpresa" placeholder="Telefone" required>
-                            </div>
-                            <div class="input-field">
-                                <i class="fas fa-envelope"></i>
-                                <input id="emailEmpresa" type="text" name="emailEmpresa" placeholder="E-mail" required>
-                            </div>
                         </div>
 
+                        <!-- SEGUNDA ETAPA DO CADASTRO -->
                         <div class="second-step invisible">
                             <!--cep,logradouro,uf,cidade,numero,complemento,bairro-->
                             <div class="input-field">
                                 <i class="fas fa-globe-americas"></i>
-                                <input id="cepEmpresa" type="number" name="cepEmpresa" placeholder="CEP" min="0" required>
+                                <input id="cepEmpresa" type="number" name="cepEmpresa" placeholder="CEP" min="0"
+                                >
                             </div>
                             <div class="input-field">
                                 <i class="fas fa-road"></i>
-                                <input id="logradouroEmpresa" type="text" name="logradouroEmpresa" placeholder="Logradouro" required>
+                                <input id="logradouroEmpresa" type="text" name="logradouroEmpresa"
+                                    placeholder="Logradouro">
                             </div>
                             <div class="input-field">
                                 <i class="fas fa-globe"></i>
-                                <select id="selectUF" name="ufEmpresa" placeholder="UF" required>
+                                <select id="selectUF" name="ufEmpresa" placeholder="UF">
                                     <option disabled selected>Selectione um UF</option>
                                     <option>AC</option>
                                     <option>AL</option>
@@ -150,39 +151,45 @@
 
                             <div class="input-field">
                                 <i class="fas fa-city"></i>
-                                <input id="cidadeEmpresa" type="text" name="cidadeEmpresa" placeholder="Cidade" required>
+                                <input id="cidadeEmpresa" type="text" name="cidadeEmpresa" placeholder="Cidade"
+                                >
                             </div>
 
                             <div class="input-field">
                                 <i class="fas fa-map-marker-alt"></i>
-                                <input id="bairroEmpresa" type="text" name="bairroEmpresa" placeholder="Bairro" required>
+                                <input id="bairroEmpresa" type="text" name="bairroEmpresa" placeholder="Bairro"
+                                >
                             </div>
 
                             <div class="input-field">
                                 <i class="fas fa-home"></i>
-                                <input id="numeroEmpresa" type="text" name="numeroEmpresa" placeholder="Número" required>
+                                <input id="numeroEmpresa" type="text" name="numeroEmpresa" placeholder="Número"
+                                >
                             </div>
                             <div class="input-field">
                                 <i class="fas fa-plus"></i>
-                                <input id="complementoEmpresa" type="text" name="complementoEmpresa" placeholder="Complemento" required>
+                                <input id="complementoEmpresa" type="text" name="complementoEmpresa"
+                                    placeholder="Complemento">
                             </div>
 
 
                         </div>
 
-
+                        <!-- TERCEIRA ETAPA DO CADASTRO -->
                         <div class="third-step invisible">
                             <div class="input-field">
                                 <i class="fas fa-user"></i>
-                                <input id="userCadastro" type="text" name="loginEmpresa" placeholder="Login" required>
+                                <input id="userCadastro" type="text" name="loginEmpresa" placeholder="Login">
                             </div>
                             <div class="input-field">
                                 <i class="fas fa-lock"></i>
-                                <input id="cadastroPassword" onkeyup="checkPassword()" name="senhaEmpresa" type="password" placeholder="Senha" required>
+                                <input id="cadastroPassword" onkeyup="checkPassword()" name="senhaEmpresa"
+                                    type="password" placeholder="Senha">
                             </div>
                             <div class="input-field">
                                 <i class="fas fa-lock"></i>
-                                <input id="confirmacaoPassword" onkeyup="checkPassword()" type="password" placeholder="Confirme sua senha" required>
+                                <input id="confirmacaoPassword" onkeyup="checkPassword()" type="password"
+                                    placeholder="Confirme sua senha">
                             </div>
 
 
@@ -213,7 +220,7 @@
                     <div class="sign-btns">
                         <input type="button" onclick="previous()" value="Anterior" class="btn solid pink">
 
-                        <input type="button" onclick="next()" value="Próximo" class="btn solid pink">
+                        <input id="signButton" type="button" onclick="next()" value="Próximo" class="btn solid pink">
 
                     </div>
 
@@ -263,6 +270,7 @@
     </div>
 
     <script src="../src/js/login.js"></script>
+    <script src="../src/js/sign.js"></script>
 </body>
 
 </html>
