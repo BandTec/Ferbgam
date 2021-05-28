@@ -48,10 +48,11 @@ next = () => {
     let firstStep = document.querySelector('.first-step');
     let secondStep = document.querySelector('.second-step');
     var btnCadastro = document.getElementById('signButton');
-
+    var progressBar = document.getElementById('progress');
 
     if (!firstStep.classList.contains('invisible')) {
         if (validationStepOne()) {
+            progressBar.style.width = '180px';
             firstStep.classList.add('invisible');
             firstStep.nextElementSibling.classList.toggle('invisible');
             step++;
@@ -60,6 +61,7 @@ next = () => {
         switch (step) {
             case 2:
                 if (validationStepTwo()) {
+                    progressBar.style.width = '300px';
                     btnCadastro.value = 'Cadastrar';
                     secondStep.classList.add('invisible');
                     secondStep.nextElementSibling.classList.toggle('invisible');
