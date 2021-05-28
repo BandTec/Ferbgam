@@ -18,12 +18,9 @@
     --z-fixed: 100;
 }
 
-
 /*------------BASES------------*/
 
-*,
- ::before,
- ::after {
+*, ::before, ::after {
     box-sizing: border-box;
 }
 
@@ -56,9 +53,7 @@ a {
     text-decoration: none;
 }
 
-
 /*------------HEADER------------*/
-
 
 /* 
 .header {
@@ -95,7 +90,6 @@ a {
     width: 40px;
 }
 
-
 /*------------HEADER------------*/
 
 .l-navbar {
@@ -123,8 +117,7 @@ a {
     width: 25px;
 }
 
-.nav_logo,
-.nav_link {
+.nav_logo, .nav_link {
     display: grid;
     /*Torna o elemento um grid container.*/
     grid-template-columns: max-content max-content;
@@ -294,4 +287,13 @@ a {
 
 .page-cadastro .solid:hover {
     background-color: #04befe;
+}
+
+.rooms-container {
+    display: grid;
+    grid-template-columns: 1fr 1fr 1fr 1fr;
+    padding: 3%;
+    align-items: center;
+    justify-content: space-evenly;
+    flex-wrap: wrap;
 }
