@@ -23,7 +23,9 @@ function loginEmpresa(form) {
         if (response.ok) {
 
             response.json().then(json => {
-                // console.log(json[0].loginEmpresa);
+                sessionStorage.id_usuario_meuapp = json.idEmpresa;
+                sessionStorage.nome_usuario_meuapp = json.nomeEmpresa;
+                sessionStorage.login_usuario_meuapp = json.loginEmpresa;
 
                 window.location.href = 'dashboard.html';
             });

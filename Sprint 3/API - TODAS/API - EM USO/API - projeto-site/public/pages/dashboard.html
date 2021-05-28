@@ -13,7 +13,7 @@
     <script src="https://kit.fontawesome.com/64d58efce2.js" crossorigin="anonymous"></script>
 </head>
 
-<body id="body-pg">
+<body onload="loadContent()" id="body-pg">
     <div class="l-navbar" id="navbar">
         <nav class="nav">
             <div>
@@ -42,7 +42,7 @@
                     </a>
                 </div>
             </div>
-            <a href="#" class="nav_link">
+            <a onclick="log_out()" class="nav_link">
                 <i class='bx bx-log-out nav_icon'></i>
                 <span class="nav_name">Log Out</span>
             </a>
@@ -127,6 +127,7 @@
         </div>
     </div>
     <script src='js/main.js'></script>
+    <script src='../src/js/dashboard.js'></script>
 </body>
 
 </html>
