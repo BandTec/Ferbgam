@@ -4,7 +4,8 @@
     --p-light-blue: #04befe;
     --primary-pink: #B8008A;
     --p-light-pink: #ee00b2;
-    --cancel-color: #c54444;
+    --danger-color: #ff6961;
+    --darker-danger-color: #94041c; 
     --warning-color: #f9fe98;
     --darker-warning-color: #f0dc6f;
 }

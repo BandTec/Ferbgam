@@ -23,7 +23,12 @@ function generateAlert(context, type, text) {
         closeAlert.style.color = 'var(--warning-color)';
     }
     else if(type == 'danger') {
-        alert.style.backgroundColor = 'var(--confirm-color)';
+        iconAlert.classList.add('fas', 'fa-times-circle');
+        iconAlert.style.color = 'var(--darker-danger-color)';
+        alert.style.backgroundColor = 'var(--danger-color)';
+        alert.style.borderLeft = '10px solid var(--darker-danger-color)';
+        closeAlert.style.backgroundColor = 'var(--darker-danger-color)';
+        closeAlert.style.color = 'var(--danger-color)';
     }
 
     alert.appendChild(span);
