@@ -25,12 +25,12 @@
 .panel {
     background-color: rgba(255, 255, 255, 0.884);
     border-radius: 10px;
-    min-width: 40%;
-    width: 40%;
+    height: 20em;
+    width: 35em;
     flex: 2;
     display: flex;
     align-items: center;
-    margin: 2px;
+    margin: 2em;
     flex-direction: column;
 }
 
@@ -70,13 +70,12 @@
 
 .info {
     margin: 5px;
-    width: fit-content;
-    padding: 10px 20px;
+    padding: 10px 80px;
     margin-right: auto;
     display: flex;
     flex-direction: row;
     align-items: center;
-    justify-content: space-around;
+    justify-content: space-between;
 }
 
 .round-color {
