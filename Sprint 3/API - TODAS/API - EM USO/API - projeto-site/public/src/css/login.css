@@ -15,12 +15,10 @@
     user-select: none;
 }
 
-
 /* utilizando a unidade medida relativa "rem", para que a fonte 
 aumente ou diminua de acordo com a resoulção da tela, similar a vh que aprendemos 
 na aula de algoritmo
  */
-
 
 /* font-weight é o peso da fonte, exemplos: 
 900 - extra-bold (poucas fontes tem)
@@ -31,7 +29,6 @@ na aula de algoritmo
 200 - lighter 
 100 - etra-light
 */
-
 
 /* quando você passa a transition com apenas dois valores eles são de duração e delay */
 
@@ -45,6 +42,14 @@ na aula de algoritmo
     box-shadow: 0 -1px 5px -1px #000;
     position: relative;
     overflow: hidden;
+}
+
+#progress.progressTwo {
+    width: 185px;
+}
+
+#progress.progressThree {
+    width: 500px;
 }
 
 .step-colum {
@@ -78,9 +83,7 @@ na aula de algoritmo
     border-left: 20px solid var(--p-light-blue);
 }
 
-.first-step.invisible,
-.second-step.invisible,
-.third-step.invisible {
+.first-step.invisible, .second-step.invisible, .third-step.invisible {
     display: none;
 }
 
@@ -309,7 +312,6 @@ form.sign-up-form {
     grid-template-columns: repeat(2, 1fr);
 }
 
-
 /*a unidade de medida "fr" fuciona de forma semelhante ao flex-grow, 1fr significa que a coluna vai ocupar 
     uma fração do espaço disponível, e o repeat aplica isso pra duas colunas, que são respectivamento o left-panel
     e o right-panel*/
@@ -332,7 +334,6 @@ form.sign-up-form {
     pointer-events: none;
     padding: 3rem 12% 2rem 17%;
 }
-
 
 /* os pointer events são todos os eventos referentes ao mouse
 o right-panel fica em cima do formulário de login, fazendo com que
@@ -372,11 +373,9 @@ como none para que ele ignore o right-panel
     transition: 1.1s 0.3s ease-in-out;
 }
 
-.right-panel .content,
-.right-panel .img {
+.right-panel .content, .right-panel .img {
     transform: translateX(1100px);
 }
-
 
 /*animações*/
 
@@ -385,13 +384,11 @@ como none para que ele ignore o right-panel
     right: 52%;
 }
 
-.container.sign-up-mode .left-panel .img,
-.container.sign-up-mode .left-panel .content {
+.container.sign-up-mode .left-panel .img, .container.sign-up-mode .left-panel .content {
     transform: translate(-1100px);
 }
 
-.container.sign-up-mode .right-panel .content,
-.container.sign-up-mode .right-panel .img {
+.container.sign-up-mode .right-panel .content, .container.sign-up-mode .right-panel .img {
     transform: translateX(0);
 }
 
