@@ -314,7 +314,7 @@ function validationStepThree() {
 
 function checkPassword() {
     let password = passwordInput.value;
-    let passToValidate = passwordInput.value;
+    let passToValidate = passToValidateInput.value;
 
     if (password != '' && password != '') {
         if (password == passToValidate) {
@@ -408,22 +408,22 @@ function clearCadastro() {
     numero.value = '';
     complemento.value = '';
 
-    // equalPass.classList.replace('fas', 'far');
-    // equalPass.classList.remove('checked');
-    // isEqual = false;
+    equalPass.classList.replace('fas', 'far');
+    equalPass.classList.remove('checked');
+    isEqual = false;
 
-    // minChar.classList.replace('fas', 'far');
-    // minChar.classList.remove('checked');
-    // hasMin = false;
+    minChar.classList.replace('fas', 'far');
+    minChar.classList.remove('checked');
+    hasMin = false;
 
-    // upperCase.classList.replace('fas', 'far');
-    // upperCase.classList.remove('checked');
-    // hasUpper = false;
+    upperCase.classList.replace('fas', 'far');
+    upperCase.classList.remove('checked');
+    hasUpper = false;
 
 
-    // numericChar.classList.replace('fas', 'far');
-    // numericChar.classList.remove('checked');
-    // hasNumber = false;
+    numericChar.classList.replace('fas', 'far');
+    numericChar.classList.remove('checked');
+    hasNumber = false;
 
 }
 
