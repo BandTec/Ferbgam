@@ -67,6 +67,7 @@ next = () => {
             progressBar.style.width = '180px';
             firstStep.classList.add('invisible');
             firstStep.nextElementSibling.classList.toggle('invisible');
+            document.querySelector('#progress').classList.toggle('progressTwo');
             step++;
         }
     } else {
@@ -77,6 +78,8 @@ next = () => {
                     btnCadastro.value = 'Cadastrar';
                     secondStep.classList.add('invisible');
                     secondStep.nextElementSibling.classList.toggle('invisible');
+                    document.querySelector('#progress').classList.toggle('progressTwo');
+                    document.querySelector('#progress').classList.add('progressThree');
                     step++
                 }
                 break;
