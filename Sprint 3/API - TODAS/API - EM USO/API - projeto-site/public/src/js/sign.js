@@ -8,7 +8,9 @@ let hasMin = false;
 let hasUpper = false;
 let hasNumber = false;
 let validEmail = false;
-
+let sign_in_btn = document.querySelector('#sign-in-btn');
+let sign_up_btn = document.querySelector('#sign-up-btn');
+let container = document.querySelector('.container');
 
 
 // REQUISIÇÃO DE CADASTRO
@@ -23,8 +25,18 @@ cadastrar = () => {
 
             if (response.ok) {
                 console.log(response);
+                container.classList.remove('sign-up-mode');
+                document.querySelector('#cadastroAlert').classList.toggle('visible');
+
+                clearCadastro();
 
 
+                setTimeout(() => {
+                    closeAlert('#cadastroAlert');
+                }, 3000);
+
+
+                clearTimeout();
             } else {
                 console.log('Erro de cadastro!');
                 response.text().then(function (error_desc) {
@@ -58,9 +70,9 @@ next = () => {
             step++;
         }
     } else {
-        switch (step) {
+        switch (validationStepTwo) {
             case 2:
-                if (validationStepTwo()) {
+                if (true) {
                     progressBar.style.width = '300px';
                     btnCadastro.value = 'Cadastrar';
                     secondStep.classList.add('invisible');
@@ -77,15 +89,25 @@ next = () => {
 }
 
 
+
+let nomeEmpresa = document.getElementById('nomeEmpresa');
+let cnpj = document.getElementById('cnpjEmpresa');
+let telefoneEmpresa = document.getElementById('telEmpresa');
+let emailEmpresa = document.getElementById('emailEmpresa');
+let cep = document.getElementById('cepEmpresa');
+let logradouro = document.getElementById('logradouroEmpresa');
+let uf = document.getElementById('selectUF');
+let cidade = document.getElementById('cidadeEmpresa');
+let bairro = document.getElementById('bairroEmpresa');
+let numero = document.getElementById('numeroEmpresa');
+let complemento = document.getElementById('complementoEmpresa');
+
+
+
 // ============================================== VALIDAÇÕES =========================================================
 
 // STEP 1 - VALIDAÇÃO
 function validationStepOne() {
-    let nomeEmpresa = document.getElementById('nomeEmpresa');
-    let cnpj = document.getElementById('cnpjEmpresa');
-    let telefoneEmpresa = document.getElementById('telEmpresa');
-    let emailEmpresa = document.getElementById('emailEmpresa');
-
     if (nomeEmpresa.value == '' || nomeEmpresa == undefined) {
         nomeEmpresa.parentElement.classList.toggle('wrong-input');
         nomeEmpresa.value = '';
@@ -143,14 +165,6 @@ function validationStepOne() {
 // STEP 2 - VALIDAÇÃO
 
 function validationStepTwo() {
-    let cep = document.getElementById('cepEmpresa');
-    let logradouro = document.getElementById('logradouroEmpresa');
-    let uf = document.getElementById('selectUF');
-    let cidade = document.getElementById('cidadeEmpresa');
-    let bairro = document.getElementById('bairroEmpresa');
-    let numero = document.getElementById('numeroEmpresa');
-    let complemento = document.getElementById('complementoEmpresa');
-
     if (cep.value == '' || cep == undefined || cep.value.length != 8) {
         cep.parentElement.classList.toggle('wrong-input');
         cep.value = '';
@@ -315,39 +329,43 @@ function checkPassword() {
     }
 }
 
-// function clearCadastro() {
-//     document.querySelector('#emailEmpresa').value = '';
-//     document.querySelector('#userCadastro').value = '';
-//     document.querySelector('#cadastroPassword').value = '';
-//     document.querySelector('#confirmacaoPassword').value = '';
+function clearCadastro() {
+    nomeEmpresa.value = '';
+    cnpj.value = '';
+    telefoneEmpresa.value = '';
+    emailEmpresa.value = '';
+    cep.value = '';
+    logradouro.value = '';
+    uf.value = '';
+    cidade.value = '';
+    bairro.value = '';
+    numero.value = '';
+    complemento.value = '';
+
+    // equalPass.classList.replace('fas', 'far');
+    // equalPass.classList.remove('checked');
+    // isEqual = false;
+
+    // minChar.classList.replace('fas', 'far');
+    // minChar.classList.remove('checked');
+    // hasMin = false;
+
+    // upperCase.classList.replace('fas', 'far');
+    // upperCase.classList.remove('checked');
+    // hasUpper = false;
 
 
-//     equalPass.classList.replace('fas', 'far');
-//     equalPass.classList.remove('checked');
-//     isEqual = false;
+    // numericChar.classList.replace('fas', 'far');
+    // numericChar.classList.remove('checked');
+    // hasNumber = false;
 
-//     minChar.classList.replace('fas', 'far');
-//     minChar.classList.remove('checked');
-//     hasMin = false;
-
-//     upperCase.classList.replace('fas', 'far');
-//     upperCase.classList.remove('checked');
-//     hasUpper = false;
-
-
-//     numericChar.classList.replace('fas', 'far');
-//     numericChar.classList.remove('checked');
-//     hasNumber = false;
-
-// }
+}
 
 
 // essa forma de pegar os elementos é mais precisa, mas funciona da mesma forma que
 // aprendemos com o Frizza
 
-let sign_in_btn = document.querySelector('#sign-in-btn');
-let sign_up_btn = document.querySelector('#sign-up-btn');
-let container = document.querySelector('.container');
+
 
 
 // console.log(container)
@@ -358,5 +376,13 @@ sign_up_btn.addEventListener('click', function () {
 sign_in_btn.addEventListener('click', function () {
     container.classList.remove('sign-up-mode');
 });
+
+// FECHAR ALERT DO CADASTRO
+function closeAlert(elementId) {
+    if (document.querySelector(elementId).classList.contains('visible')) {
+        document.querySelector(elementId).classList.remove('visible');
+    }
+
+}
 
 
