@@ -21,14 +21,15 @@ function generateAlert(context, type, text) {
         alert.style.borderLeft = '10px solid var(--darker-warning-color)';
         closeAlert.style.backgroundColor = 'var(--darker-warning-color)';
         closeAlert.style.color = 'var(--warning-color)';
-    }
-    else if(type == 'danger') {
+    }else if(type == 'danger') {
         iconAlert.classList.add('fas', 'fa-times-circle');
         iconAlert.style.color = 'var(--darker-danger-color)';
         alert.style.backgroundColor = 'var(--danger-color)';
         alert.style.borderLeft = '10px solid var(--darker-danger-color)';
         closeAlert.style.backgroundColor = 'var(--darker-danger-color)';
         closeAlert.style.color = 'var(--danger-color)';
+    }else {
+        iconAlert.classList.add('far', 'fa-check-circle');
     }
 
     alert.appendChild(span);
@@ -44,6 +45,16 @@ function generateAlert(context, type, text) {
 
     alert.classList.add('visible');
 
+
+    closeAlertMsg = (element) => {
+        if (element.classList.contains('visible')) {
+            element.classList.remove('visible');
+        }
+    }
+    
+    closeAlert.addEventListener('click', () => {
+        closeAlertMsg(alert);
+    })
 
 
     

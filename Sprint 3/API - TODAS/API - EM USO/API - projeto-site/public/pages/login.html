@@ -14,15 +14,15 @@
 <body>
     <div id="container" class="container">
 
-        <div id="cadastroAlert" class="alert visible">
+        <!-- <div id="cadastroAlert" class="alert visible">
             <span></span>
             <i class="far fa-check-circle"></i>
             <p>Cadastro realizado com sucesso!</p>
-            <div onclick="closeAlert('#cadastroAlert')" class="close-btn">
+            <div onclick="closeAlert(document)" class="close-btn">
                 <i class="fas fa-times"></i>
             </div>
-        </div>
-
+        </div> -->
+<!-- 
         <div id="loginAlert" class="alert">
             <span></span>
             <i class="fas fa-times-circle"></i>
@@ -30,7 +30,7 @@
             <div onclick="closeAlert('#loginAlert')" class="close-btn">
                 <i class="fas fa-times"></i>
             </div>
-        </div>
+        </div> -->
 
         <div class="forms-container">
             <div class="signin-signup">
@@ -220,7 +220,7 @@
                     <div class="sign-btns">
                         <input type="button" onclick="previous()" value="Anterior" class="btn solid pink">
 
-                        <input id="signButton" type="button" onclick="generateAlert(document.getElementById('container'),'danger','Deu ruim!')" value="Próximo" class="btn solid pink">
+                        <input id="signButton" type="button" onclick="generateAlert(document.getElementById('container'),null,'Deu bom!')" value="Próximo" class="btn solid pink">
                         <!-- next() -->
                     </div>
 

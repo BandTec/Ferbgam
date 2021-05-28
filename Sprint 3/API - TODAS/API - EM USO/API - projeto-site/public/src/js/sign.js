@@ -444,9 +444,9 @@ sign_in_btn.addEventListener('click', function () {
 });
 
 // FECHAR ALERT DO CADASTRO
-function closeAlert(elementId) {
-    if (document.querySelector(elementId).classList.contains('visible')) {
-        document.querySelector(elementId).classList.remove('visible');
+function closeAlert(element) {
+    if (element.classList.contains('visible')) {
+        element.classList.remove('visible');
     }
 
 }
