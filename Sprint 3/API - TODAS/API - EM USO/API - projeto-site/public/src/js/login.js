@@ -23,10 +23,10 @@ function loginEmpresa(form) {
         if (response.ok) {
 
             response.json().then(json => {
-                sessionStorage.id_usuario_meuapp = json.idEmpresa;
-                sessionStorage.nome_usuario_meuapp = json.nomeEmpresa;
-                sessionStorage.login_usuario_meuapp = json.loginEmpresa;
 
+                delete json.senhaEmpresa;
+
+                sessionStorage.setItem('user', JSON.stringify(json))
                 window.location.href = 'dashboard.html';
             });
 

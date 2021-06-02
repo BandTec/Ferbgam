@@ -1,15 +1,17 @@
-var username = sessionStorage.nome_usuario_meuapp;
-var user_login = sessionStorage.login_usuario_meuapp;
+let user = sessionStorage.getItem('user');
+user = JSON.parse(user);
+
+
 
 function loadContent() {
     console.log('Carregando conteudo');
     check_authenticate();
-    
+
 }
 
 
 function check_authenticate() {
-    if (user_login == undefined) {
+    if (user == undefined) {
         redirect_login();
     } else {
         validate_session();
@@ -20,7 +22,7 @@ function check_authenticate() {
 
 
 function validate_session() {
-    fetch(`/empresas/sessao/${user_login}`, { cache: 'no-store' })
+    fetch(`/empresas/sessao/${user.loginEmpresa}`, { cache: 'no-store' })
         .then(resposta => {
             if (resposta.ok) {
                 resposta.text().then(texto => {
@@ -40,9 +42,153 @@ function log_out() {
 }
 
 function finalize_session() {
-    fetch(`/empresas/sair/${user_login}`, { cache: 'no-store' });
+    fetch(`/empresas/sair/${user.loginEmpresa}`, { cache: 'no-store' });
 }
 
 function redirect_login() {
     window.location.href = 'login.html';
 }
+
+
+
+
+listSensors = (data) => {
+    let vectorIcons = ''
+    let counterLumi = [0, 0, 0];
+    let counterUmi = [0, 0, 0];
+    let counterTemp = [0, 0, 0];
+
+    data.sensores.forEach((sensor, index, array) => {
+
+
+        if (sensor.tipoLeitura == 'temperatura' && sensor.statusSensor == 'ativo') {
+            counterTemp[0]++
+        } else if (sensor.tipoLeitura == 'temperatura' && sensor.statusSensor == 'inativo') {
+            counterTemp[1]++
+        } else if (sensor.tipoLeitura == 'temperatura' && sensor.statusSensor == 'manutenção') {
+            counterTemp[2]++
+        }
+
+        if (sensor.tipoLeitura == 'luminosidade' && sensor.statusSensor == 'ativo') {
+            counterLumi[0]++
+        } else if (sensor.tipoLeitura == 'luminosidade' && sensor.statusSensor == 'inativo') {
+            counterLumi[1]++
+        } else if (sensor.tipoLeitura == 'luminosidade' && sensor.statusSensor == 'manutenção') {
+            counterLumi[2]++
+        }
+
+        if (sensor.tipoLeitura == 'umidade' && sensor.statusSensor == 'ativo') {
+            counterUmi[0]++
+        } else if (sensor.tipoLeitura == 'umidade' && sensor.statusSensor == 'inativo') {
+            counterUmi[1]++
+        } else if (sensor.tipoLeitura == 'umidade' && sensor.statusSensor == 'manutenção') {
+            counterUmi[2]++
+        }
+
+
+
+        // for (let i = 0; i < counterLumi.length; i++) {
+        //     if (i == 0) {
+        //         if (counterLumi[i] > 0) {
+        //             vectorIcons += `<i class='far fa-lightbulb luminosidade active'><sub>${counterLumi[i]}</sub></i>`
+        //         }
+        //     } else if (i == 1) {
+        //         if (counterLumi[i] > 0) {
+        //             vectorIcons += `<i class='far fa-lightbulb luminosidade inactive'><sub>${counterLumi[i]}</sub></i>`
+        //         }
+        //     } else if (i == 2) {
+        //         if (counterLumi[i] > 0) {
+        //             vectorIcons += `<i class='far fa-lightbulb luminosidade attention'><sub>${counterLumi[i]}</sub></i>`
+        //         }
+        //     }
+        // }
+
+    });
+    console.log(counterTemp);
+
+    let orderIcons = () => {
+        for (let i = 0; i < counterLumi.length; i++) {
+            if (counterLumi[i] > 0 && i == 0) {
+                vectorIcons += `<i class='far fa-lightbulb luminosidade active'><sub>${counterLumi[i]}</sub></i>`
+            }
+            if (counterLumi[i] > 0 && i == 1) {
+                vectorIcons += `<i class='far fa-lightbulb luminosidade inactive'><sub>${counterLumi[i]}</sub></i>`
+            }
+            if (counterLumi[i] > 0 && i == 2) {
+                vectorIcons += `<i class='far fa-lightbulb luminosidade attention'><sub>${counterLumi[i]}</sub></i>`
+            }
+        }
+
+
+        for (let i = 0; i < counterTemp.length; i++) {
+            if (counterTemp[i] > 0 && i == 0) {
+                vectorIcons += `<i class='fas fa-thermometer-empty temperatura active'><sub>${counterTemp[i]}</sub></i>`
+            }
+            if (counterTemp[i] > 0 && i == 1) {
+                vectorIcons += `<i class='fas fa-thermometer-empty temperatura inactive'><sub>${counterTemp[i]}</sub></i>`
+            }
+            if (counterTemp[i] > 0 && i == 2) {
+                vectorIcons += `<i class='fas fa-thermometer-empty temperatura attention'><sub>${counterTemp[i]}</sub></i>`
+            }
+        }
+
+
+
+        for (let i = 0; i < counterUmi.length; i++) {
+            if (counterUmi[i] > 0 && i == 0) {
+                vectorIcons += `<i class='fas fa-tint umidade active'><sub>${counterUmi[i]}</sub></i>`
+            }
+            if (counterUmi[i] > 0 && i == 1) {
+                vectorIcons += `<i class='fas fa-tint umidade inactive'><sub>${counterUmi[i]}</sub></i>`
+            }
+            if (counterUmi[i] > 0 && i == 2) {
+                vectorIcons += `<i class='fas fa-tint umidade attention'><sub>${counterUmi[i]}</sub></i>`
+            }
+        }
+    }
+
+    orderIcons();
+
+    return vectorIcons
+
+}
+
+
+
+
+listarSalas = () => {
+
+    let containerSalas = document.querySelector('.rooms-container');
+
+    fetch(`/salas/${user.idEmpresa}`, {
+        method: 'GET'
+    }).then((response) => {
+        response.json().then(data => {
+
+
+            data.forEach(sala => {
+                containerSalas.innerHTML += `
+                <div class="boxes-item">
+                    <h3>${sala.nomeSala}</h3>
+                    <div class="box-text">
+                        <p>${sala.descricao}</p>
+                        <h4>Sensores: 
+                        ${listSensors(sala)}
+                        </h4>
+                        <h4>Status: <i class='fas fa-circle ideal'></i> </h4>
+                    </div>
+                </div>`;
+
+                console.log(sala);
+
+            });
+
+        })
+    })
+}
+
+
+
+
+
+listarSalas();

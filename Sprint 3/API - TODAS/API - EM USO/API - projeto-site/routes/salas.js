@@ -37,7 +37,9 @@ router.get('/:idEmpresa', async (req, res, next) => {
                         sensores: resultado
                     })
 
-                    if (index == array.length - 1) resolve();
+                    if (index == array.length - 1) {
+                        resolve();
+                    }
                 })
 
             });

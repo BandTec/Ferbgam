@@ -18,12 +18,9 @@
     --z-fixed: 100;
 }
 
-
 /*------------BASES------------*/
 
-*,
- ::before,
- ::after {
+*, ::before, ::after {
     box-sizing: border-box;
 }
 
@@ -56,9 +53,7 @@ a {
     text-decoration: none;
 }
 
-
 /*------------HEADER------------*/
-
 
 /* 
 .header {
@@ -95,7 +90,6 @@ a {
     width: 40px;
 }
 
-
 /*------------HEADER------------*/
 
 .l-navbar {
@@ -123,8 +117,7 @@ a {
     width: 25px;
 }
 
-.nav_logo,
-.nav_link {
+.nav_logo, .nav_link {
     display: grid;
     /*Torna o elemento um grid container.*/
     grid-template-columns: max-content max-content;
@@ -311,4 +304,22 @@ a {
     flex-flow: row wrap;
     margin: 0 0 0 45px;
     /* margin: 0 auto; */
+}
+
+.inactive {
+    color: #ff3838 !important;
+}
+
+.active {
+    color: #5cb85c !important;
+}
+
+.attention {
+    color: #f0ad4e !important;
+}
+
+sub {
+    font-family: var(--body-font);
+    font-weight: 400 !important;
+    font-size: 16px;
 }
