@@ -13,10 +13,14 @@ module.exports = (sequelize, DataTypes) => {
             primaryKey: true,
             autoIncrement: true
         },
+        nomeSala: {
+            field: 'nomeSala',
+            type: DataTypes.STRING,
+            allowNull: true,
+        },
         area: {
             field: 'area',
             type: DataTypes.DECIMAL,
-            foreignKey: true,
             allowNull: true,
         },
         descricao: {

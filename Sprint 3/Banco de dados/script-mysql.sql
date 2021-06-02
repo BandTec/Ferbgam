@@ -31,6 +31,7 @@ create table tb_responsavel (
 
 create table tb_sala (
 	idSala int primary key auto_increment,
+    nomeSala varchar(50),
     area decimal(8,2) not null,
     descricao varchar(50) not null,
     andar varchar(20),
@@ -77,12 +78,12 @@ insert into tb_responsavel (fkEmpresa, nomeResponsavel, loginResponsavel, senhaR
 
 -- INSERINDO DADOS NA TABELA SALA
 insert into tb_sala values 
-	(null,34.5,'Esse é o laboratório 3 da equipe X',default,1),
-	(null,44.3,'Sala de reunião','15',4),
-	(null,30,'Esse é o laboratório 1, equipe 3','4',2),
-	(null,25.4,'Esse é o laboratório 2 da equipe de Analistas','5',2),
-	(null,28,'Sala 36',default,3),
-	(null,40,'Sala de Suporte Técnico','1',3);
+	(null,'Sala 1',34.5,'Esse é o laboratório 3 da equipe X',default,1),
+	(null,'Sala 1',44.3,'Sala de reunião','15',4),
+	(null,'Sala 1',30,'Esse é o laboratório 1, equipe 3','4',2),
+	(null,'Sala 2',25.4,'Esse é o laboratório 2 da equipe de Analistas','5',2),
+	(null,'Sala 1',28,'Sala 36',default,3),
+	(null,'Sala 2',40,'Sala de Suporte Técnico','1',3);
     
 insert into tb_sensor values
 	(null,'dht11','temperatura','ativo','°C',1),
