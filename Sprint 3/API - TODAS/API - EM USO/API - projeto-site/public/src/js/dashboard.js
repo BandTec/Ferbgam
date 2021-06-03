@@ -183,9 +183,15 @@ listarSalas = () => {
 
             });
 
-            var http = new XMLHttpRequest();
-            http.open('GET', `http://localhost:9001/api/sendData/${data}`, false);
-            http.send(null);
+            // var http = new XMLHttpRequest();
+            fetch('http://localhost:9001/api/sendData/a').then(response => {
+                if (response.ok) {
+                    response.json().then(data => {
+                        console.log(data);
+                    })
+                }
+            });
+            // http.send(null);
 
 
         })

@@ -11,6 +11,9 @@ const { ArduinoDataSwitch } = require("../app-sensores/serialSwitch");
 const { ArduinoDataLuminosity } = require("../app-sensores/serialLuminosidity");
 
 router.get("/sendData/:vetorSalas", (request, response) => {
+    //MUDEI PRA PERMITIR QUE O LOCALHOST:3000 ACESSE A ROTA COM PASSAGEM DE PARÂMETROS!!!!! PS: a
+    response.setHeader('Access-Control-Allow-Origin', 'http://localhost:3000');
+
     const temperature = ArduinoDataTemp.List[ArduinoDataTemp.List.length - 1];
     const Humidity = ArduinoDataHumidity.List[ArduinoDataHumidity.List.length - 1];
     //luminosidade = ArduinoDataLuminosity.List[ArduinoDataLuminosity.List.length -1]
