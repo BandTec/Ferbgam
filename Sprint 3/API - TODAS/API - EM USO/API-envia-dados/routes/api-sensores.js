@@ -21,7 +21,7 @@ router.get("/sendData/:vetorSalas", (request, response) => {
     let vetorSalas = request.params.vetorSalas;
 
     var instrucaoSql = "";
-
+    vetorSalas = JSON.parse(vetorSalas);
     vetorSalas = Array.from(vetorSalas);
 
 
