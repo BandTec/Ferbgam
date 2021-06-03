@@ -184,7 +184,7 @@ listarSalas = () => {
             });
 
             // var http = new XMLHttpRequest();
-            fetch('http://localhost:9001/api/sendData/a').then(response => {
+            fetch(`http://localhost:9001/api/sendData/${JSON.stringify(data)}`).then(response => {
                 if (response.ok) {
                     response.json().then(data => {
                         console.log(data);
