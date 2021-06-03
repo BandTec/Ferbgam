@@ -8,6 +8,8 @@ var env = process.env.NODE_ENV || 'development';
 
 //Pegar todas as salas 
 router.get('/:idEmpresa', async (req, res, next) => {
+    res.setHeader('Access-Control-Allow-Origin', '*');
+
     const idEmpresa = req.params.idEmpresa;
     let salas;
     let novasSalas = [];
@@ -19,10 +21,10 @@ router.get('/:idEmpresa', async (req, res, next) => {
             salas.forEach((sala, index, array) => {
 
                 let instrucaoSql = `
-            SELECT sensor.tipoLeitura, sensor.statusSensor FROM tb_sensor as sensor
-            INNER JOIN tb_sala as sala
-            ON sensor.fkSala = sala.idSala
-            WHERE fkSala = ${sala.idSala}`;
+                    SELECT sensor.idSensor, sensor.tipoLeitura ,sensor.statusSensor FROM tb_sensor as sensor
+                        INNER JOIN tb_sala as sala
+                            ON sensor.fkSala = sala.idSala
+                        WHERE fkSala = ${sala.idSala};`;
 
                 sequelize.query(instrucaoSql, {
                     model: Sala

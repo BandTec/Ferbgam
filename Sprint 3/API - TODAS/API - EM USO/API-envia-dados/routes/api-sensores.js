@@ -1,7 +1,7 @@
 var express = require('express');
 var router = express.Router();
 var sequelize = require('../models').sequelize;
-// var Leitura = require('../models').Leitura;
+var Leitura = require('../models').Leitura;
 var env = process.env.NODE_ENV || 'development';
 
 const { ArduinoDataTemp } = require("../app-sensores/newserial");
@@ -12,11 +12,21 @@ const { ArduinoDataLuminosity } = require("../app-sensores/serialLuminosidity");
 
 router.get("/sendData/:vetorSalas", (request, response) => {
     //MUDEI PRA PERMITIR QUE O LOCALHOST:3000 ACESSE A ROTA COM PASSAGEM DE PARÂMETROS!!!!! PS: a
-    response.setHeader('Access-Control-Allow-Origin', 'http://localhost:3000');
+    response.setHeader('Access-Control-Allow-Origin', '*');
 
-    const temperature = ArduinoDataTemp.List[ArduinoDataTemp.List.length - 1];
+
+    function lm35(min, max) {
+        min = typeof min == 'undefined' ? 5 : min;
+        max = typeof max == 'undefined' ? 30 : max;
+
+        let random = Math.random() * (max - min) + min;
+
+        return random
+    }
+
+    const temperature = lm35(5, 40);
     const Humidity = ArduinoDataHumidity.List[ArduinoDataHumidity.List.length - 1];
-    //luminosidade = ArduinoDataLuminosity.List[ArduinoDataLuminosity.List.length -1]
+    const luminosidade = ArduinoDataLuminosity.List[ArduinoDataLuminosity.List.length - 1]
 
     let vetorSalas = request.params.vetorSalas;
 
@@ -39,10 +49,40 @@ router.get("/sendData/:vetorSalas", (request, response) => {
             (1,default,'${temperature + 30}'),
             (1,default,'${temperature + 5}');`;
         } else {
-            instrucaoSql = `INSERT INTO tb_leitura (fkSensor, dataHoraRegister, valorLeitura) VALUES 
-            (1,default,'${Humidity + 20}'),
-            (1,default,'${temperature + 30}'),
-            (1,default,'${temperature + 5}');`;
+
+            vetorSalas.forEach(sala => {
+                sala.sensores.forEach(sensor => {
+                    if (sensor.statusSensor == 'ativo') {
+                        let valorLeitura = 0;
+
+                        if (sensor.tipoLeitura == "temperatura") {
+                            valorLeitura = temperature;
+                        } else if (sensor.tipoLeitura == 'umidade') {
+                            valorLeitura = Humidity;
+                        } else {
+                            valorLeitura = luminosidade;
+                        }
+
+                        instrucaoSql = `INSERT into tb_leitura (fkSensor, dataHoraRegister, valorLeitura) 
+                        values  
+                            (${sensor.idSensor},default,${valorLeitura});
+                        `;
+
+                        sequelize.query(instrucaoSql, {
+                            model: Leitura,
+                            mapToModel: true
+                        }).then(resultado => {
+                            console.log(`\n\nRegistro inserido com sucesso!\nO comando executado foi como abaixo:\n`);
+                            console.log(instrucaoSql)
+                            console.log(`\nFim do comando SQL executado.`);
+                        }).catch(erro => {
+                            console.error(erro);
+                            response.status(500).send(erro.message);
+                        });
+                    }
+
+                })
+            });
         }
     }
 
@@ -74,8 +114,9 @@ router.get("/sendData/:vetorSalas", (request, response) => {
         setInstrucao('dbo');
     }
 
+    response.send({ text: 'Dados sendo inseridos...' });
 
-    response.send(vetorSalas);
+
     // sequelize.query(instrucaoSql, {
     //     //model: Leitura,
     //     //mapToModel: true

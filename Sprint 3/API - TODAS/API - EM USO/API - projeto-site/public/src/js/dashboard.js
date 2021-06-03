@@ -155,8 +155,9 @@ listSensors = (data) => {
 
 
 
+let salasObject;
 
-listarSalas = () => {
+listarSalas = async () => {
 
     let containerSalas = document.querySelector('.rooms-container');
 
@@ -179,20 +180,11 @@ listarSalas = () => {
                     </div>
                 </div>`;
 
-                console.log(sala);
 
             });
 
-            // var http = new XMLHttpRequest();
-            fetch(`http://localhost:9001/api/sendData/${JSON.stringify(data)}`).then(response => {
-                if (response.ok) {
-                    response.json().then(data => {
-                        console.log(data);
-                    })
-                }
-            });
-            // http.send(null);
-
+            console.log(data);
+            salasObject = data;
 
         })
     });
@@ -209,5 +201,17 @@ listarSalas = () => {
 
 listarSalas();
 
+
+setInterval(() => {
+    if (salasObject != null && salasObject != undefined) {
+        fetch(`http://localhost:9001/api/sendData/${JSON.stringify(salasObject)}`).then(response => {
+            if (response.ok) {
+                response.json().then(data => {
+                    console.log(data);
+                })
+            }
+        });
+    }
+}, 5000)
 
 
