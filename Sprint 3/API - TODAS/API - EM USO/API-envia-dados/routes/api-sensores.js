@@ -114,8 +114,8 @@ router.get("/sendData/:vetorSalas", (request, response) => {
         setInstrucao('dbo');
     }
 
-    response.send({ text: 'Dados sendo inseridos...' });
 
+    response.send({ text: 'Dados sendo inseridos' });
 
     // sequelize.query(instrucaoSql, {
     //     //model: Leitura,

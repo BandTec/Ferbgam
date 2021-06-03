@@ -176,7 +176,7 @@ listarSalas = async () => {
                         <h4>Sensores: 
                         ${listSensors(sala)}
                         </h4>
-                        <h4>Status: <i class='fas fa-circle ideal'></i> </h4>
+                        <h4>Status: <i id='status-${sala.idSala}' class='fas fa-circle ideal'></i> </h4>
                     </div>
                 </div>`;
 
@@ -202,16 +202,56 @@ listarSalas = async () => {
 listarSalas();
 
 
+
+let verificar = (tipoLeitura, valorLeitura) => {
+    if (tipoLeitura == 'temperatura') {
+        if (valorLeitura >= 20 && valorLeitura <= 24) {
+            return 'green';
+        } else {
+            return 'red';
+        }
+    } else if (tipoLeitura == 'umidade') {
+        if (valorLeitura >= 40 && valorLeitura <= 60) {
+            return 'green';
+        } else {
+            return 'red';
+        }
+    } else {
+        if (valorLeitura >= 500 && valorLeitura <= 1000) {
+            return 'green';
+        } else {
+            return 'false';
+        }
+    }
+}
+
 setInterval(() => {
     if (salasObject != null && salasObject != undefined) {
         fetch(`http://localhost:9001/api/sendData/${JSON.stringify(salasObject)}`).then(response => {
             if (response.ok) {
                 response.json().then(data => {
                     console.log(data);
+
+                    salasObject.forEach(sala => {
+                        fetch(`/leituras/ultimaPorSala/${sala.idSala}`).then(response => {
+                            if (response.ok) {
+                                response.json().then(data => {
+                                    console.log(data);
+                                    if (data.length != 0) {
+                                        console.log('valor: ' + data[data.length - 1].valorLeitura + '\n' + 'tipo: ' + data[0].tipoLeitura + '\n' + 'status: ' + verificar(data[data.length - 1].tipoLeitura, data[data.length - 1].valorLeitura));
+                                        document.getElementById(`status-${sala.idSala}`).style.color = verificar(data[data.length - 1].tipoLeitura, data[data.length - 1].valorLeitura);
+                                    } else {
+                                        document.getElementById(`status-${sala.idSala}`).style.color = 'red';
+                                    }
+                                })
+                            }
+                        })
+                    })
+
                 })
             }
         });
     }
-}, 5000)
+}, 5000);
 
 

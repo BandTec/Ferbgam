@@ -52,6 +52,49 @@ router.get('/ultimas/:tipoLeitura', function (req, res, next) {
 });
 
 
+
+router.get('/ultimaPorSala/:idSala', function (req, res, next) {
+
+	var idSala = req.params.idSala;
+
+	let instrucaoSql = "";
+
+	if (env == 'dev') {
+		// abaixo, escreva o select de dados para o Workbench
+		instrucaoSql = `
+			select l.idLeitura, l.valorLeitura ,s.tipoLeitura  from tb_leitura as l join tb_sensor as s on fkSensor = idSensor
+				join tb_sala on fkSala = idSala
+				WHERE idSala = ${idSala}
+				ORDER BY l.idLeitura DESC LIMIT 1;`;
+
+	} else if (env == 'production') {
+		// abaixo, escreva o select de dados para o SQL Server
+		// instrucaoSql = `select top ${limite_linhas} 
+		// temperatura, 
+		// umidade, 
+		// momento,
+		// FORMAT(momento,'HH:mm:ss') as momento_grafico
+		// from leitura
+		// where fkcaminhao = ${idcaminhao}
+		// order by id desc`;
+	} else {
+		console.log("\n\n\n\nVERIFIQUE O VALOR DE LINHA 1 EM APP.JS!\n\n\n\n")
+	}
+
+	sequelize.query(instrucaoSql, {
+		model: Leitura,
+		mapToModel: true
+	})
+		.then(resultado => {
+			return res.status(200).json(resultado[0]);
+		}).catch(erro => {
+			console.error(erro);
+			res.status(500).send(erro.message);
+		});
+});
+
+
+
 router.get('/tempo-real/:idcaminhao', function (req, res, next) {
 	console.log('Recuperando caminhões');
 
