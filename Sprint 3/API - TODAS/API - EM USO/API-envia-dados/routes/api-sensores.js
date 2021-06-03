@@ -10,16 +10,25 @@ const { ArduinoDataHumidity } = require("../app-sensores/serialHumidity");
 const { ArduinoDataSwitch } = require("../app-sensores/serialSwitch");
 const { ArduinoDataLuminosity } = require("../app-sensores/serialLuminosidity");
 
-router.get("/sendData", (request, response) => {
+router.get("/sendData/:vetorSalas", (request, response) => {
     const temperature = ArduinoDataTemp.List[ArduinoDataTemp.List.length - 1];
     const Humidity = ArduinoDataHumidity.List[ArduinoDataHumidity.List.length - 1];
     //luminosidade = ArduinoDataLuminosity.List[ArduinoDataLuminosity.List.length -1]
 
-    var instrucaoSql = ""
+    let vetorSalas = request.params.vetorSalas;
+
+    var instrucaoSql = "";
+
+    vetorSalas = Array.from(vetorSalas);
+
 
 
     setInstrucao = (dbo) => {
         if (dbo != undefined && dbo != '' && dbo != null) {
+
+
+
+
             instrucaoSql = `INSERT into tb_leitura (fkSensor, dataHoraRegister, valorLeitura)
             values 
             
@@ -62,18 +71,20 @@ router.get("/sendData", (request, response) => {
         setInstrucao('dbo');
     }
 
-    sequelize.query(instrucaoSql, {
-        //model: Leitura,
-        //mapToModel: true
-    }).then(resultado => {
-        console.log(`\n\nRegistro inserido com sucesso!\nO comando executado foi como abaixo:\n`);
-        console.log(instrucaoSql)
-        console.log(`\nFim do comando SQL executado.`);
-        response.status(200).send("Dado inserido com sucesso.");
-    }).catch(erro => {
-        console.error(erro);
-        response.status(500).send(erro.message);
-    });
+
+    response.send(vetorSalas);
+    // sequelize.query(instrucaoSql, {
+    //     //model: Leitura,
+    //     //mapToModel: true
+    // }).then(resultado => {
+    //     console.log(`\n\nRegistro inserido com sucesso!\nO comando executado foi como abaixo:\n`);
+    //     console.log(instrucaoSql)
+    //     console.log(`\nFim do comando SQL executado.`);
+    //     response.status(200).send("Dado inserido com sucesso.");
+    // }).catch(erro => {
+    //     console.error(erro);
+    //     response.status(500).send(erro.message);
+    // });
 });
 
 function agora() {

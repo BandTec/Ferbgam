@@ -168,7 +168,7 @@ listarSalas = () => {
 
             data.forEach(sala => {
                 containerSalas.innerHTML += `
-                <div class="boxes-item">
+                <div id=${sala.idSala} class="boxes-item">
                     <h3>${sala.nomeSala}</h3>
                     <div class="box-text">
                         <p>${sala.descricao}</p>
@@ -183,8 +183,18 @@ listarSalas = () => {
 
             });
 
+            var http = new XMLHttpRequest();
+            http.open('GET', `http://localhost:9001/api/sendData/${data}`, false);
+            http.send(null);
+
+
         })
-    })
+    });
+
+
+
+
+
 }
 
 
@@ -192,3 +202,6 @@ listarSalas = () => {
 
 
 listarSalas();
+
+
+
