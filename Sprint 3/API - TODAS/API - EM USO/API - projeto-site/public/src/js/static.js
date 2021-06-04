@@ -1,5 +1,6 @@
-document.title = sessionStorage.getItem('nomeSala');
-
+let sala = sessionStorage.getItem('sala');
+sala = JSON.parse(sala);
+document.title = sala.nomeSala;
 
 let contextLuminosity = document.querySelector('#chartLuminosity').getContext('2d');
 

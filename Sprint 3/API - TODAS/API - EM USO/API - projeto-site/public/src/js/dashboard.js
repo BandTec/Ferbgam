@@ -154,7 +154,6 @@ listSensors = (data) => {
 }
 
 
-
 let salasObject;
 
 listarSalas = async () => {
@@ -167,7 +166,7 @@ listarSalas = async () => {
         response.json().then(data => {
 
 
-            data.forEach(sala => {
+            data.forEach((sala, index, array) => {
                 containerSalas.innerHTML += `
                 <div id=${sala.idSala} class="boxes-item">
                     <h3>${sala.nomeSala}</h3>
@@ -183,22 +182,18 @@ listarSalas = async () => {
                     </div>
                 </div>`;
 
-
             });
 
-            console.log(data);
             salasObject = data;
-
-
-            document.querySelectorAll('.boxes-item').forEach((sala) => {
-                document.getElementById(sala.id).addEventListener('click', () => {
-
-                    sessionStorage.setItem('nomeSala', document.getElementById(sala.id).getElementsByTagName('h3')[0].innerHTML);
-                    sessionStorage.setItem('idSala', sala.id);
+            console.log(salasObject);
+            salasObject.forEach((sala) => {
+                document.getElementById(sala.idSala).addEventListener('click', () => {
+                    sessionStorage.setItem('sala', JSON.stringify(sala));
 
                     window.location.href = 'sala.html';
                 })
             })
+
 
         })
     });

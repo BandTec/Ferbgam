@@ -59,6 +59,29 @@ router.get('/:idEmpresa', async (req, res, next) => {
 
 
 
+router.get('/leituras/:idSala', (req, res, next) => {
+
+    const idSala = req.params.idSala;
+
+    let instrucaoSql = `
+             select l.idLeitura, l.fkSensor, l.valorLeitura, s.tipoLeitura  from tb_leitura as l join tb_sensor as s on fkSensor = idSensor
+                join tb_sala on fkSala = idSala
+                WHERE idSala = ${idSala}
+                order by l.idLeitura DESC LIMIT 3;`;
+
+    sequelize.query(instrucaoSql, {
+        model: Sala
+    }).then(resultado => {
+        res.send(resultado);
+    })
+
+
+
+
+});
+
+
+
 
 
 
