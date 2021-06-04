@@ -5,7 +5,6 @@ var Sala = require('../models').Sala;
 var env = process.env.NODE_ENV || 'development';
 
 
-
 //Pegar todas as salas 
 router.get('/:idEmpresa', async (req, res, next) => {
     res.setHeader('Access-Control-Allow-Origin', '*');
@@ -29,6 +28,7 @@ router.get('/:idEmpresa', async (req, res, next) => {
                 sequelize.query(instrucaoSql, {
                     model: Sala
                 }).then(resultado => {
+
                     novasSalas.push({
                         idSala: sala.idSala,
                         nomeSala: sala.nomeSala,

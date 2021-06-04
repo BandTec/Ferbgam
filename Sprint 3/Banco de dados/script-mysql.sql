@@ -1,6 +1,8 @@
 create database relax;
 use relax;
 
+
+
 create table tb_empresa (
 	idEmpresa int primary key auto_increment,
     loginEmpresa varchar(50) unique,
@@ -110,8 +112,46 @@ select * from tb_sensor;
 
 
 
+SELECT * FROM tb_leitura WHERE idLeitura = 2892;
 
 
+
+SELECT sensor.tipoSensor ,sensor.tipoLeitura, sensor.unidadeMedida ,sensor.statusSensor FROM tb_sensor as sensor
+ 	INNER JOIN tb_sala as sala 
+		ON sensor.fkSala = sala.idSala
+	WHERE fkSala = 3;
+
+
+insert into tb_sala values 
+	(null,'Sala 2',34.5,'Sala de atendimento',default,1),
+	(null,'Sala 3',44.3,'Sala de testes','15',1),
+	(null,'Sala 4',30,'Servidor','4',1),
+	(null,'Sala 5',25.4,'Arquivo','5',1);
+	
+    
+insert into tb_sensor values
+	(null,'dht11','temperatura','ativo','°C',1),
+	(null,'dht11','umidade','manutenção','UR %',1),
+	(null,'ldr','luminosidade','inativo','Lux',1),
+    (null,'dht11','temperatura','ativo','°C',7),
+	(null,'dht11','umidade','manutenção','UR %',7),
+	(null,'ldr','luminosidade','inativo','Lux',7),
+    (null,'dht11','temperatura','ativo','°C',8),
+	(null,'dht11','umidade','inativo','UR %',8),
+	(null,'ldr','luminosidade','manutenção','Lux',8),
+    (null,'dht11','temperatura','inativo','°C',9),
+	(null,'dht11','umidade','ativo','UR %',9),
+	(null,'ldr','luminosidade','ativo','Lux',9),
+    (null,'dht11','temperatura','inativo','°C',10),
+	(null,'dht11','umidade','manutenção','UR %',10),
+	(null,'ldr','luminosidade','inativo','Lux',10);
+    
+select l.idLeitura, l.valorLeitura ,s.tipoLeitura  from tb_leitura as l join tb_sensor as s on fkSensor = idSensor
+	join tb_sala on fkSala = idSala
+    WHERE idSala = 4
+    ORDER BY l.idLeitura DESC LIMIT 1;
+    
+select * from tb_leitura;
 
 
 

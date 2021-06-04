@@ -1,3 +1,6 @@
+document.title = sessionStorage.getItem('nomeSala');
+
+
 let contextLuminosity = document.querySelector('#chartLuminosity').getContext('2d');
 
 let config = {

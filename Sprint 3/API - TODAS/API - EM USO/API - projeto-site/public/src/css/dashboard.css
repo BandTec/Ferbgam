@@ -238,6 +238,18 @@ a {
     margin-left: 6px;
 }
 
+.loading {
+    display: none !important;
+}
+
+.loaded {
+    display: none !important;
+}
+
+.cyan-blue {
+    color: #42b7d8;
+}
+
 .page-salas .box-text .critico {
     color: darkred;
     margin-left: 6px;

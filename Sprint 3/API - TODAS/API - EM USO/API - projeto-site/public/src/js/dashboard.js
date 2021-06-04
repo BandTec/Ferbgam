@@ -161,7 +161,7 @@ listarSalas = async () => {
 
     let containerSalas = document.querySelector('.rooms-container');
 
-    fetch(`/salas/${user.idEmpresa}`, {
+    await fetch(`/salas/${user.idEmpresa}`, {
         method: 'GET'
     }).then((response) => {
         response.json().then(data => {
@@ -176,7 +176,10 @@ listarSalas = async () => {
                         <h4>Sensores: 
                         ${listSensors(sala)}
                         </h4>
-                        <h4>Status: <i id='status-${sala.idSala}' class='fas fa-circle ideal'></i> </h4>
+                        <h4>Status: 
+                        <i id="loading-${sala.idSala}"class="fas fa-sync-alt fa-spin cyan-blue"></i>
+                        <i id='status-${sala.idSala}' class='fas fa-circle ideal loading'></i> 
+                        </h4>
                     </div>
                 </div>`;
 
@@ -186,11 +189,19 @@ listarSalas = async () => {
             console.log(data);
             salasObject = data;
 
+
+            document.querySelectorAll('.boxes-item').forEach((sala) => {
+                document.getElementById(sala.id).addEventListener('click', () => {
+
+                    sessionStorage.setItem('nomeSala', document.getElementById(sala.id).getElementsByTagName('h3')[0].innerHTML);
+                    sessionStorage.setItem('idSala', sala.id);
+
+                    window.location.href = 'sala.html';
+                })
+            })
+
         })
     });
-
-
-
 
 
 }
@@ -225,7 +236,7 @@ let verificar = (tipoLeitura, valorLeitura) => {
     }
 }
 
-setInterval(() => {
+inserirDados = () => {
     if (salasObject != null && salasObject != undefined) {
         fetch(`http://localhost:9001/api/sendData/${JSON.stringify(salasObject)}`).then(response => {
             if (response.ok) {
@@ -239,8 +250,13 @@ setInterval(() => {
                                     console.log(data);
                                     if (data.length != 0) {
                                         console.log('valor: ' + data[data.length - 1].valorLeitura + '\n' + 'tipo: ' + data[0].tipoLeitura + '\n' + 'status: ' + verificar(data[data.length - 1].tipoLeitura, data[data.length - 1].valorLeitura));
+
+                                        document.getElementById(`loading-${sala.idSala}`).classList.add('loaded');
+                                        document.getElementById(`status-${sala.idSala}`).classList.remove('loading');
                                         document.getElementById(`status-${sala.idSala}`).style.color = verificar(data[data.length - 1].tipoLeitura, data[data.length - 1].valorLeitura);
                                     } else {
+                                        document.getElementById(`loading-${sala.idSala}`).classList.add('loaded');
+                                        document.getElementById(`status-${sala.idSala}`).classList.remove('loading');
                                         document.getElementById(`status-${sala.idSala}`).style.color = 'red';
                                     }
                                 })
@@ -252,6 +268,11 @@ setInterval(() => {
             }
         });
     }
+}
+
+
+setInterval(() => {
+    // inserirDados();
 }, 5000);
 
 
