@@ -2,6 +2,41 @@ let sala = sessionStorage.getItem('sala');
 sala = JSON.parse(sala);
 document.title = sala.nomeSala;
 
+
+let qtdTemp = 0;
+let qtdHumi = 0;
+let qtdLumi = 0;
+
+
+
+for (let i = 0; i < sala.sensores.length - 1; i++) {
+    if (sala.sensores[i].statusSensor == 'ativo' && sala.sensores[i].tipoLeitura == 'temperatura') {
+        qtdTemp++;
+    }
+
+    if (sala.sensores[i].statusSensor == 'ativo' && sala.sensores[i].tipoLeitura == 'luminosidade') {
+        qtdLumi++;
+    }
+
+    if (sala.sensores[i].statusSensor == 'ativo' && sala.sensores[i].tipoLeitura == 'umidade') {
+        qtdHumi++;
+    }
+}
+
+
+
+
+console.log(qtdTemp);
+console.log(qtdHumi);
+console.log(qtdLumi);
+
+
+
+
+
+
+
+
 let contextLuminosity = document.querySelector('#chartLuminosity').getContext('2d');
 
 let config = {
@@ -39,7 +74,6 @@ let config = {
 
 
 
-let chartLuminosity = new Chart(contextLuminosity, config);
 
 
 let contextTemperature = document.querySelector('#chartTemperature').getContext('2d');
@@ -79,7 +113,6 @@ let configTemp = {
     }
 };
 
-let chartTemperature = new Chart(contextTemperature, configTemp);
 
 
 
@@ -122,4 +155,42 @@ let configHumi = {
     }
 };
 
-let chartHumidity = new Chart(contextHumidity, configHumi);
+
+
+if (qtdTemp > 0) {
+
+
+    let chartTemperature = new Chart(contextTemperature, configTemp);
+
+} else {
+    document.getElementById('chartTemperature').classList.add('occult');
+    document.getElementById('temp-block').classList.remove('occult');
+}
+
+
+
+
+
+if (qtdHumi > 0) {
+
+    let chartHumidity = new Chart(contextHumidity, configHumi);
+
+
+} else {
+    document.getElementById('chartHumidity').classList.add('occult');
+    document.getElementById('humi-block').classList.remove('occult');
+}
+
+
+
+
+
+if (qtdLumi > 0) {
+
+    let chartLuminosity = new Chart(contextLuminosity, config);
+
+
+} else {
+    document.getElementById('chartLuminosity').classList.add('occult');
+    document.getElementById('lumi-block').classList.remove('occult');
+}

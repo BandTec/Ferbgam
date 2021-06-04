@@ -107,3 +107,12 @@
 .round-color.ex-high {
     background-color: #d50606;
 }
+
+.blocked {
+    font-size: 253.7px;
+    color: #adadad;
+}
+
+.occult {
+    display: none !important;
+}
