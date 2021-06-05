@@ -42,7 +42,7 @@ let contextLuminosity = document.querySelector('#chartLuminosity').getContext('2
 let config = {
     type: 'bar',
     data: {
-        labels: ['20:00', '19:00', '18:00', '17:00', '16:00', '15:00', '14:00', '13:00'],
+        labels: [],
         datasets: [{
             label: 'Lux',
             data: [1200, 500, 750, 984, 1000, 475, 1600, 800],
@@ -83,10 +83,10 @@ let contextTemperature = document.querySelector('#chartTemperature').getContext(
 let configTemp = {
     type: 'bar',
     data: {
-        labels: ['20:00', '19:00', '18:00', '17:00', '16:00', '15:00', '14:00', '13:00'],
+        labels: [],
         datasets: [{
             label: 'Cº',
-            data: [30, 19, 23, 26, 15, 28, 20, 40],
+            data: [],
             backgroundColor: [
                 '#FF8800',
                 '#FFBB33',
@@ -124,10 +124,10 @@ let contextHumidity = document.querySelector('#chartHumidity').getContext('2d');
 let configHumi = {
     type: 'bar',
     data: {
-        labels: ['20:00', '19:00', '18:00', '17:00', '16:00', '15:00', '14:00', '13:00'],
+        labels: [],
         datasets: [{
             label: '%',
-            data: [10, 30, 98, 85, 20, 54, 77, 5],
+            data: [],
             backgroundColor: [
                 '#FFFF25',
                 '#FFBB33',
@@ -155,12 +155,15 @@ let configHumi = {
     }
 };
 
+let chartTemperature;
+let chartHumidity;
+let chartLuminosity;
 
 
 if (qtdTemp > 0) {
 
 
-    let chartTemperature = new Chart(contextTemperature, configTemp);
+    chartTemperature = new Chart(contextTemperature, configTemp);
 
 } else {
     document.getElementById('chartTemperature').classList.add('occult');
@@ -173,7 +176,7 @@ if (qtdTemp > 0) {
 
 if (qtdHumi > 0) {
 
-    let chartHumidity = new Chart(contextHumidity, configHumi);
+    chartHumidity = new Chart(contextHumidity, configHumi);
 
 
 } else {
@@ -187,10 +190,63 @@ if (qtdHumi > 0) {
 
 if (qtdLumi > 0) {
 
-    let chartLuminosity = new Chart(contextLuminosity, config);
+    chartLuminosity = new Chart(contextLuminosity, config);
 
 
 } else {
     document.getElementById('chartLuminosity').classList.add('occult');
     document.getElementById('lumi-block').classList.remove('occult');
 }
+
+console.log(sala);
+let salaArray = [sala];
+
+setInterval(() => {
+
+    fetch(`http://localhost:9001/api/sendData/${JSON.stringify(salaArray)}`).then(response => {
+        response.json().then(data => {
+            console.log(data);
+            fetch(`/leituras/ultimasPorSala/${sala.idSala}/${qtdHumi + qtdLumi + qtdTemp}`).then(response => {
+                if (response.ok) {
+                    response.json().then(data => {
+                        data.forEach(leitura => {
+
+                            if (leitura.tipoLeitura == 'temperatura') {
+                                chartTemperature.data.labels.push(leitura.valorLeitura);
+                                chartTemperature.data.datasets[0].data.push(leitura.valorLeitura);
+                                chartTemperature.update();
+                            }
+
+                            if (leitura.tipoLeitura == 'umidade') {
+                                chartHumidity.data.labels.push(leitura.valorLeitura);
+                                chartHumidity.data.datasets[0].data.push(leitura.valorLeitura);
+                                chartHumidity.update();
+                            }
+
+                            if (leitura.tipoLeitura == 'luminosidade') {
+                                chartLuminosity.data.labels.push(leitura.valorLeitura);
+                                chartLuminosity.data.datasets[0].data.push(leitura.valorLeitura);
+                                chartLuminosity.update();
+                            }
+
+
+                        });
+                    })
+                }
+            })
+        })
+    });
+
+
+}, 2000);
+
+
+
+
+// let contadoraaa = 0;
+// setInterval(() => {
+//     let teste = parseInt(Math.random() * 100);
+//     chartTemperature.data.labels.push(contadoraaa++);
+//     chartTemperature.data.datasets[0].data.push(teste)
+//     chartTemperature.update();
+// }, 2000)
