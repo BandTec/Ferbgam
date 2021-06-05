@@ -49,16 +49,7 @@ let config = {
         datasets: [{
             label: 'Lux',
             data: [1200, 500, 750, 984, 1000, 475, 1600, 800],
-            backgroundColor: [
-                '#d50606',
-                '#548235',
-                '#548235',
-                '#FF8800',
-                '#d50606',
-                '#FF8800',
-                '#d50606',
-                '#548235',
-            ],
+            backgroundColor: [],
             borderWidth: 1
         }]
     },
@@ -90,16 +81,7 @@ let configTemp = {
         datasets: [{
             label: 'Cº',
             data: [],
-            backgroundColor: [
-                '#FF8800',
-                '#FFBB33',
-                '#548235',
-                '#FF8800',
-                '#FFFF25',
-                '#FF8800',
-                '#548235',
-                '#d50606',
-            ],
+            backgroundColor: [],
             borderWidth: 1
         }]
     },
@@ -131,17 +113,7 @@ let configHumi = {
         datasets: [{
             label: '%',
             data: [],
-            backgroundColor: [
-                '#FFFF25',
-                '#FFBB33',
-                '#d50606',
-                '#d50606',
-                '#FFFF25',
-                '#548235',
-                '#d50606',
-                '#FFFF25',
-
-            ],
+            backgroundColor: [],
             borderWidth: 1
         }]
     },
@@ -209,27 +181,75 @@ let salaArray = [sala];
 
 inChart = (tipoLeitura, valorLeitura) => {
     let elemento;
+    let bgColor;
     if (tipoLeitura == 'temperatura') {
         elemento = chartTemperature;
+        if (valorLeitura < 16.0) {
+            bgColor = '#FFFF25'
+        } else if (valorLeitura < 20.0) {
+            bgColor = '#FFBB33'
+        } else if (valorLeitura <= 24.0) {
+            bgColor = '#548235'
+        } else if (valorLeitura <= 32.0) {
+            bgColor = '#FF8800'
+        } else {
+            bgColor = '#d50606'
+        }
+
     } else if (tipoLeitura == 'umidade') {
         elemento = chartHumidity;
+        if (valorLeitura < 30) {
+            // console.log('Extremamente Baixo');
+            bgColor = '#FFFF25';
+        } else if (valorLeitura < 40) {
+            // console.log('Baixo')
+            bgColor = '#FFBB33';
+        } else if (valorLeitura <= 60) {
+            // console.log('Ideal');
+            bgColor = '#548235';
+        } else if (valorLeitura <= 70) {
+            // console.log('Alta');
+            bgColor = '#FF8800';
+        } else {
+            // console.log('Extremamente Alta');
+            bgColor = '#d50606';
+        }
+
     } else {
         elemento = chartLuminosity;
+        if (valorLeitura < 375) {
+            // console.log('Extremamente Baixo');
+            bgColor = '#FFFF25'
+        } else if (valorLeitura < 500) {
+            // console.log('Baixo');
+            bgColor = '#FFBB33'
+        } else if (valorLeitura <= 1000) {
+            // console.log('Ideal')
+            bgColor = '#548235'
+        } else if (valorLeitura <= 1125) {
+            // console.log('Alta')
+            bgColor = '#FF8800'
+        } else {
+            // console.log('Extremamente Alta')
+            bgColor = '#d50606'
+        }
     }
-
 
 
 
     if (elemento.data.labels.length < 8) {
         elemento.data.labels.push(valorLeitura);
         elemento.data.datasets[0].data.push(valorLeitura);
+        elemento.data.datasets[0].backgroundColor.push(bgColor);
         elemento.update();
 
     } else {
         elemento.data.labels.shift();
         elemento.data.datasets[0].data.shift();
+        elemento.data.datasets[0].backgroundColor.shift();
         elemento.data.labels.push(valorLeitura);
         elemento.data.datasets[0].data.push(valorLeitura);
+        elemento.data.datasets[0].backgroundColor.push(bgColor);
         elemento.update();
     }
 

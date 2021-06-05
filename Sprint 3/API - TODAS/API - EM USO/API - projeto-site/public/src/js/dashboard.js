@@ -267,7 +267,7 @@ inserirDados = () => {
 
 
 setInterval(() => {
-    // inserirDados();
+    inserirDados();
 }, 5000);
 
 
