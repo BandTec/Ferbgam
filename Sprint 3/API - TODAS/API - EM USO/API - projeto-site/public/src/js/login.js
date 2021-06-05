@@ -1,4 +1,6 @@
 
+// import generateAlert from "./alerts.js";
+
 // FUNÇÃO QUE VERIFICA O TIPO DE LOGIN
 function login() {
     var radioBtn = document.getElementById('radio_empresa');
@@ -11,6 +13,10 @@ function login() {
         loginResponsavel(form);
     }
 }
+
+
+
+
 
 
 // FUNÇÃO QUE FAZ A REQUISIÇÃO DE LOGIN COMO EMPRESA
@@ -32,9 +38,9 @@ function loginEmpresa(form) {
 
         } else {
             console.log('Erro de login!');
-            response.text().then(error_desc => {
-                console.error(error_desc);
-            });
+
+            generateAlert(document.getElementById('container'), 'danger', 'Usuário ou senha inválidos!')
+
         }
     });
 
@@ -57,9 +63,8 @@ function loginResponsavel(form) {
 
         } else {
             console.log('Erro de login!');
-            response.text().then(error_desc => {
-                console.error(error_desc);
-            });
+            generateAlert(document.getElementById('container'), 'danger', 'Usuário ou senha inválidos!')
+
         }
     });
 

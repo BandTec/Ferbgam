@@ -108,7 +108,7 @@ select * from tb_empresa;
 select * from tb_responsavel;
 select * from tb_sala;
 select * from tb_leitura;
-select * from tb_sensor;
+select * from tb_sensor where idSensor = 27;
 
 
 
@@ -148,10 +148,21 @@ insert into tb_sensor values
     
 select l.idLeitura, l.valorLeitura ,s.tipoLeitura  from tb_leitura as l join tb_sensor as s on fkSensor = idSensor
 	join tb_sala on fkSala = idSala
-    WHERE idSala = 4
-    ORDER BY l.idLeitura DESC LIMIT 1;
+    WHERE idSala = 1
+    ORDER BY l.idLeitura DESC LIMIT 3;
+
+
+
+
+
+select l.idLeitura, l.fkSensor, l.valorLeitura, s.tipoLeitura  from tb_leitura as l join tb_sensor as s on fkSensor = idSensor
+	join tb_sala on fkSala = idSala
+    WHERE idSala = 3
+    order by l.idLeitura DESC LIMIT 3;
     
-select * from tb_leitura;
+    
+    
+select * from tb_leitura WHERE fkSensor = 10  order by idLeitura desc limit 1;
 
 
 

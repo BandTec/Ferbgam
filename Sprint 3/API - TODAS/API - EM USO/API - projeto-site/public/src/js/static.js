@@ -257,25 +257,25 @@ inChart = (tipoLeitura, valorLeitura) => {
 }
 
 
-setInterval(() => {
+// setInterval(() => {
 
-    fetch(`http://localhost:9001/api/sendData/${JSON.stringify(salaArray)}`).then(response => {
-        response.json().then(data => {
-            console.log(data);
-            fetch(`/leituras/ultimasPorSala/${sala.idSala}/${qtdHumi + qtdLumi + qtdTemp}`).then(response => {
-                if (response.ok) {
-                    response.json().then(data => {
-                        data.forEach(leitura => {
-                            inChart(leitura.tipoLeitura, leitura.valorLeitura);
-                        });
-                    })
-                }
-            })
-        })
-    });
+//     fetch(`http://localhost:9001/api/sendData/${JSON.stringify(salaArray)}`).then(response => {
+//         response.json().then(data => {
+//             console.log(data);
+//             fetch(`/leituras/ultimasPorSala/${sala.idSala}/${qtdHumi + qtdLumi + qtdTemp}`).then(response => {
+//                 if (response.ok) {
+//                     response.json().then(data => {
+//                         data.forEach(leitura => {
+//                             inChart(leitura.tipoLeitura, leitura.valorLeitura);
+//                         });
+//                     })
+//                 }
+//             })
+//         })
+//     });
 
 
-}, 2000);
+// }, 2000);
 
 
 

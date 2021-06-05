@@ -21,14 +21,14 @@ function generateAlert(context, type, text) {
         alert.style.borderLeft = '10px solid var(--darker-warning-color)';
         closeAlert.style.backgroundColor = 'var(--darker-warning-color)';
         closeAlert.style.color = 'var(--warning-color)';
-    }else if(type == 'danger') {
+    } else if (type == 'danger') {
         iconAlert.classList.add('fas', 'fa-times-circle');
         iconAlert.style.color = 'var(--darker-danger-color)';
         alert.style.backgroundColor = 'var(--danger-color)';
         alert.style.borderLeft = '10px solid var(--darker-danger-color)';
         closeAlert.style.backgroundColor = 'var(--darker-danger-color)';
         closeAlert.style.color = 'var(--danger-color)';
-    }else {
+    } else {
         iconAlert.classList.add('far', 'fa-check-circle');
     }
 
@@ -51,16 +51,16 @@ function generateAlert(context, type, text) {
             element.classList.remove('visible');
         }
     }
-    
+
     closeAlert.addEventListener('click', () => {
         closeAlertMsg(alert);
     })
 
 
-    
+
 
     timeout = (ms) => {
-        return new Promise(res => setTimeout(res,ms))
+        return new Promise(res => setTimeout(res, ms))
     }
 
     deleteAlert = async (alertElement) => {
@@ -74,3 +74,5 @@ function generateAlert(context, type, text) {
     }, 3000);
 
 }
+
+
