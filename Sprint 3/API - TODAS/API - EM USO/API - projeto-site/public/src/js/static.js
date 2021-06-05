@@ -2,6 +2,7 @@ let sala = sessionStorage.getItem('sala');
 sala = JSON.parse(sala);
 document.title = sala.nomeSala;
 
+console.log(sala);
 
 let qtdTemp = 0;
 let qtdHumi = 0;
@@ -9,20 +10,22 @@ let qtdLumi = 0;
 
 
 
-for (let i = 0; i < sala.sensores.length - 1; i++) {
+for (let i = 0; i < sala.sensores.length; i++) {
+
     if (sala.sensores[i].statusSensor == 'ativo' && sala.sensores[i].tipoLeitura == 'temperatura') {
         qtdTemp++;
     }
 
-    if (sala.sensores[i].statusSensor == 'ativo' && sala.sensores[i].tipoLeitura == 'luminosidade') {
-        qtdLumi++;
-    }
 
     if (sala.sensores[i].statusSensor == 'ativo' && sala.sensores[i].tipoLeitura == 'umidade') {
         qtdHumi++;
     }
-}
 
+
+    if (sala.sensores[i].statusSensor == 'ativo' && sala.sensores[i].tipoLeitura == 'luminosidade') {
+        qtdLumi++;
+    }
+}
 
 
 
@@ -198,8 +201,41 @@ if (qtdLumi > 0) {
     document.getElementById('lumi-block').classList.remove('occult');
 }
 
+
 console.log(sala);
 let salaArray = [sala];
+
+
+
+inChart = (tipoLeitura, valorLeitura) => {
+    let elemento;
+    if (tipoLeitura == 'temperatura') {
+        elemento = chartTemperature;
+    } else if (tipoLeitura == 'umidade') {
+        elemento = chartHumidity;
+    } else {
+        elemento = chartLuminosity;
+    }
+
+
+
+
+    if (elemento.data.labels.length < 8) {
+        elemento.data.labels.push(valorLeitura);
+        elemento.data.datasets[0].data.push(valorLeitura);
+        elemento.update();
+
+    } else {
+        elemento.data.labels.shift();
+        elemento.data.datasets[0].data.shift();
+        elemento.data.labels.push(valorLeitura);
+        elemento.data.datasets[0].data.push(valorLeitura);
+        elemento.update();
+    }
+
+
+}
+
 
 setInterval(() => {
 
@@ -210,26 +246,7 @@ setInterval(() => {
                 if (response.ok) {
                     response.json().then(data => {
                         data.forEach(leitura => {
-
-                            if (leitura.tipoLeitura == 'temperatura') {
-                                chartTemperature.data.labels.push(leitura.valorLeitura);
-                                chartTemperature.data.datasets[0].data.push(leitura.valorLeitura);
-                                chartTemperature.update();
-                            }
-
-                            if (leitura.tipoLeitura == 'umidade') {
-                                chartHumidity.data.labels.push(leitura.valorLeitura);
-                                chartHumidity.data.datasets[0].data.push(leitura.valorLeitura);
-                                chartHumidity.update();
-                            }
-
-                            if (leitura.tipoLeitura == 'luminosidade') {
-                                chartLuminosity.data.labels.push(leitura.valorLeitura);
-                                chartLuminosity.data.datasets[0].data.push(leitura.valorLeitura);
-                                chartLuminosity.update();
-                            }
-
-
+                            inChart(leitura.tipoLeitura, leitura.valorLeitura);
                         });
                     })
                 }
