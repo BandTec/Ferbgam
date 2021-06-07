@@ -230,6 +230,7 @@ let verificar = (tipoLeitura, valorLeitura) => {
     }
 }
 
+
 inserirDados = () => {
     if (salasObject != null && salasObject != undefined) {
         fetch(`http://localhost:9001/api/sendData/${JSON.stringify(salasObject)}`).then(response => {
@@ -264,6 +265,11 @@ inserirDados = () => {
     }
 }
 
+if (user.idEmpresa != undefined) {
+    document.getElementById('cadastro_responsavel').classList.remove('invisible')
+} else {
+    document.getElementById('cadastro_responsavel').classList.add('invisible')
+}
 
 setInterval(() => {
     // inserirDados();
