@@ -9,14 +9,15 @@ function loadContent() {
 
 }
 
+const redirect_login = () => window.location.href = 'login.html';
 
 function check_authenticate() {
     if (user == undefined) {
         redirect_login();
-    } else {
-        validate_session();
     }
-
+    //  else {
+    //     validate_session();
+    // }
 }
 
 
@@ -36,7 +37,7 @@ function validate_session() {
 }
 
 function log_out() {
-    finalize_session();
+    // finalize_session();
     sessionStorage.clear();
     redirect_login();
 }
@@ -45,9 +46,7 @@ function finalize_session() {
     fetch(`/empresas/sair/${user.loginEmpresa}`, { cache: 'no-store' });
 }
 
-function redirect_login() {
-    window.location.href = 'login.html';
-}
+
 
 
 
@@ -156,11 +155,11 @@ listSensors = (data) => {
 
 let salasObject;
 
-listarSalas = async () => {
+listarSalas = async() => {
 
     let containerSalas = document.querySelector('.rooms-container');
 
-    await fetch(`/salas/${user.idEmpresa}`, {
+    await fetch(`/salas/${user.idEmpresa != undefined ? user.idEmpresa: user.fkEmpresa}`, {
         method: 'GET'
     }).then((response) => {
         response.json().then(data => {
@@ -231,6 +230,7 @@ let verificar = (tipoLeitura, valorLeitura) => {
     }
 }
 
+
 inserirDados = () => {
     if (salasObject != null && salasObject != undefined) {
         fetch(`http://localhost:9001/api/sendData/${JSON.stringify(salasObject)}`).then(response => {
@@ -265,9 +265,12 @@ inserirDados = () => {
     }
 }
 
+if (user.idEmpresa != undefined) {
+    document.getElementById('cadastro_responsavel').classList.remove('invisible')
+} else {
+    document.getElementById('cadastro_responsavel').classList.add('invisible')
+}
 
 setInterval(() => {
     // inserirDados();
 }, 5000);
-
-

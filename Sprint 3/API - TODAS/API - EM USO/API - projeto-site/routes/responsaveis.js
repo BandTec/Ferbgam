@@ -37,20 +37,23 @@ router.post('/autenticarResponsavel', function (req, res, next) {
 });
 
 /* Cadastrar usuário */
-router.post('/cadastrar', function (req, res, next) {
+router.post('/cadastrar/:fkEmpresa', function (req, res, next) {
     console.log('Criando um usuário');
-
+    let idEmpresa = req.params.fkEmpresa;
     Responsavel.create({
-        loginResponsavel: req.body.login,
-        email: req.body.email,
-        senhaResponsavel: req.body.senha,
+        fkEmpresa: idEmpresa,
+        nomeResponsavel: req.body.nomeResponsavel,
+        loginResponsavel: req.body.loginResponsavel,
+        senhaResponsavel: req.body.cadastroPassword,
+        email: req.body.emailResponsavel,
+        telefone: req.body.celularResponsavel,
     }).then(resultado => {
-        console.log(`Registro criado: ${resultado}`)
-        res.send(resultado);
-    }).catch(erro => {
-        console.error(erro);
-        res.status(500).send(erro.message);
-    });
+            console.log(`Registro criado: ${resultado}`)
+            res.send(resultado);
+        }).catch(erro => {
+            console.error(erro);
+            res.status(500).send(erro.message);
+        });
 });
 
 

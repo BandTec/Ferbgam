@@ -1,4 +1,3 @@
-
 // import generateAlert from "./alerts.js";
 
 // FUNÇÃO QUE VERIFICA O TIPO DE LOGIN
@@ -8,8 +7,7 @@ function login() {
 
     if (radioBtn.checked) {
         loginEmpresa(form);
-    }
-    else {
+    } else {
         loginResponsavel(form);
     }
 }
@@ -57,7 +55,9 @@ function loginResponsavel(form) {
         if (response.ok) {
 
             response.json().then(json => {
-                console.log(response);
+                delete json.senhaResponsavel;
+
+                sessionStorage.setItem('user', JSON.stringify(json))
                 window.location.href = 'dashboard.html';
             });
 
@@ -70,6 +70,3 @@ function loginResponsavel(form) {
 
     return false;
 }
-
-
-
