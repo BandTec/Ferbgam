@@ -56,36 +56,51 @@
                 <hr class="pink-stroke" />
             </div>
             <div class="container-form">
-                <form action="" id="form_cadastroResponsavel" class="" autocomplete="off">
-                    <div class="input-field">
-                        <i class="fas fa-user"></i>
-                        <input id="userCadastro" type="text" name="nome" placeholder="Nome" required>
-                    </div>
-                    <div class="input-field">
-                        <i class="fas fa-user"></i>
-                        <input id="loginCadastro" type="text" name="loginResponsavel" placeholder="Usuário" required>
-                    </div>
-                    <div class="input-field">
-                        <i class="fas fa-user"></i>
-                        <input id="celularCadastro" type="tel" name="telCelular" placeholder="Telefone Celular" required>
-                    </div>
-                    <div class="input-field">
-                        <i class="fas fa-envelope"></i>
-                        <input id="emailCadastro" type="text" name="email" placeholder="E-mail" required>
-                    </div>
-                    <div id="error-message-email" class="error-message">
-                        <i class="fas fa-times-circle"></i>
-                        <p>E-mail inválido</p>
-                    </div>
-                    <div class="input-field">
-                        <i class="fas fa-lock"></i>
-                        <input id="cadastroPassword" onkeyup="checkPassword()" name="senha" type="password" placeholder="Senha" required>
-                    </div>
-                    <div class="input-field">
-                        <i class="fas fa-lock"></i>
-                        <input id="confirmacaoPassword" onkeyup="checkPassword()" type="password" placeholder="Confirme sua senha" required>
+                <form onsubmit="cadastroResponsavel()" action="javascript:void(0)" id="form_cadastroResponsavel"
+                    class="form-" autocomplete="off">
+                    <div class="sign-resp-container">
+
+
+                        <div class="sign-resp-first-column">
+                            <div class="input-field">
+                                <i class="fas fa-user"></i>
+                                <input id="nomeResponsavel" type="text" name="nomeResponsavel" placeholder="Nome" required>
+                            </div>
+                            <div class="input-field">
+                                <i class="fas fa-user"></i>
+                                <input id="loginResponsavel" type="text" name="loginResponsavel" placeholder="Usuário"
+                                    required>
+                            </div>
+                            <div class="input-field">
+                                <i class="fas fa-user"></i>
+                                <input id="celularResponsavel" type="tel" name="celularResponsavel"
+                                    placeholder="Telefone Celular" required>
+                            </div>
+                        </div>
+
+
+                        <div class="sign-resp-second-column">
+                            <div class="input-field">
+                                <i class="fas fa-envelope"></i>
+                                <input id="emailResponsavel" type="text" name="emailResponsavel" placeholder="E-mail" required>
+                            </div>
+                            <div class="input-field">
+                                <i class="fas fa-lock"></i>
+                                <input id="cadastroPassword" onkeyup="checkPassword()" name="cadastroPassword" type="password"
+                                    placeholder="Senha" required>
+                            </div>
+                            <div class="input-field">
+                                <i class="fas fa-lock"></i>
+                                <input id="confirmacaoPassword" onkeyup="checkPassword()" type="password"
+                                    placeholder="Confirme sua senha" required>
+                            </div>
+                        </div>
+
+
                     </div>
                     <div class="check-container">
+
+
                         <div class="check-option">
                             <p>As senhas devem ser iguais</p>
                             <i id="equal-pass" class="far fa-check-circle"></i>
@@ -103,13 +118,17 @@
                             <p>Pelo menos um número</p>
                             <i id="numericChar" class="far fa-check-circle"></i>
                         </div>
+
+
                     </div>
                     <input type="submit" value="Cadastrar" class="btn solid ">
                 </form>
             </div>
         </div>
     </div>
-    <script src='js/main.js'></script>
+
+    <script src="../src/js/cadastroResponsavel.js"></script>
+    <script src="../src/js/alerts.js"></script>
 </body>
 
 </html>

@@ -42,7 +42,7 @@ module.exports = (sequelize, DataTypes) => {
         telefone: {
             field: 'telefone',
             type: DataTypes.STRING,
-            allowNull: false,
+            allowNull: true,
         },
     },
         {

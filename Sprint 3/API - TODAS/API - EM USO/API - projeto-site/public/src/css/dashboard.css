@@ -347,3 +347,12 @@ sub {
 .invisible {
     display: none !important;
 }
+
+.sign-resp-container{
+    display: flex;
+    justify-content: space-between;
+}
+
+.sign-resp-container > div{
+    margin: 0 10px;
+}
