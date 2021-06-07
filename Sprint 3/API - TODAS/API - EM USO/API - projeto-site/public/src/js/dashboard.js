@@ -278,5 +278,5 @@ if (user.idEmpresa != undefined) {
 }
 
 setInterval(() => {
-    // inserirDados();
+    inserirDados();
 }, 5000);
