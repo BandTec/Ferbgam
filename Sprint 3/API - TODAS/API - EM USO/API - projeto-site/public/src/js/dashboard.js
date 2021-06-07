@@ -155,18 +155,19 @@ listSensors = (data) => {
 
 let salasObject;
 
-listarSalas = async() => {
+listarSalas = async () => {
 
     let containerSalas = document.querySelector('.rooms-container');
 
-    await fetch(`/salas/${user.idEmpresa != undefined ? user.idEmpresa: user.fkEmpresa}`, {
+    await fetch(`/salas/${user.idEmpresa != undefined ? user.idEmpresa : user.fkEmpresa}`, {
         method: 'GET'
     }).then((response) => {
         response.json().then(data => {
 
-
-            data.forEach((sala, index, array) => {
-                containerSalas.innerHTML += `
+            if (data.length != 0) {
+                document.querySelector('.no-rooms').classList.add('invisible');
+                data.forEach((sala, index, array) => {
+                    containerSalas.innerHTML += `
                 <div id=${sala.idSala} class="boxes-item">
                     <h3>${sala.nomeSala}</h3>
                     <div class="box-text">
@@ -181,17 +182,22 @@ listarSalas = async() => {
                     </div>
                 </div>`;
 
-            });
+                });
 
-            salasObject = data;
-            console.log(salasObject);
-            salasObject.forEach((sala) => {
-                document.getElementById(sala.idSala).addEventListener('click', () => {
-                    sessionStorage.setItem('sala', JSON.stringify(sala));
+                salasObject = data;
+                console.log(salasObject);
+                salasObject.forEach((sala) => {
+                    document.getElementById(sala.idSala).addEventListener('click', () => {
+                        sessionStorage.setItem('sala', JSON.stringify(sala));
 
-                    window.location.href = 'sala.html';
-                })
-            })
+                        window.location.href = 'sala.html';
+                    })
+                });
+            } else {
+                document.querySelector('.no-rooms').classList.remove('invisible');
+
+            }
+
 
 
         })
