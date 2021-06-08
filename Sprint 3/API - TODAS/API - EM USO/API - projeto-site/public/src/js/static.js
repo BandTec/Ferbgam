@@ -279,11 +279,3 @@ setInterval(() => {
 
 
 
-
-// let contadoraaa = 0;
-// setInterval(() => {
-//     let teste = parseInt(Math.random() * 100);
-//     chartTemperature.data.labels.push(contadoraaa++);
-//     chartTemperature.data.datasets[0].data.push(teste)
-//     chartTemperature.update();
-// }, 2000)
