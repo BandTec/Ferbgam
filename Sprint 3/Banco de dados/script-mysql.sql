@@ -104,17 +104,19 @@ insert into tb_sensor values
 	(null,'dht11','umidade','inativo','UR %',2),
 	(null,'ldr','luminosidade','manutenção','Lux',5);
 
+desc tb_responsavel;
+
 select * from tb_empresa;
 select * from tb_responsavel;
 select * from tb_sala;
 select * from tb_leitura;
 select * from tb_sensor where idSensor = 27;
 
-
+select * from tb_empresa where loginEmpresa = 'loglogistica' and senhaEmpresa = 'urubu100';
 
 SELECT * FROM tb_leitura WHERE idLeitura = 2892;
 
-
+SELECT * FROM tb_empresa WHERE loginEmpresa = 'loglogistica' and BINARY senhaEmpresa = 'urubu100';
 
 SELECT sensor.tipoSensor ,sensor.tipoLeitura, sensor.unidadeMedida ,sensor.statusSensor FROM tb_sensor as sensor
  	INNER JOIN tb_sala as sala 
@@ -163,6 +165,22 @@ select l.idLeitura, l.fkSensor, l.valorLeitura, s.tipoLeitura  from tb_leitura a
     
     
 select * from tb_leitura WHERE fkSensor = 10  order by idLeitura desc limit 1;
+
+
+select * from usuario;
+select * from estilo;
+
+insert into estilo values (null,'Zuouq');
+
+select * from instrumento;
+
+select * from tb_sensor join tb_sala on fkSala = idSala join tb_empresa on fkEmpresa = idEmpresa where loginEmpresa = 'lawadv';
+select * from tb_sensor;
+
+insert into tb_sensor values 
+(null,'dht11','temperatura','ativo','°C',3);
+
+
 
 
 
