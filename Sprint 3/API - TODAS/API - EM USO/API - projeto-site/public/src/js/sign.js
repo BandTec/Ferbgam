@@ -451,6 +451,7 @@ pesquisar = () => {
         }, 1500);
 
     } else if (viacep.length == 8) {
+
         fetch(`${cepvia}`)
 
         .then(resposta => {
@@ -458,6 +459,7 @@ pesquisar = () => {
                 .then(json => {
 
                     if (json.erro == undefined || json.erro == null) {
+
                         console.log(json)
 
                         logradouroEmpresa.value = json.logradouro;
