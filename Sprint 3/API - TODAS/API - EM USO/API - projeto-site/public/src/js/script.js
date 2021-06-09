@@ -1,4 +1,4 @@
-window.onscroll = function () { scrollFunction() };
+window.onscroll = function() { scrollFunction() };
 
 function scrollFunction() {
     if (document.body.scrollTop > 80 || document.documentElement.scrollTop > 80) {
@@ -26,41 +26,34 @@ function calculate() {
         result_alert.style.display = 'block'
         alert_box.innerHTML = `o nome da sua Empresa`
 
-    }
-    else if (in_employ.value.length < 1) {
+    } else if (in_employ.value.length < 1) {
         div_javascript.style.display = 'none';
         result_alert.style.display = 'block'
         alert_box.innerHTML = `a quantidade de funcionarios na sua Empresa`
-    }
-    else if (in_absenteeism.value.length < 1) {
+    } else if (in_absenteeism.value.length < 1) {
         div_javascript.style.display = 'none';
         result_alert.style.display = 'block'
         alert_box.innerHTML = `a quantidade de absenteísmo da sua Empresa`
 
-    }
-    else if (in_payment.value.length < 1) {
+    } else if (in_payment.value.length < 1) {
         div_javascript.style.display = 'none';
         result_alert.style.display = 'block'
         alert_box.innerHTML = `o salário dos funcionarios da sua Empresa`
-    }
-    else if (in_meters.value.length < 1) {
+    } else if (in_meters.value.length < 1) {
         div_javascript.style.display = 'none';
         result_alert.style.display = 'block'
         alert_box.innerHTML = `a quantidade de metros da sua Empresa`
 
-    }
-
-    else if (se_pack.value.length < 1) {
+    } else if (se_pack.value.length < 1) {
         div_javascript.style.display = 'none';
         result_alert.style.display = 'block'
         alert_box.innerHTML = `qual o pack desejado `
-    }
-    else {
+    } else {
         div_javascript.style.display = 'block';
         result_alert.style.display = 'none'
         result_name.innerHTML = `${name}`;
-        result_eco.innerHTML = `${eco.toFixed(2)}`;
-        result_price.innerHTML = `${price_meters.toFixed(2)}`;
+        result_eco.innerHTML = `${eco.toLocaleString("pt-BR",{style:"currency",currency:"BRL"})}`;
+        result_price.innerHTML = `${price_meters.toLocaleString("pt-BR",{style:"currency",currency:"BRL"})}`;
         result_porcent.innerHTML = `${pack}`;
         result_absent.innerHTML = `${absenteeism_percent.toFixed(1)}`;
     }
