@@ -174,11 +174,14 @@ insert into estilo values (null,'Zuouq');
 
 select * from instrumento;
 
-select * from tb_sensor join tb_sala on fkSala = idSala join tb_empresa on fkEmpresa = idEmpresa where loginEmpresa = 'lawadv';
+select * from tb_sensor join tb_sala on fkSala = idSala join tb_empresa on fkEmpresa = idEmpresa where loginEmpresa = 'loglogistica';
+
 select * from tb_sensor;
 
 insert into tb_sensor values 
 (null,'dht11','temperatura','ativo','°C',3);
+
+update tb_sensor set statusSensor = 'manutenção' where idSensor = 7;
 
 
 

@@ -15,9 +15,15 @@ const cadastroResponsavel = () => {
                 generateAlert(document.getElementById('body-pg'),
                     null, 'Cadastrado com sucesso!'
                 );
-            } else {
 
-                console.log('Erro de cadastro!');
+                setTimeout(() => {
+                    window.location.href = 'responsavel.html';
+                }, 2800)
+
+            } else {
+                generateAlert(document.getElementById('body-pg'),
+                    'danger', 'Erro ao cadastrar!'
+                );
                 response.text().then(function (error_desc) {
                     console.log(error_desc);
                 });
@@ -25,6 +31,43 @@ const cadastroResponsavel = () => {
             }
         });
     }
+}
+
+const carregarResponsaveis = () => {
+    fetch(`/responsaveis/${user.idEmpresa}`)
+        .then(response => {
+            if (response.ok) {
+                response.json().then(data => {
+                    let table = document.getElementById('table_responsavel');
+
+                    data.forEach((element) => {
+                        let row = document.createElement('tr');
+                        row.id = element.idResponsavel;
+
+                        let nome = document.createElement('td');
+                        let email = document.createElement('td');
+                        let telefone = document.createElement('td');
+
+                        nome.innerHTML = element.nomeResponsavel;
+                        email.innerHTML = element.email;
+                        telefone.innerHTML = element.telefone;
+
+                        row.appendChild(nome);
+                        row.appendChild(email);
+                        row.appendChild(telefone);
+
+                        table.appendChild(row);
+
+
+                    })
+                })
+            }
+            else {
+                generateAlert(document.getElementById('body-pg'),
+                    'warning', 'Erro ao carregar responsáveis'
+                );
+            }
+        })
 }
 
 

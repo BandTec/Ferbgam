@@ -386,7 +386,7 @@ sub {
     padding: 20px;
 }
 
-.no-rooms .add-btn {
+.add-btn {
     position: absolute;
     bottom: 0;
     right: 25px;

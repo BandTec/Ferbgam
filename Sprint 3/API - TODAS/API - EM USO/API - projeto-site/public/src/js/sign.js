@@ -20,7 +20,7 @@ cadastrar = () => {
         fetch("/empresas/cadastrarEmpresa", {
             method: "POST",
             body: signData
-        }).then(function(response) {
+        }).then(function (response) {
 
             if (response.ok) {
                 console.log(response);
@@ -32,7 +32,7 @@ cadastrar = () => {
 
             } else {
                 console.log('Erro de cadastro!');
-                response.text().then(function(error_desc) {
+                response.text().then(function (error_desc) {
                     console.log(error_desc);
 
                     generateAlert(document.getElementById('container'),
@@ -133,6 +133,14 @@ let passToValidateInput = document.querySelector('#confirmacaoPassword');
 
 
 // ============================================== VALIDAÇÕES =========================================================
+function isNumber(evt) {
+    evt = (evt) ? evt : window.event;
+    var charCode = (evt.which) ? evt.which : evt.keyCode;
+    if (charCode > 31 && (charCode < 48 || charCode > 57)) {
+        return false;
+    }
+    return true;
+}
 
 // STEP 1 - VALIDAÇÃO
 function validationStepOne() {
@@ -414,11 +422,11 @@ function clearCadastro() {
 
 
 // console.log(container)
-sign_up_btn.addEventListener('click', function() {
+sign_up_btn.addEventListener('click', function () {
     container.classList.add('sign-up-mode')
 });
 
-sign_in_btn.addEventListener('click', function() {
+sign_in_btn.addEventListener('click', function () {
     container.classList.remove('sign-up-mode');
 });
 
@@ -454,22 +462,22 @@ pesquisar = () => {
 
         fetch(`${cepvia}`)
 
-        .then(resposta => {
-            resposta.json()
-                .then(json => {
+            .then(resposta => {
+                resposta.json()
+                    .then(json => {
 
-                    if (json.erro == undefined || json.erro == null) {
+                        if (json.erro == undefined || json.erro == null) {
 
-                        console.log(json)
+                            console.log(json)
 
-                        logradouroEmpresa.value = json.logradouro;
-                        selectUF.value = json.uf;
-                        cidadeEmpresa.value = json.localidade;
-                        bairroEmpresa.value = json.bairro;
+                            logradouroEmpresa.value = json.logradouro;
+                            selectUF.value = json.uf;
+                            cidadeEmpresa.value = json.localidade;
+                            bairroEmpresa.value = json.bairro;
 
-                    }
+                        }
 
-                });
-        })
+                    });
+            })
     }
 }

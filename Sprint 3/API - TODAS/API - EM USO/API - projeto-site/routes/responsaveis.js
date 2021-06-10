@@ -48,12 +48,12 @@ router.post('/cadastrar/:fkEmpresa', function (req, res, next) {
         email: req.body.emailResponsavel,
         telefone: req.body.celularResponsavel,
     }).then(resultado => {
-            console.log(`Registro criado: ${resultado}`)
-            res.send(resultado);
-        }).catch(erro => {
-            console.error(erro);
-            res.status(500).send(erro.message);
-        });
+        console.log(`Registro criado: ${resultado}`)
+        res.send(resultado);
+    }).catch(erro => {
+        console.error(erro);
+        res.status(500).send(erro.message);
+    });
 });
 
 
@@ -96,13 +96,17 @@ router.get('/sair/:login', function (req, res, next) {
 });
 
 
-/* Recuperar todos os usuários */
-router.get('/', function (req, res, next) {
+/* Recuperar todos os responsáveis */
+router.get('/:fkEmpresa', function (req, res, next) {
     console.log('Recuperando todos os usuários');
-    Usuario.findAndCountAll().then(resultado => {
+    Responsavel.findAll({
+        where: {
+            fkEmpresa: req.params.fkEmpresa
+        }
+    }).then(resultado => {
         console.log(`${resultado.count} registros`);
 
-        res.json(resultado.rows);
+        res.send(resultado)
     }).catch(erro => {
         console.error(erro);
         res.status(500).send(erro.message);
