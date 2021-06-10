@@ -2,6 +2,8 @@ var express = require('express');
 var router = express.Router();
 var sequelize = require('../models').sequelize;
 var Responsavel = require('../models').Responsavel;
+var env = process.env.NODE_ENV || 'development';
+
 
 let sessoes = [];
 
@@ -12,7 +14,14 @@ router.post('/autenticarResponsavel', function (req, res, next) {
     var login = req.body.login_user; // depois de .body, use o nome (name) do campo em seu formulário de login
     var senha = req.body.senha_user; // depois de .body, use o nome (name) do campo em seu formulário de login	
 
-    let instrucaoSql = `select * from tb_responsavel where loginResponsavel='${login}' and senhaResponsavel='${senha}'`;
+    let instrucaoSql = '';
+
+    if (env == 'dev') {
+        instrucaoSql = `select * from tb_responsavel where loginResponsavel='${login}' and senhaResponsavel='${senha}'`;
+
+    } else {
+
+    }
     console.log(instrucaoSql);
 
     sequelize.query(instrucaoSql, {

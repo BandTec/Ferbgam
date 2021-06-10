@@ -2,11 +2,13 @@ var express = require('express');
 var router = express.Router();
 var sequelize = require('../models').sequelize;
 var Empresa = require('../models').Empresa;
+var env = process.env.NODE_ENV || 'development';
+
 
 let sessoes = [];
 
 /* CADASTRAR EMPRESAS */
-router.post('/cadastrarEmpresa', function(req, res, next) {
+router.post('/cadastrarEmpresa', function (req, res, next) {
     console.log('Cadastrando empresa...');
 
     Empresa.create({
@@ -33,13 +35,20 @@ router.post('/cadastrarEmpresa', function(req, res, next) {
 });
 
 /* Recuperar usuário por login e senha */
-router.post('/autenticarEmpresa', function(req, res, next) {
+router.post('/autenticarEmpresa', function (req, res, next) {
     console.log('Recuperando Empresa por login e senha');
 
     var login = req.body.login_user; // depois de .body, use o nome (name) do campo em seu formulário de login
     var senha = req.body.senha_user; // depois de .body, use o nome (name) do campo em seu formulário de login	
 
-    let instrucaoSql = `select * from tb_empresa where loginEmpresa='${login}' and senhaEmpresa='${senha}'`;
+    let instrucaoSql = '';
+
+    if (env == 'dev') {
+        instrucaoSql = `select * from tb_empresa where loginEmpresa='${login}' and BINARY senhaEmpresa='${senha}'`;
+
+    } else {
+
+    }
     console.log(instrucaoSql);
 
     sequelize.query(instrucaoSql, {
@@ -64,7 +73,7 @@ router.post('/autenticarEmpresa', function(req, res, next) {
 });
 
 /* Verificação de usuário como empresa */
-router.get('/sessao/:login', function(req, res, next) {
+router.get('/sessao/:login', function (req, res, next) {
     let login = req.params.login;
     console.log(`Verificando se o usuário ${login} tem sessão`);
 
@@ -88,7 +97,7 @@ router.get('/sessao/:login', function(req, res, next) {
 
 
 /* Logoff de usuário como Empresa */
-router.get('/sair/:login', function(req, res, next) {
+router.get('/sair/:login', function (req, res, next) {
     let login = req.params.loginEmpresa;
     console.log(`Finalizando a sessão do usuário ${login}`);
     let nova_sessoes = []
@@ -103,7 +112,7 @@ router.get('/sair/:login', function(req, res, next) {
 
 
 /* Recuperar todos os usuários */
-router.get('/', function(req, res, next) {
+router.get('/', function (req, res, next) {
     console.log('Recuperando todos os usuários');
     Usuario.findAndCountAll().then(resultado => {
         console.log(`${resultado.count} registros`);
