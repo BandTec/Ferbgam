@@ -1,0 +1,95 @@
+/*----------Variaveis CSS--------------*/
+
+:root {
+    --header-height: 4rem;
+    --nav-width: 68px;
+    /*------------CORES------------*/
+    --first-color: #3e3e3f88;
+    --first-color-light: #262626;
+    --gray-color: #262626;
+    --white-color: #F7F6FB;
+    --primary-blue: #5995fd;
+    --p-darker-blue: #4d84e2;
+    --p-light-blue: #04befe;
+    /*------------FONTES E TIPOGRAFIA------------*/
+    --body-font: 'Nunito', sans-serif;
+    --normal-font-size: 1rem;
+    /*------------Z-INDEX------------*/
+    --z-fixed: 100;
+}
+
+.table-responsavel {
+    margin-top: 5%;
+    font-family: Arial, Helvetica, sans-serif;
+    border-collapse: collapse;
+    width: 60em;
+    color: #ddd;
+    text-align: center;
+    border-radius: 20px;
+}
+
+.table-responsavel td,
+.table-responsavel th {
+    border: none;
+    padding: 8px;
+}
+
+.table-responsavel tr {
+    border: none;
+}
+
+.table-responsavel tr:hover {
+    border-radius: 20px;
+}
+
+.table-responsavel th {
+    border: none;
+    background: var(--p-light-blue);
+    padding-top: 12px;
+    padding-bottom: 12px;
+    text-align: center;
+    color: white;
+}
+
+.table-responsavel i {
+    color: var(--p-light-blue);
+}
+
+.add-btn {
+    font-size: 25px;
+    cursor: pointer;
+    display: flex;
+    justify-content: center;
+    align-items: center;
+    border-radius: 50%;
+    color: #fff;
+    width: 50px;
+    height: 50px;
+    transition: 1.5s;
+    background-color: #04befe;
+    -webkit-box-shadow: 10px 7px 33px 1px rgba(0, 0, 0, 0.75);
+    -moz-box-shadow: 10px 7px 33px 1px rgba(0, 0, 0, 0.75);
+    box-shadow: 10px 7px 33px 1px rgba(0, 0, 0, 0.75);
+}
+
+.add-btn a {
+    color: #fff;
+}
+
+.container-btn {
+    width: 100%;
+    display: flex;
+    margin-left: 20%;
+    justify-content: flex-end;
+    align-items: center;
+}
+
+.container-table {
+    width: auto;
+    height: auto;
+    display: flex;
+    flex-direction: column;
+    align-items: center;
+    margin: auto;
+    justify-content: center;
+}
