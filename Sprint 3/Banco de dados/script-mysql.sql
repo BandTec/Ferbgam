@@ -163,7 +163,7 @@ select l.idLeitura, l.fkSensor, l.valorLeitura, s.tipoLeitura  from tb_leitura a
     order by l.idLeitura DESC LIMIT 3;
     
     
-    
+select * from tb_empresa;
 select * from tb_leitura WHERE fkSensor = 10  order by idLeitura desc limit 1;
 
 
@@ -181,9 +181,57 @@ select * from tb_sensor;
 insert into tb_sensor values 
 (null,'dht11','temperatura','ativo','°C',3);
 
-update tb_sensor set statusSensor = 'manutenção' where idSensor = 7;
+update tb_sensor set statusSensor = 'inativo' where idSensor = 14;
+
+select nomeEmpresa, cnpj, telefone, email  from tb_empresa where idEmpresa = 1;
+
+select * from tb_responsavel where fkEmpresa = 1;
+
+desc tb_responsavel;
 
 
+-- SALAS DA BANDTEC
+insert into tb_sala
+values
+    (null,'Sala 1A', 44.3, 'Sala de CCO', '1°', 8),
+    (null,'Sala 1B', 28.3, 'Sala de CCO', '1°', 8),
+    (null,'Sala 2A', 44.3, 'Sala de Uso Geral', '2°', 8),
+    (null,'Sala 2B', 28.3, 'Sala de Uso Geral', '2°', 8),
+    (null,'Sala 3A', 44.3, 'Sala de ADSA', '3°', 8),
+    (null,'Sala 3B', 28.3, 'Sala de ADSA', '3°', 8),
+    (null,'Secretaria', 10, 'Adminstração', 'Térreo', 8);
+
+select *
+from tb_sala join tb_empresa on fkEmpresa = idEmpresa
+where idEmpresa = 8;
 
 
+insert into tb_sensor
+VALUES
+    (null,'dht11', 'temperatura', 'ativo', 'C°', 11),
+    (null,'dht11', 'umidade', 'ativo', 'UR %', 11),
+    (null,'ldr', 'luminosidade', 'ativo', 'Lux', 11),
 
+    (null,'dht11', 'temperatura', 'inativo', 'C°', 12),
+    (null,'dht11', 'temperatura', 'ativo', 'C°', 12),
+    (null,'dht11', 'temperatura', 'ativo', 'C°', 12),
+
+    (null,'dht11', 'umidade', 'manutenção', 'UR %', 13),
+    (null,'dht11', 'umidade', 'manutenção', 'UR %', 13),
+    (null,'dht11', 'umidade', 'manutenção', 'UR %', 13),
+
+    (null,'dht11', 'temperatura', 'ativo', 'C°', 14),
+    (null,'dht11', 'temperatura', 'inativo', 'C°', 14),
+    (null,'dht11', 'umidade', 'inativo', 'UR %', 14),
+
+    (null,'dht11', 'temperatura', 'inativo', 'C°', 15),
+    (null,'dht11', 'temperatura', 'inativo', 'C°', 15),
+    (null,'dht11', 'temperatura', 'inativo', 'C°', 15),
+
+    (null,'dht11', 'temperatura', 'ativo', 'C°', 16),
+    (null,'dht11', 'umidade', 'ativo', 'UR %', 16),
+    (null,'ldr', 'luminosidade', 'ativo', 'Lux', 16),
+
+    (null,'dht11', 'temperatura', 'ativo', 'C°', 17),
+    (null,'dht11', 'umidade', 'ativo', 'UR %', 17),
+    (null,'ldr', 'luminosidade', 'ativo', 'Lux', 17);
