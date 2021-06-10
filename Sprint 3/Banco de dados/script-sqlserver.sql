@@ -1,3 +1,4 @@
+-- Criação das tabelas
 create table tb_empresa
 (
     idEmpresa int primary key identity,
@@ -59,7 +60,7 @@ create table tb_leitura
     valorLeitura decimal(10,2)
 );
 
-
+-- DESCRIBES
 sp_columns tb_empresa;
 sp_columns tb_responsavel;
 sp_columns tb_sala;
@@ -92,6 +93,28 @@ values
     ('Sala 1', 28, 'Sala 36', default, 3),
     ('Sala 2', 40, 'Sala de Suporte Técnico', '1', 3);
 
+insert into tb_sala
+values
+    ('Sala 2', 44.3, 'Sala de reunião', '15', 1),
+    ('Sala 3', 30, 'Esse é o laboratório 1, equipe 3', '4', 1),
+    ('Sala 4', 25.4, 'Esse é o laboratório 2 da equipe de Analistas', '5', 1),
+    ('Sala 5', 28, 'Sala 36', default, 1),
+    ('Sala 6', 40, 'Sala de Suporte Técnico', '1', 1);
+
+-- SALAS DA BANDTEC
+insert into tb_sala
+values
+    ('Sala 1A', 44.3, 'Sala de CCO', '1°', 9),
+    ('Sala 1B', 28.3, 'Sala de CCO', '1°', 9),
+    ('Sala 2A', 44.3, 'Sala de Uso Geral', '2°', 9),
+    ('Sala 2B', 28.3, 'Sala de Uso Geral', '2°', 9),
+    ('Sala 3A', 44.3, 'Sala de ADSA', '3°', 9),
+    ('Sala 3B', 28.3, 'Sala de ADSA', '3°', 9),
+    ('Secretaria', 10, 'Adminstração', 'Térreo', 9);
+
+
+
+-- INSERINDO SENSORES
 insert into tb_sensor
 values
     ('dht11', 'temperatura', 'ativo', '°C', 1),
@@ -109,30 +132,6 @@ values
     ('dht11', 'temperatura', 'manutenção', '°C', 1),
     ('dht11', 'umidade', 'inativo', 'UR %', 2),
     ('ldr', 'luminosidade', 'manutenção', 'Lux', 5);
-
-
-
-select *
-from tb_empresa;
-select *
-from tb_responsavel;
-select *
-from tb_sala;
-select *
-from tb_sensor;
-select *
-from tb_leitura;
-
-
-
-insert into tb_sala
-values
-    ('Sala 2', 44.3, 'Sala de reunião', '15', 1),
-    ('Sala 3', 30, 'Esse é o laboratório 1, equipe 3', '4', 1),
-    ('Sala 4', 25.4, 'Esse é o laboratório 2 da equipe de Analistas', '5', 1),
-    ('Sala 5', 28, 'Sala 36', default, 1),
-    ('Sala 6', 40, 'Sala de Suporte Técnico', '1', 1);
-
 
 insert into tb_sensor
 VALUES
@@ -153,33 +152,6 @@ VALUES
     ('ldr', 'luminosidade', 'ativo', 'Lux', 9),
     ('dht11', 'temperatura', 'inativo', 'C°', 10),
     ('dht11', 'temperatura', 'ativo', 'C°', 11);
-
-
-SELECT sensor.idSensor, sensor.tipoSensor , sensor.tipoLeitura, sensor.unidadeMedida , sensor.statusSensor
-FROM tb_sensor as sensor
-    INNER JOIN tb_sala as sala
-    ON sensor.fkSala = sala.idSala
-WHERE fkSala = 8;
-
-
-update tb_sensor set statusSensor = 'inativo' where idSensor = 19;
-
-
--- SALAS DA BANDTEC
-insert into tb_sala
-values
-    ('Sala 1A', 44.3, 'Sala de CCO', '1°', 9),
-    ('Sala 1B', 28.3, 'Sala de CCO', '1°', 9),
-    ('Sala 2A', 44.3, 'Sala de Uso Geral', '2°', 9),
-    ('Sala 2B', 28.3, 'Sala de Uso Geral', '2°', 9),
-    ('Sala 3A', 44.3, 'Sala de ADSA', '3°', 9),
-    ('Sala 3B', 28.3, 'Sala de ADSA', '3°', 9),
-    ('Secretaria', 10, 'Adminstração', 'Térreo', 9);
-
-select *
-from tb_sala join tb_empresa on fkEmpresa = idEmpresa
-where idEmpresa = 9;
-
 
 insert into tb_sensor
 VALUES
@@ -229,3 +201,24 @@ insert into tb_sensor values
 	('dht11','temperatura','manutenção','°C',18),
 	('dht11','umidade','inativo','UR %',15),
 	('ldr','luminosidade','manutenção','Lux',16);
+
+
+-- Exibindo os dados dos sensores de uma sala
+SELECT sensor.idSensor, sensor.tipoSensor , sensor.tipoLeitura, sensor.unidadeMedida , sensor.statusSensor
+FROM tb_sensor as sensor
+    INNER JOIN tb_sala as sala
+    ON sensor.fkSala = sala.idSala
+WHERE fkSala = 8;
+
+-- Tornando um sensor inativo
+update tb_sensor set statusSensor = 'inativo' where idSensor = 19;
+
+
+
+-- Selecionando as salas de uma determinada empresa
+select *
+from tb_sala join tb_empresa on fkEmpresa = idEmpresa
+where idEmpresa = 9;
+
+
+
