@@ -13,6 +13,8 @@ router.get('/:idEmpresa', async (req, res, next) => {
     let salas;
     let novasSalas = [];
 
+    // método do sequeliza para fazer select * from sala where fkEmpresa = parametro
+
     Sala.findAll({ where: { fkEmpresa: idEmpresa } }).then((response) => {
         salas = response;
 

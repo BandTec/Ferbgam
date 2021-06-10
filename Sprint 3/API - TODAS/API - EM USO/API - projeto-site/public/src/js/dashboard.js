@@ -21,7 +21,7 @@ function check_authenticate() {
 }
 
 
-
+// saber se a pessoa está logada
 function validate_session() {
     fetch(`/empresas/sessao/${user.loginEmpresa}`, { cache: 'no-store' })
         .then(resposta => {
@@ -155,6 +155,7 @@ listSensors = (data) => {
 
 let salasObject;
 
+//método para listar as salas na dashboard
 listarSalas = () => {
 
     let containerSalas = document.querySelector('.rooms-container');

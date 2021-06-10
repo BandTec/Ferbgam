@@ -5,7 +5,10 @@ var Leitura = require('../models/leitura').Leitura;
 var env = process.env.NODE_ENV || 'development';
 
 /* Recuperar as últimas N leituras */
-router.get('/ultimas/:tipoLeitura', function(req, res, next) {
+
+
+
+router.get('/ultimas/:tipoLeitura', function (req, res, next) {
 
     // quantas são as últimas leituras que quer? 7 está bom?
     const limite_linhas = 8;
@@ -40,9 +43,9 @@ router.get('/ultimas/:tipoLeitura', function(req, res, next) {
     }
 
     sequelize.query(instrucaoSql, {
-            model: tb_leitura,
-            mapToModel: true
-        })
+        model: tb_leitura,
+        mapToModel: true
+    })
         .then(resultado => {
             return res.status(200).json(resultado.splice(1));
         }).catch(erro => {
@@ -53,7 +56,7 @@ router.get('/ultimas/:tipoLeitura', function(req, res, next) {
 
 
 
-router.get('/ultimaPorSala/:idSala', function(req, res, next) {
+router.get('/ultimaPorSala/:idSala', function (req, res, next) {
 
     var idSala = req.params.idSala;
 
@@ -82,9 +85,9 @@ router.get('/ultimaPorSala/:idSala', function(req, res, next) {
     }
 
     sequelize.query(instrucaoSql, {
-            model: Leitura,
-            mapToModel: true
-        })
+        model: Leitura,
+        mapToModel: true
+    })
         .then(resultado => {
             return res.status(200).json(resultado[0]);
         }).catch(erro => {
@@ -96,7 +99,7 @@ router.get('/ultimaPorSala/:idSala', function(req, res, next) {
 
 
 
-router.get('/ultimasPorSala/:idSala/:qtdLeituras', function(req, res, next) {
+router.get('/ultimasPorSala/:idSala/:qtdLeituras', function (req, res, next) {
 
     var idSala = req.params.idSala;
     let qtdLeituras = req.params.qtdLeituras;
@@ -122,9 +125,9 @@ router.get('/ultimasPorSala/:idSala/:qtdLeituras', function(req, res, next) {
     }
 
     sequelize.query(instrucaoSql, {
-            model: Leitura,
-            mapToModel: true
-        })
+        model: Leitura,
+        mapToModel: true
+    })
         .then(resultado => {
             return res.status(200).json(resultado[0]);
         }).catch(erro => {
@@ -135,7 +138,7 @@ router.get('/ultimasPorSala/:idSala/:qtdLeituras', function(req, res, next) {
 
 
 
-router.get('/tempo-real/:idcaminhao', function(req, res, next) {
+router.get('/tempo-real/:idcaminhao', function (req, res, next) {
     console.log('Recuperando caminhões');
 
     //var idcaminhao = req.body.idcaminhao; // depois de .body, use o nome (name) do campo em seu formulário de login
@@ -165,7 +168,7 @@ router.get('/tempo-real/:idcaminhao', function(req, res, next) {
 });
 
 // estatísticas (max, min, média, mediana, quartis etc)
-router.get('/estatisticas', function(req, res, next) {
+router.get('/estatisticas', function (req, res, next) {
 
     console.log(`Recuperando as estatísticas atuais`);
 
