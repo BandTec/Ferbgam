@@ -1,6 +1,15 @@
 var user = sessionStorage.getItem('user');
 user = JSON.parse(user);
 
+function isNumber(evt) {
+    evt = (evt) ? evt : window.event;
+    var charCode = (evt.which) ? evt.which : evt.keyCode;
+    if (charCode > 31 && (charCode < 48 || charCode > 57)) {
+        return false;
+    }
+    return true;
+}
+
 const cadastroResponsavel = () => {
     checkEmail();
     if (isEqual && hasMin && hasUpper && hasNumber && validEmail) {
@@ -8,7 +17,7 @@ const cadastroResponsavel = () => {
         fetch(`/responsaveis/cadastrar/${user.idEmpresa}`, {
             method: "POST",
             body: form
-        }).then(function (response) {
+        }).then(function(response) {
 
             if (response.ok) {
                 console.log(response);
@@ -24,7 +33,7 @@ const cadastroResponsavel = () => {
                 generateAlert(document.getElementById('body-pg'),
                     'danger', 'Erro ao cadastrar!'
                 );
-                response.text().then(function (error_desc) {
+                response.text().then(function(error_desc) {
                     console.log(error_desc);
                 });
 
@@ -61,8 +70,7 @@ const carregarResponsaveis = () => {
 
                     })
                 })
-            }
-            else {
+            } else {
                 generateAlert(document.getElementById('body-pg'),
                     'warning', 'Erro ao carregar responsáveis'
                 );
@@ -174,8 +182,7 @@ const checkEmail = () => {
     email = document.querySelector('#emailResponsavel');
     if (email.value.match(/^[^\s@]+@[^\s@]+$/)) {
         return validEmail = true;
-    }
-    else {
+    } else {
         email.parentElement.classList.toggle('wrong-input');
         email.value = '';
         email.placeholder = 'Digite um e-mail válido';

@@ -34,8 +34,7 @@
                         <span class="nav_name">Add user</span>
                     </a>
 
-                    <a title="Dúvidas" id="cadastro_responsavel" href="https://app.pipefy.com/public/form/Kz8LHmom"
-                        target="_blank" class="nav_link ">
+                    <a title="Dúvidas" id="cadastro_responsavel" href="https://app.pipefy.com/public/form/Kz8LHmom" target="_blank" class="nav_link ">
                         <i class="far fa-question-circle"></i>
                         <span class="nav_name">Question</span>
                     </a>
@@ -54,26 +53,22 @@
                 <hr class="pink-stroke" />
             </div>
             <div class="container-form">
-                <form onsubmit="cadastroResponsavel()" action="javascript:void(0)" id="form_cadastroResponsavel"
-                    class="form-" autocomplete="off">
+                <form onsubmit="cadastroResponsavel()" action="javascript:void(0)" id="form_cadastroResponsavel" class="form-" autocomplete="off">
                     <div class="sign-resp-container">
 
 
                         <div class="sign-resp-first-column">
                             <div class="input-field">
                                 <i class="fas fa-user"></i>
-                                <input id="nomeResponsavel" type="text" name="nomeResponsavel" placeholder="Nome"
-                                    required>
+                                <input id="nomeResponsavel" type="text" name="nomeResponsavel" placeholder="Nome" required>
                             </div>
                             <div class="input-field">
                                 <i class="fas fa-user"></i>
-                                <input id="loginResponsavel" type="text" name="loginResponsavel" placeholder="Usuário"
-                                    required>
+                                <input id="loginResponsavel" type="text" name="loginResponsavel" placeholder="Usuário" required>
                             </div>
                             <div class="input-field">
                                 <i class="fas fa-phone-alt"></i>
-                                <input id="celularResponsavel" type="tel" name="celularResponsavel"
-                                    placeholder="Telefone Celular" required>
+                                <input id="celularResponsavel" type="tel" name="celularResponsavel" placeholder="Telefone Celular" required maxlength="11" onkeypress="return isNumber(event)">
                             </div>
                         </div>
 
@@ -81,18 +76,15 @@
                         <div class="sign-resp-second-column">
                             <div class="input-field">
                                 <i class="fas fa-envelope"></i>
-                                <input id="emailResponsavel" type="text" name="emailResponsavel" placeholder="E-mail"
-                                    required>
+                                <input id="emailResponsavel" type="text" name="emailResponsavel" placeholder="E-mail" required>
                             </div>
                             <div class="input-field">
                                 <i class="fas fa-lock"></i>
-                                <input id="cadastroPassword" onkeyup="checkPassword()" name="cadastroPassword"
-                                    type="password" placeholder="Senha" required>
+                                <input id="cadastroPassword" onkeyup="checkPassword()" name="cadastroPassword" type="password" placeholder="Senha" required>
                             </div>
                             <div class="input-field">
                                 <i class="fas fa-lock"></i>
-                                <input id="confirmacaoPassword" onkeyup="checkPassword()" type="password"
-                                    placeholder="Confirme sua senha" required>
+                                <input id="confirmacaoPassword" onkeyup="checkPassword()" type="password" placeholder="Confirme sua senha" required>
                             </div>
                         </div>
 
