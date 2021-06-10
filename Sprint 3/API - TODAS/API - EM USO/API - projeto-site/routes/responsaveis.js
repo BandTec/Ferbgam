@@ -17,9 +17,10 @@ router.post('/autenticarResponsavel', function (req, res, next) {
     let instrucaoSql = '';
 
     if (env == 'dev') {
-        instrucaoSql = `select * from tb_responsavel where loginResponsavel='${login}' and senhaResponsavel='${senha}'`;
+        instrucaoSql = `select * from tb_responsavel where loginResponsavel='${login}' and BINARY senhaResponsavel='${senha}';`;
 
     } else {
+        instrucaoSql = `select * from tb_responsavel where loginResponsavel='${login}' and senhaResponsavel='${senha}' COLLATE SQL_Latin1_General_CP1_CS_AS;`;
 
     }
     console.log(instrucaoSql);

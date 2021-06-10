@@ -44,9 +44,10 @@ router.post('/autenticarEmpresa', function (req, res, next) {
     let instrucaoSql = '';
 
     if (env == 'dev') {
-        instrucaoSql = `select * from tb_empresa where loginEmpresa='${login}' and BINARY senhaEmpresa='${senha}'`;
-
+        instrucaoSql = `select * from tb_empresa where loginEmpresa='${login}' and BINARY senhaEmpresa='${senha}';`;
+        
     } else {
+        instrucaoSql = `select * from tb_empresa where loginEmpresa='${login}' and senhaEmpresa='${senha}' COLLATE SQL_Latin1_General_CP1_CS_AS;`;
 
     }
     console.log(instrucaoSql);

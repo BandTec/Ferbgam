@@ -1,8 +1,6 @@
 create database relax;
 use relax;
 
-
-
 create table tb_empresa (
 	idEmpresa int primary key auto_increment,
     loginEmpresa varchar(50) unique,
@@ -170,8 +168,6 @@ select * from tb_leitura WHERE fkSensor = 10  order by idLeitura desc limit 1;
 select * from usuario;
 select * from estilo;
 
-insert into estilo values (null,'Zuouq');
-
 select * from instrumento;
 
 select * from tb_sensor join tb_sala on fkSala = idSala join tb_empresa on fkEmpresa = idEmpresa where loginEmpresa = 'loglogistica';
@@ -189,7 +185,6 @@ select * from tb_responsavel where fkEmpresa = 1;
 
 desc tb_responsavel;
 
-
 -- SALAS DA BANDTEC
 insert into tb_sala
 values
@@ -205,7 +200,7 @@ select *
 from tb_sala join tb_empresa on fkEmpresa = idEmpresa
 where idEmpresa = 8;
 
-
+select * from tb_responsavel;
 insert into tb_sensor
 VALUES
     (null,'dht11', 'temperatura', 'ativo', 'C°', 11),
